@@ -163,6 +163,26 @@ main{padding-block:6px 24px;display:flex;flex-direction:column;gap:18px}
 .pill.brand{background:var(--brand);color:var(--brand-ink)}
 .pill:disabled{opacity:.5}
 
+/* connected speech · IPA */
+.pi{display:block;font-family:"Segoe UI","SF Pro Text","Noto Sans","Lucida Sans Unicode","Arial Unicode MS",system-ui,sans-serif;font-size:14.5px;font-weight:500;color:var(--brand-deep);letter-spacing:.01em;line-height:1.5;margin-top:2px;overflow-wrap:anywhere}
+.p5 .pi.hid{filter:blur(6px)}
+.p5 details[open] .pi.hid{filter:none}
+.li .pi{font-size:13.5px}
+.keep{text-decoration:underline 2px var(--coral);text-underline-offset:3px;color:var(--coral);font-weight:700}
+.el{opacity:.45}
+.lk{color:var(--up);font-weight:800}
+.ipz{color:var(--line-2)}
+.ilg{display:flex;flex-wrap:wrap;gap:5px}
+.ilg span{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:var(--muted);background:var(--surface-2);padding:3px 9px;border-radius:999px}
+.ilg b{font-family:"Segoe UI","SF Pro Text","Noto Sans",system-ui,sans-serif;color:var(--brand-deep);font-size:13px}
+.ilg .keep{font-size:12px}
+.sb{margin-top:10px;background:var(--surface);border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:9px}
+.sbh{font-size:12px;font-weight:800;color:var(--up)}
+.sbi{display:flex;flex-direction:column;gap:1px;padding-top:8px;border-top:1px dashed var(--line)}
+.sbh + .sbi{border-top:0;padding-top:0}
+.st2{font-family:var(--f-en);font-size:15.5px;font-weight:700}
+.sn{font-size:12.5px;color:var(--muted);line-height:1.5}
+
 /* install banner */
 .install{background:var(--surface);border-radius:20px;box-shadow:var(--shadow);padding:12px 12px 12px 14px;display:grid;grid-template-columns:1fr auto auto;gap:8px 8px;align-items:center;border:1.5px solid var(--brand-soft)}
 .install .ib{display:flex;gap:10px;align-items:center;min-width:0}
@@ -697,6 +717,74 @@ const KO=[
 ["5년 뒤엔 전통적인 구조 엔지니어링과 디지털 기술을 잇는 사람이 되고 싶어요. 지금 디지털 트윈 프로젝트를 하고 있는데, 실제 운영 데이터를 쓰는 게 얼마나 가치 있는지 벌써 보여요. 그걸 더 키워서 시범 사업이 아니라 실제 서비스로 만드는 데 기여하고 싶어요. 개인적으로는 기술사 시험에 합격하고, 국제 회의를 망설임 없이 이끌 만큼 영어가 편해졌으면 해요. 그걸 해내면 정말 좋은 위치에 있을 것 같아요. 그리고 바라건대, 다이빙 여행 갈 시간도 좀 남아 있으면 좋겠네요.","질문을 많이 하세요, 기초적인 것까지도요. 아무도 다 알기를 기대하지 않아요. 하지만 왜 그 일을 하는지는 이해하고 있기를 기대하죠."]
 ];
 
+/* 연음 IPA (General American). ˈ 강세, ɾ 가벼운 t, ʔ 멈춘 t, (t) 탈락, «x» 꼭 살릴 어미, | 끊기 */
+const PIPA=[
+"[wʌn ˈθɪŋ ðət ˈkʌmz tə ˈmaɪndɪz …]","[aɪd ˈseɪ …]","[ɪt ˈrɪli dɪˈpɛndzɑn …]","[ɪfaɪ ˈhæɾə ˈpɪk ˈwʌn]","[ɔfðə ˈtɑpəv maɪ ˈhɛd]",
+"[ðætsə ˈɡʊd ˈkwɛstʃən | ˈlɛmi ˈθɪŋkəbaʊt ðæt fɚrə ˈsɛkənd]","[ˈlɛmi ˈpʊɾɪt ðɪs ˈweɪ]","[ˈhɪrz ˈwaɪ]","[ðə ˈmeɪn ˈrizənɪz …]","[ɑn ˈtɑpəv ˈðæt]",
+"[ˈteɪk … fɚrɪɡˈzæmpəl]","[ðæʔ ˈsɛd]","[ˈivən ˈsoʊ]","[ɑnðə ˈflɪp ˈsaɪd]","[ˈwɪtʃɪz ˈwaɪ]",
+"[ɪˈnʌðɚ ˈwɝdz]","[ðə ˈθɪŋɪz]","[ˈwʌɾaɪ ˈminɪz]","[əʔði ˈɛndəvðə ˈdeɪ]","[soʊ ɪfaɪ ˈhæɾə ˈsʌmɪˈɾʌp]",
+"[ˈlɔŋ ˈstɔri ˈʃɔrt]","[ˈbæk wɛnaɪ …]","[ət ˈfɝst aɪ ˈθɔt … | bəɾɪt ˈtɝn«d»ˈaʊt …]","[ˈɔləvə ˈsʌdən]","[aɪ ˈɛnd«ɪd»ˈʌp …ɪŋ]",
+"[bɪˈfɔraɪ ˈnuwɪt]","[ˈlʊkɪŋ ˈbæk]","[ðə ˈbɪɡəst ˈteɪkəweɪ wəz …]","[ˈðæts wɛnaɪ ˈriəlaɪz«d» …]","[ɪt ˈtʃeɪndʒ«d» ðə ˈweɪ aɪ ˈθɪŋkəbaʊt …]",
+"[ˈwʌɾaɪ ˈlaɪk ˈmoʊstəbaʊt … ɪz …]","[ɪtsə ˈmɪksəv eɪ ən ˈbi]","[ɪts ˈnɑʔ ðə ˈmoʊst … | bət …]","[ðə ˈbɛs(t) ˈpɑrɾɪz … | ðə ˈdaʊnsaɪdɪz …]","[ɪts ðə ˈkaɪndə ˈpleɪs wɛr …]",
+"[ɪts wɪˈðɪn ˈwɔkɪŋ ˈdɪstənsəv …]","[aɪ ˈtɛntə …]","[aɪ ˈmeɪkə ˈpɔɪnəv …ɪŋ]","[wɛˈnɛvɚraɪ ˈɡɛʔ ðə ˈtʃæns]","[aɪ ˈtraɪ tə ˈmeɪk ðə ˈmoʊstəv …]",
+"[ɪts bɪˈkʌm ˈpɑrɾəv maɪ ruˈtin]","[aɪ ˈjustə … | bət ˈðiz ˈdeɪz …]","[aɪm ˈrɪli ˈɪntu … | aɪm ˈnɑʔ ˈrɪli ˈɪntu …]","[aɪ ˈdoʊn(t) ˈbit maɪˈsɛlf ˈʌpəbaʊɾɪt]","[aɪ ˈsi wɛr jɚ ˈkʌmɪŋ frəm | bət …]",
+"[aɪm ˈnɑʔ ˈseɪɪŋ … | aɪm ˈdʒʌs(t) ˈseɪɪŋ …]","[ɪts ˈnɑʔ ðæt … | ɪts ˈmɔr ðæt …]","[ɪtsə ˌdʌbəˈlɛdʒ«d» ˈsɔrd]","[ðɛrzə ˈtreɪdɔf bɪˈtwin …]","[ɪˈtsiziɚ ˈsɛd ðən ˈdʌn]",
+"[aɪ ˈlin tɔrd …]","[tə bi ˈfɛr]","[ɪnðə ˈlɔŋ ˈrʌn]","[ɪt ˈkʌmz ˈdaʊn tə …]","[ɪts ˈnɑʔ ˈblækən ˈwaɪt]",
+"[aɪd ˈræðɚ … ðən …]","[ɪfaɪ wɚrɪn ˈtʃɑrdʒ | aɪd …]","[ɪfaɪ ˈkʊd … | aɪ ˈwʊd …]","[ɪfaɪ ˈhæd ðə ˈtʃæns | aɪd …]","[aɪ ˈwɪʃaɪ kəd … | aɪ ˈwɪʃaɪ ˈhæd …]",
+"[ɪfɪt wɚˈrʌp tə ˈmi]","[ɪfaɪd ˈnoʊn … | aɪ ˈwʊɾəv …]","[aɪm ˈkɔlɪŋ əˈbaʊt …]","[ˈwʊɾɪt bi ˈpɑsəbəl tə …]","[ɪz ðɛr ˈɛni ˈweɪ jə kʊd …]",
+"[aɪ wəz ˈwʌndɚrɪŋ ɪf …]","[ˈwʌʔ wʊdʒə səɡˈdʒɛst]","[kʊdʒə ˈwɔk mi ˈθru …]","[ˈdʒʌstə ˈmeɪk ˈʃʊr aɪ ˌʌndɚˈstænd]","[aɪd ˈrɪli əˈpriʃieɪɾɪɾɪf …]",
+"[ɔlˈtɝnəɾɪvli]","[ˈθæŋks fɚ ˈbiɪŋ soʊ ˈflɛksəbəl]","[wi ˈnidə ˈɡɛɾɑnðə ˈseɪm ˈpeɪdʒ]","[lɛts ˈteɪkə ˈstɛp ˈbæk]","[aɪl ɡɛʔ ˈbæk tə jə ɑn ˈðæt]",
+"[ðæt ˈdʌzən(t) ˈrɪli əˈdrɛs ði ˈɪʃu]","[wɪrɑnðə ˈseɪm ˈtim hɪr]","[lɛts ˈnɑʔ ɡɛɾəˈhɛdəv aʊrˈsɛlvz]","[aɪd ˈræðɚ bi ʌpˈfrʌnəˈbaʊɾɪt]","[ˈmeɪkə ˈdʒʌdʒmənt ˈkɔl]",
+"[ˈkip … ɪnðə ˈlup]","[ˈɡɛtə ðə ˈbɑɾəməv …]","[ɪt wəzɪɡˈzɔstɪŋ | bəɾɪnə ˈɡʊd ˈweɪ]","[aɪ wəz ˈbloʊnəˈweɪ baɪ …]","[ˈnoʊ ˈwɝiz | aɪ ˈtoʊɾəli ˌʌndɚˈstænd]",
+"[aɪ ˈrɪli əˈpriʃieɪʔ ðə ˈhɛdzʌp]","[aɪ ˈkʊdn̩ bɪˈliv …]","[ɪt wəz ˈtoʊɾəli ˈwɝθɪt]","[ðæʔ ˈmeɪk ˈsɛns]","[ˈæktʃuəli]",
+"[ˈɑnəsli]","[tə bi ˈɑnəs wɪðjə]","[jəˈnoʊ ˈwʌʔ]","[aɪ ˈhæftə ˈseɪ]","[bɪˈlivɪɾɚ ˈnɑt]",
+"[ˈfʌniɪˈnʌf]","[ɪt ˈtɝnˈzaʊt …]","[aɪm ˈnɑʔ ɡənə ˈlaɪ]","[ðætsə ˈtʌf ˈwʌn]","[aɪv ˈnɛvɚ ˈrɪli ˈθɔɾəˈbaʊɾɪt | bət …]",
+"[frəm maɪ ɪkˈspɪriəns]","[əz ˈfɑrəzaɪ ˈnoʊ]","[ɪt ˈmeɪksə ˈbɪɡ ˈdɪfrəns]","[ɪts ˈnɑɾə ˈbɪɡ ˈdil]","[aɪ kən rɪˈleɪɾə ˈðæt]",
+"[aɪ ˈkʊdn̩ əˈɡri ˈmɔr]","[aɪ ˈsi jɚ ˈpɔɪn(t) | bət …]","[aɪm ˈnɑʔ soʊ ˈʃʊrəbaʊt ˈðæt]","[ɪts ˈwɝθ ˈmɛnʃənɪŋ ðət …]","[ðə ˈbɑɾəm ˈlaɪnɪz …]",
+"[ɪtsə ˈwɪnˈwɪn]","[ˈlɔŋˈtɝm]","[ɪt ˈpeɪˈzɔf]","[ˈstɛp baɪ ˈstɛp]","[ɪts ˈstɪlʌpɪnðiˈɛr]",
+"[aɪm ˈswɑmp«t»]","[aɪm ˈrʌnɪŋə ˈbɪʔ bɪˈhaɪnd]","[ˈlɛmi ɡɛʔ ˈbæk tə jə baɪ …]","[ˈsɑri tə ˌɪnəˈrʌpt | bət …]","[wʊdʒə ˈmaɪndɪf …]",
+"[aɪ ˈhoʊp ðæʔ ˈmeɪk ˈsɛns]","[dəz ðæʔ ˈmeɪk ˈsɛns]","[ˈθæŋks fɚˈræskɪŋ]","[ðætsə ˈɡreɪʔ ˈpɔɪnt]","[aɪm ˈɡlædʒə ˈæsk«t»]",
+"[aɪ ˈkæn(t) ˈweɪtə …]","[aɪm ˈlʊkɪŋ ˈfɔrwɚ tə …]","[ɪt ˈtoʊɾəli ˈslɪp«t» maɪ ˈmaɪnd]","[aɪˈmɔl ˈfɔrɪt]","[aɪˈmɑnðə ˈfɛns]",
+"[ɪts ˈhɪɾɚ ˈmɪs]","[ðæʔ ˈʃɪp əz ˈseɪl«d»]","[ɪtsɑn maɪ ˈbʌkɪt ˈlɪst]","[aɪ ˈkæn(t) kəmˈpleɪn]","[ɪt ˈtʊk səm ˈɡɛɾɪŋ ˈjustu]",
+"[aɪm ˈstɪl ˈɡɛɾɪŋ ðə ˈhæŋəvɪt]","[ɪt ˈkɔʔ mi ɔf ˈɡɑrd]","[aɪ ˈhæɾə ˈblæst]","[ɪt wəzə ˈlɔŋ ˈdeɪ]","[ɪt ˈbrɪŋz ˈbæk ˈmɛmɚiz]",
+"[ˈspikɪŋəv …]","[ˈɛniweɪ]","[baɪðəˈweɪ]","[ˈiðɚ ˈweɪ]","[rɪˈɡɑrdləs]",
+"[ˈnɑɾə ˈmɛnʃən …]","[ˈlɛɾəˈloʊn …]","[əz ˈlɔŋəz …]","[ˈwɛðɚrɚ ˈnɑt …]","[ðæts ˈprɪɾi ˈmʌtʃɪt]"
+];
+
+/* 답안별 소리 블록 3개: [연결 표시 텍스트, IPA, 한국어 팁] */
+const SB=[
+[["a big part‿of my job","[ə ˈbɪɡ ˈpɑrɾəv maɪ ˈdʒɑb]","part of의 t는 r과 모음 사이라 ɾ(가벼운 ㄹ), of는 əv로 약하게 → 파러브."],["Lately, I've‿been really‿into AI","[ˈleɪtli aɪvbɪn ˈrɪli ˈɪntu ˌeɪˈaɪ]","I've been은 한 박자 [aɪvbɪn]. into 뒤가 모음이라 [ˈɪntu]."],["whenever‿I get the chance","[wɛˈnɛvɚraɪ ˈɡɛʔ ðə ˈtʃæns]","whenever I는 r이 다음 모음에 붙어 [vɚraɪ]. get의 t는 ð 앞이라 목에서 멈춤(ʔ)."]],
+[["a mix‿of technical work‿and a lot‿of talking","[ə ˈmɪksəv ˈtɛknɪkəl ˈwɝkən ə ˈlɑɾəv ˈtɔkɪŋ]","a lot of → 얼라러브. and는 [ən]으로 가볍게."],["I used‿to think","[aɪ ˈjustə ˈθɪŋk]","used to는 [ˈjustə] 한 덩어리. used를 [juzd]로 끊어 읽지 않기."],["consistency beats intensity","[kənˈsɪstənsi ˈbit«s» ɪnˈtɛnsəɾi]","intensity의 끝 t는 ɾ. beats의 -s는 꼭 살리기(3인칭)."]],
+[["more than just‿a vacation thing","[ˈmɔr ðən ˈdʒʌstə veɪˈkeɪʃən ˌθɪŋ]","just a → [ˈdʒʌstə] 저스터."],["We did three dives‿a day","[wi ˈdɪd ˈθri ˈdaɪv«z»ə ˈdeɪ]","dives a → 다이브저. 복수 -s를 a에 붙여 살리기."],["the rescue training stuck with me","[ðə ˈrɛskju ˈtreɪnɪŋ ˈstʌk wɪð mi]","stuck은 과거형 — stick으로 안 들리게 모음 ʌ를 분명히."]],
+[["I don'(t) think AI is going to replace engineers","[aɪ ˈdoʊn(t) ˈθɪŋk ˌeɪˈaɪ ɪz ˈɡoʊɪŋ tə rɪˈpleɪs ˌɛndʒəˈnɪrz]","don't의 t는 거의 생략. 시험에선 going to를 [ˈɡoʊɪŋ tə]로 — gonna보다 안전."],["That's‿exactly where AI shines","[ˈðætsɪɡˈzæktli wɛr ˌeɪˈaɪ ˈʃaɪn«z»]","That's exactly는 이어서 [ðætsɪɡ-]. shines의 -s 살리기."],["I got tired‿of doing it by hand","[aɪ ˈɡɑʔ ˈtaɪɚ«d»əv ˈduɪŋ ɪt baɪ ˈhænd]","tired of → 타이어더브. -ed의 d가 of에 붙어서 살아남아요."]],
+[["They'd run‿a thermal analysis","[ðeɪ«d» ˈrʌnə ˈθɝməl əˈnæləsɪs]","They'd의 d를 꼭 — 빠지면 시제(had)가 사라져요."],["take‿another look","[ˈteɪkəˈnʌðɚ ˈlʊk]","take another → 테이커나더."],["We're supposed‿to be working‿as partners here, right?","[wɪr səˈpoʊstə bi ˈwɝkɪŋəz ˈpɑrtnɚz hɪr ˈraɪt]","supposed to → [səˈpoʊstə], d는 t에 흡수. right?는 끝을 올려서."]],
+[["It really depends‿on how my week went","[ɪt ˈrɪli dɪˈpɛnd«z»ɑn haʊ maɪ ˈwik ˈwɛnt]","depends on → 디펜즈안, -s가 on에 붙어요."],["The foliage there‿is supposed‿to be amazing","[ðə ˈfoʊliɪdʒ ðɛrɪz səˈpoʊstə bi əˈmeɪzɪŋ]","there is → [ðɛrɪz] 한 덩어리."],["I don'(t) beat myself‿up‿about‿it","[aɪ ˈdoʊn(t) ˈbit maɪˈsɛlf ˈʌpəbaʊɾɪt]","up about it → 어퍼바우릿. 구동사라 UP에 강세."]],
+[["I'm calling‿about‿a reservation","[aɪm ˈkɔlɪŋəˌbaʊɾə ˌrɛzɚˈveɪʃən]","about a → 어바우러."],["my flight jus(t) got cancelled","[maɪ ˈflaɪt ˈdʒʌs(t) ˈɡɑt ˈkænsəl«d»]","just got은 t 생략. cancelled의 d는 살려야 과거·수동으로 인식돼요."],["Would‿it be possible to push my reservation back?","[ˈwʊɾɪt bi ˈpɑsəbəl tə ˈpʊʃ maɪ ˌrɛzɚˈveɪʃən ˈbæk]","Would it → 우릿. 끝을 올려 공손하게."]],
+[["it's kind‿of‿a mix‿of office work","[ɪts ˈkaɪndəvə ˈmɪksəv ˈɔfɪs ˈwɝk]","kind of a → 카인더버."],["what we design‿on screen actually gets built","[wʌt wi dɪˈzaɪnɑn ˈskrin ˈæktʃuəli ˈɡɛt«s» ˈbɪlt]","design on → 디자이난. gets의 -s 살리기."],["when something goes wrong, we really pull together","[wɛn ˈsʌmθɪŋ ˈɡoʊ«z» ˈrɔŋ wi ˈrɪli ˈpʊl təˈɡɛðɚ]","goes의 z 살리기. together의 to는 [tə]로 약하게."]],
+[["on‿a whole different level","[ɑnə ˈhoʊl ˈdɪfrənt ˈlɛvəl]","different는 2음절 [ˈdɪfrənt]처럼."],["From what‿I've read","[frəm ˈwʌɾaɪv ˈrɛd]","what I've → 와라이브. read는 과거라 [rɛd]."],["I'm definitely not passing‿it‿up","[aɪm ˈdɛfənətli ˈnɑʔ ˈpæsɪŋɪɾʌp]","passing it up → 패싱이럽."]],
+[["they got really excited","[ðeɪ ˈɡɑʔ ˈrɪli ɪkˈsaɪɾ«ɪd»]","excited의 -ed [ɪd] 살리기, t는 ɾ."],["are we talking secon(d)-by-second?","[ɑr wi ˈtɔkɪŋ ˈsɛkənbaɪˈsɛkənd]","second-by의 d는 생략돼서 세컨바이."],["and end‿up disappointing them later","[ən ˈɛndʌp ˌdɪsəˈpɔɪnɪŋ ðəm ˈleɪɾɚ]","end up → 엔덥. disappointing의 nt → n."]],
+[["but with‿a big asterisk","[bət wɪðə ˈbɪɡ ˈæstərɪsk]","with a → 위더."],["The tricky part‿is","[ðə ˈtrɪki ˈpɑrɾɪz]","part is → 파리즈 (r 뒤 t도 ɾ)."],["earn you a seat‿at the table","[ˈɝn jə ə ˈsiɾət ðə ˈteɪbəl]","seat at → 시럿."]],
+[["the wors(t) thing I can do","[ðə ˈwɝs(t) ˈθɪŋ aɪ kən ˈdu]","worst thing은 t 탈락. can은 [kən]으로 약하게 — can't와는 모음으로 구분."],["break‿it down","[ˈbreɪkɪ(t) ˈdaʊn]","break it down → 브레이킷다운. 구동사라 down에 강세."],["knock‿out the easy ones first","[ˈnɑˈkaʊt ði ˈizi ˈwʌn«z» ˈfɝst]","knock out → 나카웃. the + 모음 → [ði]."]],
+[["do you have‿a minute?","[dʒə ˈhævə ˈmɪnɪt]","do you → 쥬, have a → 해버. 끝을 올려서."],["I've been meaning to ask‿you‿about‿it","[aɪv bɪn ˈminɪŋ tə ˈæskjuəbaʊɾɪt]","ask you about it → 애스큐어바우릿."],["Have you ever caught‿it making mistakes?","[həv jə ˈɛvɚ ˈkɔɾɪt ˈmeɪkɪŋ mɪˈsteɪk«s»]","caught it → 커릿. mistakes의 -s 살리기."]],
+[["My role was to walk them through","[maɪ ˈroʊl wəz tə ˈwɔk ðəm ˈθru]","walk의 l은 묵음. them은 [ðəm] 약하게."],["the challenge wasn'(t) the content itself","[ðə ˈtʃælɪndʒ ˈwʌzən(t) ðə ˈkɑntɛnt ɪtˈsɛlf]","대조라 CONtent에 강세. wasn't의 t는 거의 안 들려요."],["which bought me a secon(d) to think","[wɪtʃ ˈbɔʔ mi ə ˈsɛkən tə ˈθɪŋk]","bought me는 t 멈춤. second to는 d 탈락."]],
+[["the numbers looked fine","[ðə ˈnʌmbɚz ˈlʊk«t» ˈfaɪn]","looked의 t는 짧게라도 소리 내기 — 빠지면 look fine(현재)."],["What element type did‿you use?","[ˈwʌɾ ˈɛləmən(t) ˈtaɪp ˈdɪdʒə ˈjuz]","did you → 디쥬. element type은 t 하나만."],["where‿exactly did‿you read the stress?","[wɛrɪɡˈzæktli ˈdɪdʒə ˈrɛd ðə ˈstrɛs]","where exactly → 웨어리그잭틀리. read는 과거 [rɛd]."]],
+[["I lean toward learning‿on my own","[aɪ ˈlin tɔrd ˈlɝnɪŋɑn maɪ ˈoʊn]","learning on → 러닝안. toward는 1음절처럼."],["Take AI tools, for‿example","[ˈteɪk ˌeɪˈaɪ ˈtulz fɚrɪɡˈzæmpəl]","for example → 퍼릭잼플."],["every time I get‿unstuck, it really sticks","[ˈɛvri ˈtaɪm aɪ ˈɡɛɾʌnˈstʌk ɪt ˈrɪli ˈstɪk«s»]","get unstuck → 게런스턱."]],
+[["distance doesn'(t) matter‿as much anymore","[ˈdɪstəns ˈdʌzən(t) ˈmæɾɚrəz ˈmʌtʃ ˌɛniˈmɔr]","matter as → 매러래즈."],["sort‿it‿out‿in‿an hour","[ˈsɔrɾɪˈɾaʊɾɪnə ˈnaʊɚ]","sort it out in an hour → 쏘리라우리너나워. 한 덩어리로."],["someone's always online","[ˈsʌmwʌn«z» ˈɔlweɪzɑnˈlaɪn]","someone's의 -s 살리기."]],
+[["the emissions really add‿up","[ði ɪˈmɪʃən«z» ˈrɪli ˈæˈdʌp]","add up → 애덥."],["there's not much‿incentive to change","[ðɛrz ˈnɑʔ ˈmʌtʃɪnˈsɛnɪv tə ˈtʃeɪndʒ]","much incentive → 머친세니브. incentive의 nt → n."],["which fuel will win‿in the long run","[wɪtʃ ˈfjul wəl ˈwɪnɪnðə ˈlɔŋ ˈrʌn]","win in the → 위닌더."]],
+[["One skill that really pushed me","[ˈwʌn ˈskɪl ðət ˈrɪli ˈpʊʃ«t» mi]","pushed의 t 살리기 — 빠지면 push(현재)."],["bringing‿an unresponsive diver","[ˈbrɪŋɪŋənˌʌnrɪˈspɑnsɪv ˈdaɪvɚ]","bringing an unresponsive를 한 호흡에."],["staying calm‿is‿a skill","[ˈsteɪɪŋ ˈkɑmɪzə ˈskɪl]","calm의 l 묵음. calm is a → 카미저."]],
+[["where‿I'm the project manager","[wɛraɪm ðə ˈprɑdʒɛkt ˈmænɪdʒɚ]","where I'm → 웨어라임."],["whether the structure needs‿it‿or not","[ˈwɛðɚ ðə ˈstrʌktʃɚ ˈnid«z»ɪɾɚ ˈnɑt]","needs it or → 니즈이러."],["from reactive to proactive","[frəm riˈæktɪv tə proʊˈæktɪv]","대조할 땐 re-/pro-에 살짝 힘을 더."]],
+[["everything I need‿is within walking distance","[ˈɛvriθɪŋ aɪ ˈnidɪz wɪˈðɪn ˈwɔkɪŋ ˈdɪstəns]","need is → 니디즈."],["that's‿exactly what‿I want","[ˈðætsɪɡˈzæktli ˈwʌɾaɪ ˈwɑnt]","what I → 와라이."],["just to get‿out‿of the area","[ˈdʒʌstə ˈɡɛɾaʊɾəv ði ˈɛriə]","get out of → 게라우러브."]],
+[["I use them pretty much every day","[aɪ ˈjuz ðəm ˈprɪɾi ˈmʌtʃ ˈɛvri ˈdeɪ]","pretty → 프리리. them은 약하게."],["It's saved me‿a ton‿of time","[ɪts ˈseɪv«d» mi ə ˈtʌnəv ˈtaɪm]","It's saved = has saved — v 뒤 d 살리기. ton of → 터너브."],["I end‿up checking work stuff late‿at night","[aɪ ˈɛndʌp ˈtʃɛkɪŋ ˈwɝk ˈstʌf ˈleɪɾət ˈnaɪt]","late at night → 레이럿나잇."]],
+[["thanks for letting‿us know","[ˈθæŋks fɚ ˈlɛɾɪŋəs ˈnoʊ]","letting us → 레링어스."],["Could‿you walk me through what caused‿it?","[kʊdʒə ˈwɔk mi ˈθru wʌt ˈkɔz«d»ɪt]","caused it → 커즈딧. d가 it에 붙어 과거형 유지."],["What would‿it take to bring‿it forward?","[ˈwʌʔ ˈwʊɾɪt ˈteɪk tə ˈbrɪŋɪt ˈfɔrwɚd]","would it → 우릿, bring it → 브링잇."]],
+[["it would've been really hard to fabricate","[ɪt ˈwʊɾəv bɪn ˈrɪli ˈhɑrd tə ˈfæbrɪkeɪt]","would've → [ˈwʊɾəv]. 'would of'가 아니에요."],["getting‿in there later","[ˈɡɛɾɪŋ ˈɪn ðɛr ˈleɪɾɚ]","getting in → 게링인."],["It wasn'(t)‿an‿easy call","[ɪt ˈwʌzənə ˈnizi ˈkɔl]","wasn't an easy → 워즈너니지. t 생략."]],
+[["If I were the CEO for‿a day","[ɪfaɪ wɚ ðə ˌsiiˈoʊ fɚrə ˈdeɪ]","for a → 퍼러. were를 끝까지 유지(가정법)."],["they know where the pain points are","[ˈðeɪ ˈnoʊ wɛr ðə ˈpeɪn ˈpɔɪnt«s» ɑr]","강조는 THEY. points의 -ts 살리기."],["if I coul(d) get the ball rolling","[ɪfaɪ kʊ(d) ˈɡɛʔ ðə ˈbɔl ˈroʊlɪŋ]","could get은 d가 거의 안 들려요."]],
+[["you save‿a lot‿of time‿on commuting","[jə ˈseɪvə ˈlɑɾəv ˈtaɪmɑn kəˈmjuɾɪŋ]","time on → 타이만. commuting의 t → ɾ."],["walk‿over to someone's desk","[ˈwɔˈkoʊvɚ tə ˈsʌmwʌn«z» ˈdɛsk]","walk over → 워코버."],["That's‿easier said than done","[ˈðætsˈiziɚ ˈsɛd ðən ˈdʌn]","said than은 d와 ð를 이어서."]],
+[["it made me laugh","[ɪt ˈmeɪ«d» mi ˈlæf]","made의 d 살리기(make 아님)."],["they were scrolling through their phone","[ðeɪ wɚ ˈskroʊlɪŋ θru ðɛr ˈfoʊn]","were는 [wɚ]로 약하게."],["we both jus(t) cracked‿up","[wi ˈboʊθ ˈdʒʌs(t) ˈkræk«t»ʌp]","cracked up → 크랙텁. t가 up에 붙어 과거 유지."]],
+[["It really comes down to what‿you want‿to build","[ɪt ˈrɪli ˈkʌmz ˈdaʊn tə ˈwʌtʃə ˈwɑntə ˈbɪld]","what you → 와츄, want to → 원터 (시험에선 wanna 대신)."],["lets‿you go deep","[ˈlɛtʃə ɡoʊ ˈdip]","lets you → 렛츄."],["It's‿about whether you're still learning","[ɪtsəˈbaʊt ˈwɛðɚ jɚ ˈstɪl ˈlɝnɪŋ]","It's about → 잇처바웃."]],
+[["but not make them‿on‿its own","[bət ˈnɑʔ ˈmeɪk ðəmɑnɪˈtsoʊn]","them on its own → 뎀아닛초운."],["it can spot patterns that people miss","[ɪt kən ˈspɑt ˈpæɾɚn«z» ðət ˈpipəl ˈmɪs]","patterns의 t → ɾ: 패러른즈."],["let‿AI do the heavy lifting","[ˈlɛɾ ˌeɪˈaɪ ˈdu ðə ˈhɛvi ˈlɪftɪŋ]","let AI → 레레이아이."]],
+[["I'd love to be the person","[aɪ«d» ˈlʌv tə bi ðə ˈpɝsən]","I'd의 d 살리기(would)."],["I'd like to take that further","[aɪd ˈlaɪk tə ˈteɪk ðæt ˈfɝðɚ]","like to는 k 뒤 [tə] 약하게."],["If I can pull that‿off","[ɪfaɪ kən ˈpʊl ðæˈɾɔf]","that off → 대로프."]]
+];
+
 /* =========================================================
    STATE
    ========================================================= */
@@ -828,19 +916,19 @@ function vToday(){
 
   <section class="card t5">
    <div class="t5head"><div class="label">오늘의 표현 <span class="count">5</span></div><span class="sp"></span>
-    <button class="tog" data-act="hide-en" aria-pressed="${HIDE}">영어 가리기</button><button class="tog" data-act="open-all" aria-pressed="${OPENALL}">${OPENALL?"모두 접기":"모두 펼치기"}</button></div>
-   <p class="lead">${HIDE?"한국어만 보고 영어로 먼저 말해본 뒤, 줄을 눌러 확인하세요.":"줄을 누르면 한국어 어감과 예문이 펼쳐져요."}</p>
-   <ol class="p5">${ph.map((p,i)=>{const n=(VIEW-1)*5+i;return `<li><details data-k="${n}" ${OPEN5.has(String(n))?"open":""}><summary><span class="n">${n+1}</span><span class="pb"><span class="pe into ${HIDE?"hid":""}">${into(p[0])}</span><span class="pk">${esc(p[1])}</span></span><span class="tone t-${TONEK[p[3]]||"mid"}">${esc(p[3])}</span></summary>
+    ${ipaTog()}<button class="tog" data-act="hide-en" aria-pressed="${HIDE}">영어 가리기</button><button class="tog" data-act="open-all" aria-pressed="${OPENALL}">${OPENALL?"모두 접기":"모두 펼치기"}</button></div>
+   <p class="lead">${HIDE?"한국어만 보고 영어로 먼저 말해본 뒤, 줄을 눌러 확인하세요.":"줄을 누르면 한국어 어감과 예문이 펼쳐져요."}</p>${IPA?IPA_LEGEND:""}
+   <ol class="p5">${ph.map((p,i)=>{const n=(VIEW-1)*5+i;return `<li><details data-k="${n}" ${OPEN5.has(String(n))?"open":""}><summary><span class="n">${n+1}</span><span class="pb"><span class="pe into ${HIDE?"hid":""}">${into(p[0])}</span><span class="pk">${esc(p[1])}</span>${IPA&&PIPA[n]?`<span class="pi ${HIDE?"hid":""}">${ipaHTML(PIPA[n])}</span>`:""}</span><span class="tone t-${TONEK[p[3]]||"mid"}">${esc(p[3])}</span></summary>
     <div class="more"><p class="nu"><b>어감</b>${esc(p[2])}</p><div class="ex"><div class="w"><i>업무</i><span>${esc(p[4])}</span></div><div class="d"><i>일상</i><span>${esc(p[5])}</span></div></div>
     <button class="known sm" data-act="known" data-i="${n}" aria-pressed="${!!S.known[n]}">${S.known[n]?"외웠어요 ✓":"외웠으면 체크"}</button></div></details></li>`}).join("")}</ol>
   </section>
 
   <section class="chat" aria-label="오늘의 질문과 모범 답안">
-   <div class="t5head"><div class="label">오늘의 질문 · 모범 답안</div><span class="sp"></span><button class="tog" data-act="ko-all" aria-pressed="${KOOPEN}">한국어 어감 항상 보기</button></div>
-   ${LEGEND}
+   <div class="t5head"><div class="label">오늘의 질문 · 모범 답안</div><span class="sp"></span>${ipaTog()}<button class="tog" data-act="ko-all" aria-pressed="${KOOPEN}">한국어 어감</button></div>
+   ${LEGEND}${IPA?IPA_LEGEND:""}
    <div class="msg eva"><div class="av e" aria-hidden="true">E</div><div class="bub"><div class="who">Eva · AI 면접관 <span class="tag type">${esc(d.type)}</span></div><div class="qtxt">${esc(d.q)}</div></div></div>
    <div class="flow" aria-label="답변 구조">${d.st.map(s=>`<span>${esc(s)}</span>`).join("<em>›</em>")}</div>
-   <div class="msg me"><div class="bub"><div class="who">나의 모범 답안 <span class="tag tr-${d.truth}">${TRUTH[d.truth]}</span></div><p class="ans into">${into(d.a)}</p><details class="kod" ${KOOPEN?"open":""}><summary>한국어 어감 보기</summary><p>${esc(ko[0])}</p></details></div></div>
+   <div class="msg me"><div class="bub"><div class="who">나의 모범 답안 <span class="tag tr-${d.truth}">${TRUTH[d.truth]}</span></div><p class="ans into">${into(d.a)}</p>${IPA&&SB[VIEW-1]?`<div class="sb"><div class="sbh">소리 블록 · 한 번에 붙여 말하기</div>${SB[VIEW-1].map(([t,ip,nt])=>`<div class="sbi"><span class="st2">${linkHTML(t)}</span><span class="pi">${ipaHTML(ip)}</span><span class="sn">${esc(nt)}</span></div>`).join("")}</div>`:""}<details class="kod" ${KOOPEN?"open":""}><summary>한국어 어감 보기</summary><p>${esc(ko[0])}</p></details></div></div>
    <div class="msg eva"><div class="av e" aria-hidden="true">E</div><div class="bub"><div class="who">Eva · 팔로업 (5단계 난이도)</div><div class="qtxt">${esc(d.fq)}</div></div></div>
    <div class="msg me"><div class="bub"><div class="who">짧게 받아치기</div><p class="ans short into">${into(d.fa)}</p><details class="kod" ${KOOPEN?"open":""}><summary>한국어 어감 보기</summary><p>${esc(ko[1])}</p></details></div></div>
    <p class="note">${esc(d.note)} [ ] 부분은 실제 내용으로 바꿔서 외우세요.</p>
@@ -848,6 +936,11 @@ function vToday(){
   </section>`;
 }
 let HIDE=false,OPENALL=false,KOOPEN=false;const OPEN5=new Set();
+let IPA=LS.get("ipa")===true;
+const ipaHTML=s=>esc(s).replace(/«([^»]+)»/g,'<u class="keep">$1</u>').replace(/\(([^)]+)\)/g,'<span class="el">($1)</span>').replace(/ \| /g,' <span class="ipz">|</span> ');
+const linkHTML=s=>esc(s).replace(/‿/g,'<span class="lk">‿</span>').replace(/\(([^)]+)\)/g,'<span class="el">($1)</span>');
+const IPA_LEGEND=`<div class="ilg"><span><b class="lk">‿</b>이어서</span><span><b>ˈ</b>강세</span><span><b>ɾ</b>가벼운 t(ㄹ)</span><span><b>ʔ</b>멈춘 t</span><span><b>ə</b>약한 모음</span><span><b class="el">(t)</b>탈락</span><span><u class="keep">ed</u>꼭 살릴 어미</span></div>`;
+const ipaTog=()=>`<button class="tog" data-act="ipa" aria-pressed="${IPA}">연음·IPA</button>`;
 document.addEventListener("toggle",e=>{const d=e.target;if(d&&d.matches&&d.matches(".p5 details")){if(d.open)OPEN5.add(d.dataset.k);else OPEN5.delete(d.dataset.k)}},true);
 const TONEK={"캐주얼":"cas","중립":"mid","정중":"pol","격식":"for"};
 
@@ -858,11 +951,11 @@ function vPhrases(){
   const list=PHRASES.map((p,i)=>({p,i})).filter(x=>PF==="all"||(PF==="todo"?!S.known[x.i]:!!S.known[x.i]));
   let html="",last=0;
   list.forEach(({p,i})=>{const d=Math.floor(i/5)+1;if(d!==last){html+=`<h3>Day ${d}</h3>`;last=d}
-    html+=`<div class="li"><span class="p into">${into(p[0])}</span><button class="known" data-act="known" data-i="${i}" aria-pressed="${!!S.known[i]}" aria-label="${S.known[i]?"외움 취소":"외움으로 표시"}">${'<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'}</button><span class="k"><span class="tone t-${TONEK[p[3]]||"mid"}">${esc(p[3])}</span> <b>${esc(p[1])}</b> · ${esc(p[2])}</span></div>`});
+    html+=`<div class="li"><span class="p into">${into(p[0])}${IPA&&PIPA[i]?`<span class="pi">${ipaHTML(PIPA[i])}</span>`:""}</span><button class="known" data-act="known" data-i="${i}" aria-pressed="${!!S.known[i]}" aria-label="${S.known[i]?"외움 취소":"외움으로 표시"}">${'<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'}</button><span class="k"><span class="tone t-${TONEK[p[3]]||"mid"}">${esc(p[3])}</span> <b>${esc(p[1])}</b> · ${esc(p[2])}</span></div>`});
   return `<div class="card"><div class="label">핵심 표현 ${PHRASES.length} · 외운 것 <span class="count">${known}</span></div>
    <div class="progress" aria-hidden="true"><i style="width:${Math.round(known/PHRASES.length*100)}%"></i></div>
    <p class="lead">답변이 막힐 때 꺼내 쓰는 문장 틀이에요. 톤 표시(캐주얼·중립·정중·격식)를 보고 상황에 맞게 골라 쓰세요.</p></div>
-   <div class="filters">${[["all","전체"],["todo","아직"],["known","외운 것"]].map(([k,l])=>`<button class="chip" data-act="pf" data-f="${k}" aria-pressed="${PF===k}">${l}</button>`).join("")}</div>
+   <div class="filters">${[["all","전체"],["todo","아직"],["known","외운 것"]].map(([k,l])=>`<button class="chip" data-act="pf" data-f="${k}" aria-pressed="${PF===k}">${l}</button>`).join("")}<button class="chip" data-act="ipa" aria-pressed="${IPA}">연음·IPA</button></div>${IPA?IPA_LEGEND:""}
    <div class="lib">${html||'<p class="lead">해당하는 표현이 없어요.</p>'}</div>`;
 }
 
@@ -1044,6 +1137,7 @@ document.addEventListener("click",e=>{
    case "hide-en":HIDE=!HIDE;if(HIDE){OPENALL=false;OPEN5.clear()}render();break;
    case "open-all":{OPENALL=!OPENALL;OPEN5.clear();if(OPENALL){HIDE=false;for(let k=(VIEW-1)*5;k<VIEW*5;k++)OPEN5.add(String(k))}render();break}
    case "ko-all":KOOPEN=!KOOPEN;render();break;
+   case "ipa":IPA=!IPA;LS.set("ipa",IPA);render();break;
    case "known":{const i=+b.dataset.i;if(S.known[i])delete S.known[i];else S.known[i]=today();save();render();break}
    case "rec-which":if(!REC.mr){REC.which=b.dataset.w;render()}break;
    case "sayq":speakQ(recQuestion());break;
