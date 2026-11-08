@@ -1,4 +1,4 @@
-const CACHE = "sail-lab-v3";
+const CACHE = "sail-lab-v4";
 const SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png"];
 
 self.addEventListener("install", e => {

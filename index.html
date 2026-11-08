@@ -49,7 +49,7 @@
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-ko);font-size:15px;line-height:1.55;
+body{background:var(--bg);color:var(--ink);font-family:var(--f-ko);font-size:15px;line-height:1.55;word-break:keep-all;overflow-wrap:break-word;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
   padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
@@ -71,7 +71,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 /* bottom nav */
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);
   padding:8px max(10px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-left,0px))}
-.nav .in{max-width:680px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.nav .in{max-width:680px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
 .nav a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;border-radius:14px;text-decoration:none;color:var(--muted);font-size:11.5px;font-weight:700}
 .nav a svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .nav a[aria-current="page"]{color:var(--brand)}
@@ -162,6 +162,23 @@ main{padding-block:6px 24px;display:flex;flex-direction:column;gap:18px}
 .pill.ghost{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
 .pill.brand{background:var(--brand);color:var(--brand-ink)}
 .pill:disabled{opacity:.5}
+
+/* study method tab */
+.mlist{display:flex;flex-direction:column;gap:12px}
+.mp{background:var(--surface);border-radius:20px;padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:9px}
+.mph{display:flex;gap:10px;align-items:flex-start}
+.mn{flex:none;width:30px;height:30px;border-radius:50%;background:var(--brand);color:var(--brand-ink);font-family:var(--f-en);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+.mph h3{font-size:16.5px;font-weight:800;line-height:1.4;padding-top:3px}
+.why,.todo{margin:0;font-size:13.5px;line-height:1.65}
+.why{color:var(--muted)}
+.why b,.todo b{display:inline-block;font-size:11px;font-weight:800;padding:1px 7px;border-radius:6px;margin-right:6px;vertical-align:1px}
+.why b{background:var(--surface-2);color:var(--muted)}
+.todo b{background:var(--mint-soft);color:var(--mint)}
+.mp .btn{align-self:flex-start}
+.r432{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.r432 span{font-size:12.5px;font-weight:800;color:var(--muted);margin-right:2px}
+.r432 .chip{padding:6px 11px;font-size:12.5px}
+@media (max-width:420px){.nav a{font-size:10.5px}}
 
 /* connected speech · IPA */
 .pi{display:block;font-family:"Segoe UI","SF Pro Text","Noto Sans","Lucida Sans Unicode","Arial Unicode MS",system-ui,sans-serif;font-size:14.5px;font-weight:500;color:var(--brand-deep);letter-spacing:.01em;line-height:1.5;margin-top:2px;overflow-wrap:anywhere}
@@ -855,7 +872,8 @@ const TABS=[
  {id:"today",lb:"오늘",ic:'<path d="M4 11.5 12 4l8 7.5V20a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z"/>'},
  {id:"phrases",lb:"표현",ic:'<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 9h8M8 13h5"/>'},
  {id:"record",lb:"녹음",ic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>'},
- {id:"sail",lb:"SAIL",ic:'<path d="M12 3v15M12 3l7 12h-7M5 18h14l-2 3H7z"/>'}
+ {id:"sail",lb:"SAIL",ic:'<path d="M12 3v15M12 3l7 12h-7M5 18h14l-2 3H7z"/>'},
+ {id:"method",lb:"공부법",ic:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3z"/>'}
 ];
 const curTab=()=>{const h=location.hash.replace("#","");return TABS.some(t=>t.id===h)?h:"today"};
 function render(){
@@ -863,7 +881,7 @@ function render(){
   $("#navin").innerHTML=TABS.map(t=>`<a href="#${t.id}" ${t.id===c?'aria-current="page"':""}><svg viewBox="0 0 24 24" aria-hidden="true">${t.ic}</svg>${t.lb}</a>`).join("");
   $("#streak").innerHTML=ICON.flame+streak()+"<small>일</small>";
   const dd=diffDays(today(),S.exam||"2027-01-15");$("#dday").innerHTML=ICON.flag+(dd>0?"D-"+dd:dd===0?"D-DAY":"D+"+(-dd));
-  $("#view").innerHTML=({today:vToday,phrases:vPhrases,record:vRecord,sail:vSail})[c]();
+  $("#view").innerHTML=({today:vToday,phrases:vPhrases,record:vRecord,sail:vSail,method:vMethod})[c]();
   if(c==="today"){const s=$(".days"),cur=s&&s.querySelector('[aria-current="true"]');if(s&&cur)s.scrollLeft=cur.offsetLeft-s.clientWidth/2+cur.offsetWidth/2}
 }
 
@@ -963,19 +981,20 @@ function vPhrases(){
 const REC={day:null,which:"main",mr:null,stream:null,chunks:[],t0:0,iv:null,raf:0,an:null,ac:null,takes:[],err:null,busy:false};
 function recQuestion(){const d=DAYS[(REC.day||contentIdx(dayNum()))-1];return REC.which==="follow"?d.fq:d.q}
 const fmtClock=s=>Math.floor(s/60)+":"+pad(Math.floor(s%60));
-const zone=()=>REC.which==="follow"?[20,40]:[60,90];
+const zone=()=>REC.which==="follow"?[20,40]:REC.r432?[[75,90],[50,60],[38,45]][REC.r432-1]:[60,90];
 function vRecord(){
   if(!REC.day)REC.day=VIEW||contentIdx(dayNum());
   const q=recQuestion(),on=!!REC.mr,secs=on?(Date.now()-REC.t0)/1000:0,[z1,z2]=zone();
   const inClaude=!!(window.claude&&window.claude.use);
   return `<select id="rec-day" aria-label="질문 고르기">${DAYS.map((x,i)=>`<option value="${i+1}" ${i+1===REC.day?"selected":""}>Day ${i+1} · ${esc(x.type)}</option>`).join("")}</select>
   <div class="seg" role="group">${[["main","본 질문"],["follow","팔로업 질문"]].map(([k,l])=>`<button data-act="rec-which" data-w="${k}" aria-pressed="${REC.which===k}">${l}</button>`).join("")}</div>
+  ${REC.which==="main"?`<div class="r432"><span>4·3·2 반복</span>${[[0,"끄기"],[1,"1회 90초"],[2,"2회 60초"],[3,"3회 45초"]].map(([r,l])=>`<button class="chip" data-act="r432" data-r="${r}" aria-pressed="${(REC.r432||0)===r}">${l}</button>`).join("")}</div>`:""}
   <div class="msg eva"><div class="av e" aria-hidden="true">E</div><div class="bub"><div class="who">Eva · AI 면접관 <button class="btn" data-act="sayq" style="padding:3px 9px;font-size:11.5px;box-shadow:none;background:var(--surface-2)">질문 듣기</button></div><div class="qtxt">${esc(q)}</div></div></div>
   <div class="card recwrap">
    <div class="meter ${on?"on":""}" id="meter" aria-hidden="true">${Array.from({length:22},()=>"<i></i>").join("")}</div>
    <button class="mic ${on?"on":""}" data-act="rec-toggle" aria-label="${on?"녹음 정지":"녹음 시작"}" ${REC.busy?"disabled":""}>${on?ICON.stop.replace("<svg",'<svg style="fill:#fff"'):ICON.mic}</button>
    <div class="clock" id="rec-clock">${fmtClock(secs)}</div>
-   <div class="target">${on?"녹음 중":"눌러서 녹음 시작"} · 목표 ${z1}–${z2}초 (5단계 기준)</div>
+   <div class="target">${on?"녹음 중":"눌러서 녹음 시작"} · 목표 ${z1}–${z2}초 ${REC.r432&&REC.which==="main"?`(4·3·2 ${REC.r432}회차: 같은 내용을 더 짧게)`:"(5단계 기준)"}</div>
    ${REC.err?recAlt():""}
   </div>
   ${REC.takes.length?`<div class="card"><div class="label">녹음한 파일</div><p class="lead">저장한 파일을 ChatGPT에 올리고 '요청문 복사'를 붙여넣으세요. 이 목록은 페이지를 닫으면 사라져요.</p>
@@ -1049,6 +1068,98 @@ async function saveTake(i){
   if(!dl){localDownload(t.blob,t.name+"."+t.ext);return}
   try{await dl.save({filename:t.name+"."+(t.ext==="ogg"?"webm":t.ext),data:t.blob});toast("저장했어요")}
   catch(e){toast(e&&e.code==="declined"?"저장을 취소했어요":"이 화면에서는 저장할 수 없어요")}
+}
+
+/* ---------- 공부법 ---------- */
+const GPT_ROLEPLAY=`지금부터 너는 삼성 SAIL 영어 말하기 시험의 AI 면접관 'Eva'야. 난이도는 5단계(AL~S)이고 나는 AH가 목표인 11년차 선박·해양 구조 엔지니어야.
+규칙:
+1) 영어로만, 한 번에 질문 하나만 해.
+2) 내가 답하면 한 문장으로 자연스럽게 리액션하고, 내 답에서 이어지는 더 어려운 팔로업(의견·비교·가정·사회 이슈)을 물어봐.
+3) 질문 6개가 끝나면 한국어로 정리해 줘: 잘한 점 2개, 가장 자주 틀린 패턴 3개(특히 시제 -ed, 복수 -s, 관사), 내가 실제로 쓴 문장을 더 원어민답게 고친 버전 3개.
+4) 중간에 고쳐 주지 말고 끝까지 대화를 이어가.
+첫 질문 시작해.`;
+const GPT_PROMPT_FB=`첨부한 내 영어 답변(녹음 또는 받아쓴 글)을 SAIL AH 기준으로 봐 줘. 단, 정답 문장을 바로 주지 마.
+1) 틀리거나 어색한 부분에 번호만 붙여서 표시하고, 각 번호마다 '어디가 왜 이상한지' 힌트만 한 줄로 줘. (예: 시제, 관사, 더 자연스러운 덩어리 표현이 있음)
+2) 내가 힌트를 보고 고쳐서 다시 말하면, 그때 맞는지 확인하고 원어민 버전을 보여줘.
+3) 마지막에 내가 반복해서 틀리는 패턴 1개를 '다음 주 집중 과제'로 정리해 줘.
+설명은 한국어, 예시는 자연스러운 미국식 구어체로.`;
+function vMethod(){
+  const P=[
+   ["덩어리(chunk)로 외우고, 덩어리로 꺼내라","Pawley & Syder(1983)는 상급 학습자를 비원어민으로 드러내는 건 문법이 아니라 원어민식 '정형 표현(formulaic sequences)'을 못 쓰는 것이라고 봤어요. 정형 표현을 많이 쓸수록 말 속도와 한 호흡 길이가 길어진다는 상관 연구도 있어요.","단어장 대신 '문장 틀'을 외워요. 회의에서 쓴 내 문장을 원어민 덩어리로 바꿔 통째로 저장하세요.","today","오늘의 표현 5"],
+   ["같은 이야기를 3번, 시간은 점점 짧게 (4/3/2)","Nation(1989)의 4/3/2 기법은 같은 내용을 4분→3분→2분으로 반복해 말하게 하는데, 말 속도가 유의하게 빨라지고 그 효과가 새 주제로도 옮겨갔다고 보고됐어요. 후속 연구들도 대체로 유창성 향상을 확인했어요(정확성 효과는 약함).","같은 질문을 90초 → 60초 → 45초로 세 번 녹음하세요. 내용은 같게, 말은 더 압축해서.","record","녹음 탭 4·3·2 모드"],
+   ["녹음 → 받아쓰기 → 고쳐서 다시 말하기","Swain의 '출력 가설'과 '틈 알아채기(noticing the gap)'를 바탕으로, 자기 말을 받아 적고 고치게 하면 형태에 주의가 가고 굳은 오류를 알아채는 데 도움이 된다는 연구가 쌓여 있어요(Lynch 2001·2007 등, 소규모 연구 중심).","ChatGPT에 녹음을 올려 그대로 받아 적게 하고, 내가 먼저 틀린 곳을 찾은 뒤 고친 버전으로 '다시 녹음'까지 해야 한 세트예요.","record","녹음하기"],
+   ["정답을 받지 말고, 힌트를 받아 스스로 고쳐라","교실 구어 피드백 메타분석(Lyster & Saito 2010)에서 학습자가 스스로 고치게 유도하는 '프롬프트'가 정답을 다시 말해 주는 '리캐스트'보다 효과가 컸어요.","ChatGPT에 '정답 말고 힌트만' 달라고 하세요. 아래 '힌트형 피드백 요청문'을 쓰면 돼요.","","힌트형 요청문 복사"],
+   ["간격을 두고 '꺼내기'로 복습하라","제2언어 간격 학습 메타분석(Kim & Webb 2022, 48개 실험)에서 몰아서 보는 것보다 간격을 둔 연습이 중~대 효과를 보였고, 특히 며칠 뒤 시험에서 차이가 컸어요. 보고 읽기보다 가리고 떠올리는 게 핵심이에요.","영어 가리기 모드로 1일·3일·7일·14일 뒤에 다시 꺼내 보세요. 2회독(Day 31~)이 바로 그 장치예요.","today","영어 가리기"],
+   ["억양·강세·리듬 먼저, 원어민 억양 흉내는 그다음","Munro & Derwing 연구 이후 '얼마나 원어민 같나'보다 '얼마나 쉽게 알아듣나'가 우선이라는 게 정설이에요. 발음 지도는 효과가 있지만(Lee 외 2015) 주로 통제된 과제에서 크고 자유 발화로는 덜 옮겨가요(Saito & Plonsky 2019). 쉐도잉은 알아듣기 쉬움·리듬 개선에 근거가 있지만 따라 하는 정확도가 높을 때만 효과가 컸어요.","소리 블록과 억양 표시를 보며 짧게 정확히 쉐도잉 → 바로 내 말로 같은 문장 만들기. 어미 -ed, -s는 끝까지 들리게.","today","연음·IPA"],
+   ["답하기 전 몇 초를 '키워드 3개'에 써라","말하기 전 계획 시간은 특히 유창성을 높인다는 연구가 많아요(Suzuki 2017 종합). 30초는 너무 짧고 5분은 효과가 줄었다는 결과도 있어요(Li 외 2015).","질문을 들으면 결론 1개 + 이유 1개 + 예시 1개 키워드만 머릿속에 찍고 시작하세요. 문장을 미리 쓰지 마세요.","sail","SAIL 답변 틀"],
+   ["AI와 매일 실제로 대화하라","AI 챗봇·대화 시스템 메타분석들에서 말하기 효과는 대체로 중간 크기(g ≈ 0.6)였고, 생성형 AI를 쓴 연구에서 더 컸어요(Lyu 2025 등). 꾸준히, 잘 설계해서 쓸 때 효과가 컸어요.","ChatGPT 음성 모드로 하루 10분, 'Eva 롤플레이 요청문'을 붙여 넣고 5단계식 팔로업을 받아 보세요.","","롤플레이 요청문 복사"]
+  ];
+  return `<section class="mylevel">
+   <div class="label" style="color:inherit;opacity:.7">명심할 것</div>
+   <h2>AL → 원어민급, 가장 빠른 길</h2>
+   <p>성인이 된 뒤 배운 사람이 모든 면에서 원어민과 구별되지 않는 경우는 연구에서도 아주 드물어요(Abrahamsson & Hyltenstam 2009). 그래서 목표를 이렇게 잡아요: <b>억양은 내 것이어도, 덩어리 표현·말의 속도와 리듬·정확한 어미는 원어민급.</b> 시험(AH)도, 실제 회의도 여기서 갈려요.</p>
+  </section>
+
+  <div class="card"><div class="label">AL과 원어민 사이, 실제로 벌어진 4가지</div><div class="crit">
+   <div class="cr"><b>꺼내는 속도</b><span>아는 표현이 0.5초 안에 안 나옴 → 반복과 간격 연습으로 '자동화'</span></div>
+   <div class="cr"><b>덩어리 표현</b><span>문법은 맞는데 원어민이 안 쓰는 조합 → 정형 표현 통째로</span></div>
+   <div class="cr"><b>리듬·강세</b><span>단어마다 같은 세기 → 내용어만 강하게, 기능어는 약하게</span></div>
+   <div class="cr"><b>압박 속 정확성</b><span>빨리 말하면 -ed·-s·관사가 빠짐 → 녹음·받아쓰기로 잡기</span></div>
+  </div></div>
+
+  <div class="label">연구가 말하는 8가지 원칙</div>
+  <div class="mlist">${P.map(([t,why,todo,tab,btn],i)=>`<article class="mp"><div class="mph"><span class="mn">${i+1}</span><h3>${t}</h3></div>
+    <p class="why"><b>근거</b>${why}</p><p class="todo"><b>할 것</b>${todo}</p>
+    ${tab?`<button class="btn" data-act="go-tab" data-tab="${tab}">${btn} →</button>`:`<button class="btn brand" data-act="copy-gpt" data-k="${i===3?"fb":"rp"}">${btn}</button>`}</article>`).join("")}</div>
+
+  <div class="card plan"><div class="label">하루 35분 루틴</div>
+   <div class="pl"><b>출근 15분</b><span>오늘의 표현 5개: 영어 가리기 → 떠올려 말하기 → 소리 블록 쉐도잉. 어제 표현 5개 다시 꺼내기.</span></div>
+   <div class="pl"><b>점심 10분</b><span>오늘의 질문을 4·3·2로 세 번 녹음 (90 → 60 → 45초). 팔로업 질문 한 번.</span></div>
+   <div class="pl"><b>퇴근 10분</b><span>ChatGPT에 녹음 올리고 힌트형 피드백 → 고쳐서 한 번 더 녹음. 또는 Eva 롤플레이 10분.</span></div>
+   <div class="pl"><b>주말 30분</b><span>이번 주 실제 회의에서 한 말 3문장을 원어민 덩어리로 업그레이드해서 저장. Day 1 녹음과 오늘 녹음 비교 듣기.</span></div>
+  </div>
+
+  <div class="card"><div class="label">매주 재는 것</div><ul class="tips">
+   <li><b>말 속도:</b> 60초 녹음의 단어 수 (ChatGPT 받아쓰기로 세기). 원어민 대화는 대략 분당 140~170단어 근처.</li>
+   <li><b>멈춤:</b> 1초 넘게 끊긴 횟수, um/uh 횟수.</li>
+   <li><b>어미 오류:</b> -ed, -s, a/the 빠진 개수.</li>
+   <li><b>덩어리 사용:</b> 이번 주 표현 중 녹음에서 내가 '자발적으로' 쓴 개수.</li>
+  </ul></div>
+
+  <div class="card"><div class="label">하지 말 것</div><ul class="tips">
+   <li><b>단어장만 외우기:</b> 단어는 알아도 덩어리가 없으면 말이 느려요.</li>
+   <li><b>답안 통째 낭독:</b> 외운 답은 팔로업 한 방에 무너져요. 틀(구조)과 덩어리만 외우고 문장은 매번 새로 만드세요.</li>
+   <li><b>원어민 억양 흉내에 시간 몰빵:</b> 알아듣기 쉬움이 먼저예요. 리듬·강세·어미가 우선.</li>
+   <li><b>듣기만 하고 말 안 하기:</b> 많이 듣는 건 듣기·어휘에 도움이 되지만, 말하기로 바로 이어진다는 근거는 약해요. 매일 소리 내서 말하세요.</li>
+   <li><b>피드백만 받고 끝내기:</b> 고친 버전으로 다시 말해야 내 것이 돼요.</li>
+  </ul></div>
+
+  <div class="card"><div class="label">도구 이렇게 쓰기</div><ul class="tips">
+   <li><b>ChatGPT 음성 모드:</b> Eva 롤플레이(매일), 녹음 받아쓰기·힌트형 피드백.</li>
+   <li><b>이 앱:</b> 매일 표현 5 + 질문 1, 4·3·2 녹음, 연음·IPA.</li>
+   <li><b>YouGlish:</b> 헷갈리는 표현을 검색하면 실제 원어민 영상에서 그 표현이 나오는 장면을 들려줘요. 덩어리의 실제 리듬 확인용.</li>
+   <li><b>ELSA 같은 발음 앱:</b> 개별 소리 교정엔 강하지만 문장 단위 연음·리듬은 약하다는 평가가 있어요. 보조로만.</li>
+  </ul>
+  <div class="row"><button class="btn brand" data-act="copy-gpt" data-k="rp">Eva 롤플레이 요청문 복사</button><button class="btn" data-act="copy-gpt" data-k="fb">힌트형 피드백 요청문 복사</button></div></div>
+
+  <div class="card"><div class="label">근거 자료</div><div class="sources">
+   <a href="https://so01.tci-thaijo.org/index.php/OJED/article/view/247820" target="_blank" rel="noopener">4/3/2 과제 반복과 말하기 유창성 (Nation 1989 후속 연구)</a>
+   <a href="https://www.jstage.jst.go.jp/article/james/2/1/2_89/_article/-char/en" target="_blank" rel="noopener">4/3/2 기법 효과 연구 (일본 대학생)</a>
+   <a href="https://ora.ox.ac.uk/objects/uuid:3104cae1-3a6b-400a-b173-de44384238d2" target="_blank" rel="noopener">쉐도잉 효과 체계적 문헌고찰 (Oxford)</a>
+   <a href="https://repositori.upf.edu/items/5b074630-25d2-461d-aeec-cea9acdb9990/full" target="_blank" rel="noopener">쉐도잉 정확도와 발음·유창성 (UPF)</a>
+   <a href="https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2020.626985/pdf" target="_blank" rel="noopener">알아듣기 쉬움 vs 원어민다움 (Munro & Derwing 계열 리뷰)</a>
+   <a href="https://www.jbe-platform.com/content/books/9789027257635" target="_blank" rel="noopener">발음 연구 25년: Intelligibility·Comprehensibility·Accentedness (Levis, Derwing, Munro 편)</a>
+   <a href="https://core.ac.uk/download/185614089.pdf" target="_blank" rel="noopener">정형 표현과 유창성 (Pawley & Syder 계열 연구)</a>
+   <a href="https://www.cambridge.org/core/journals/studies-in-second-language-acquisition/article/high-proficiency-in-markets-of-performance/A4C94004C7B313CA3185817C96809BB9" target="_blank" rel="noopener">성인 학습자의 원어민급 도달 논의 (SSLA)</a>
+   <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/ijal.12668" target="_blank" rel="noopener">챗봇 언어학습 효과 메타분석 (Lyu 2025)</a>
+   <a href="https://www.nature.com/articles/s41599-025-05550-z" target="_blank" rel="noopener">AI 대화 봇과 말하기·불안 감소 (2025)</a>
+   <a href="https://ir.lib.uwo.ca/etd/8600/" target="_blank" rel="noopener">간격 학습과 제2언어 (Kim & Webb 계열)</a>
+   <a href="https://escholarship.mcgill.ca/downloads/6w924g64b" target="_blank" rel="noopener">구어 교정 피드백: 프롬프트 vs 리캐스트 (Lyster 계열)</a>
+   <a href="https://discovery.ucl.ac.uk/10156232/1/OASIS_Summary_Saito_and_Plonsky_2019.pdf" target="_blank" rel="noopener">발음 지도 효과 메타분석 요약 (Saito & Plonsky 2019)</a>
+   <a href="https://revistas.udistrital.edu.co/index.php/calj/article/view/4989" target="_blank" rel="noopener">자기 발화 받아쓰기와 오류 알아채기</a>
+   <a href="https://scholarspace.manoa.hawaii.edu/items/4ae7dbb4-f24a-4594-9269-256ab9849c9a/full" target="_blank" rel="noopener">말하기 전 계획 시간 연구 종합 (Suzuki 2017)</a>
+   <a href="https://digitum.um.es/digitum/bitstream/10201/142072/1/DeKeyser%20and%20Criado_Automatization_Skill%20Acquisition%20and%20Practice%20in%20Second%20Language%20Acquisition_2013.pdf" target="_blank" rel="noopener">자동화와 연습: 기술 습득 이론 (DeKeyser & Criado)</a>
+  </div><p class="lead" style="margin-top:8px">대부분 소규모·특정 집단 연구라 효과 크기는 참고용이에요. 그래도 방향은 여러 연구에서 일관돼요.</p></div>`;
 }
 
 /* ---------- SAIL ---------- */
@@ -1138,6 +1249,9 @@ document.addEventListener("click",e=>{
    case "open-all":{OPENALL=!OPENALL;OPEN5.clear();if(OPENALL){HIDE=false;for(let k=(VIEW-1)*5;k<VIEW*5;k++)OPEN5.add(String(k))}render();break}
    case "ko-all":KOOPEN=!KOOPEN;render();break;
    case "ipa":IPA=!IPA;LS.set("ipa",IPA);render();break;
+   case "go-tab":location.hash="#"+b.dataset.tab;window.scrollTo(0,0);break;
+   case "copy-gpt":copy(b.dataset.k==="fb"?GPT_PROMPT_FB:GPT_ROLEPLAY);break;
+   case "r432":if(!REC.mr){REC.r432=+b.dataset.r;render()}break;
    case "known":{const i=+b.dataset.i;if(S.known[i])delete S.known[i];else S.known[i]=today();save();render();break}
    case "rec-which":if(!REC.mr){REC.which=b.dataset.w;render()}break;
    case "sayq":speakQ(recQuestion());break;
