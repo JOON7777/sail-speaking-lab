@@ -828,9 +828,9 @@ function vToday(){
 
   <section class="card t5">
    <div class="t5head"><div class="label">오늘의 표현 <span class="count">5</span></div><span class="sp"></span>
-    <button class="tog" data-act="hide-en" aria-pressed="${HIDE}">영어 가리기</button><button class="tog" data-act="open-all" aria-pressed="${OPENALL}">모두 펼치기</button></div>
+    <button class="tog" data-act="hide-en" aria-pressed="${HIDE}">영어 가리기</button><button class="tog" data-act="open-all" aria-pressed="${OPENALL}">${OPENALL?"모두 접기":"모두 펼치기"}</button></div>
    <p class="lead">${HIDE?"한국어만 보고 영어로 먼저 말해본 뒤, 줄을 눌러 확인하세요.":"줄을 누르면 한국어 어감과 예문이 펼쳐져요."}</p>
-   <ol class="p5">${ph.map((p,i)=>{const n=(VIEW-1)*5+i;return `<li><details data-k="${n}" ${OPENALL||OPEN5.has(String(n))?"open":""}><summary><span class="n">${n+1}</span><span class="pb"><span class="pe into ${HIDE?"hid":""}">${into(p[0])}</span><span class="pk">${esc(p[1])}</span></span><span class="tone t-${TONEK[p[3]]||"mid"}">${esc(p[3])}</span></summary>
+   <ol class="p5">${ph.map((p,i)=>{const n=(VIEW-1)*5+i;return `<li><details data-k="${n}" ${OPEN5.has(String(n))?"open":""}><summary><span class="n">${n+1}</span><span class="pb"><span class="pe into ${HIDE?"hid":""}">${into(p[0])}</span><span class="pk">${esc(p[1])}</span></span><span class="tone t-${TONEK[p[3]]||"mid"}">${esc(p[3])}</span></summary>
     <div class="more"><p class="nu"><b>어감</b>${esc(p[2])}</p><div class="ex"><div class="w"><i>업무</i><span>${esc(p[4])}</span></div><div class="d"><i>일상</i><span>${esc(p[5])}</span></div></div>
     <button class="known sm" data-act="known" data-i="${n}" aria-pressed="${!!S.known[n]}">${S.known[n]?"외웠어요 ✓":"외웠으면 체크"}</button></div></details></li>`}).join("")}</ol>
   </section>
@@ -1036,13 +1036,13 @@ function vSail(){
 document.addEventListener("click",e=>{
   const b=e.target.closest("[data-act]");if(!b)return;const a=b.dataset.act;
   switch(a){
-   case "day":VIEW=+b.dataset.d;render();break;
+   case "day":VIEW=+b.dataset.d;OPENALL=false;OPEN5.clear();render();break;
    case "goto":VIEW=+b.dataset.d;location.hash="#today";window.scrollTo(0,0);break;
    case "done":{const d=+b.dataset.d;if(S.done[d])delete S.done[d];else{S.done[d]=today();toast("Day "+d+" 완료! 잘했어요")}save();render();break}
    case "rec-day":REC.day=+b.dataset.d;REC.which="main";location.hash="#record";window.scrollTo(0,0);break;
    case "pf":PF=b.dataset.f;render();break;
-   case "hide-en":HIDE=!HIDE;if(HIDE)OPENALL=false;render();break;
-   case "open-all":OPENALL=!OPENALL;if(OPENALL)HIDE=false;render();break;
+   case "hide-en":HIDE=!HIDE;if(HIDE){OPENALL=false;OPEN5.clear()}render();break;
+   case "open-all":{OPENALL=!OPENALL;OPEN5.clear();if(OPENALL){HIDE=false;for(let k=(VIEW-1)*5;k<VIEW*5;k++)OPEN5.add(String(k))}render();break}
    case "ko-all":KOOPEN=!KOOPEN;render();break;
    case "known":{const i=+b.dataset.i;if(S.known[i])delete S.known[i];else S.known[i]=today();save();render();break}
    case "rec-which":if(!REC.mr){REC.which=b.dataset.w;render()}break;
