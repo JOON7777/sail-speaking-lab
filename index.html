@@ -1,0 +1,1072 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="SAIL Level 5 · AH 대비 30일 영어 말하기 레슨">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#3D57F5">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SAIL Lab">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>html{-webkit-text-size-adjust:100%}:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>SAIL Speaking Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Gothic+A1:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: chat-lesson app. Phone column (max 680px); hero day card → swipeable phrase cards → interviewer/you chat bubbles.
+   Signature: intonation printed above the words — sun-yellow dots over stressed words, small raised arrows for pitch, thin bars for pauses. */
+:root{
+  --bg:#F3F4FA; --surface:#FFFFFF; --surface-2:#F0F2FA; --ink:#14162E; --muted:#686C8A; --line:#E2E4F0; --line-2:#C9CCE0;
+  --brand:#3D57F5; --brand-ink:#FFFFFF; --brand-soft:#E6EAFF; --brand-deep:#2A3FC7;
+  --sun:#F2A900; --coral:#F0533F; --coral-soft:#FFE5E1; --mint:#0FA472; --mint-soft:#DBF5EA;
+  --up:#E8590C; --down:#3D57F5;
+  --shadow:0 1px 2px rgba(20,22,46,.05),0 8px 24px rgba(20,22,46,.07);
+  --f-en:"Plus Jakarta Sans","Gothic A1",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-ko:"Gothic A1","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C0E1C; --surface:#161929; --surface-2:#1E2236; --ink:#F0F1FA; --muted:#9A9EBE; --line:#272B44; --line-2:#3A3F60;
+    --brand:#6E86FF; --brand-ink:#0C0E1C; --brand-soft:#212A57; --brand-deep:#9AABFF;
+    --sun:#FFD15C; --coral:#FF7564; --coral-soft:#3B1C1A; --mint:#3DD69C; --mint-soft:#123327;
+    --up:#FF9A5C; --down:#8FA1FF;
+    --shadow:0 1px 2px rgba(0,0,0,.35),0 8px 24px rgba(0,0,0,.3);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C0E1C; --surface:#161929; --surface-2:#1E2236; --ink:#F0F1FA; --muted:#9A9EBE; --line:#272B44; --line-2:#3A3F60;
+  --brand:#6E86FF; --brand-ink:#0C0E1C; --brand-soft:#212A57; --brand-deep:#9AABFF;
+  --sun:#FFD15C; --coral:#FF7564; --coral-soft:#3B1C1A; --mint:#3DD69C; --mint-soft:#123327;
+  --up:#FF9A5C; --down:#8FA1FF;
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 8px 24px rgba(0,0,0,.3);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-ko);font-size:15px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:2.5px solid var(--brand);outline-offset:2px}
+.wrap{max-width:680px;margin:0 auto}
+.en{font-family:var(--f-en)}
+h1,h2,h3{margin:0;text-wrap:balance}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:12px 10px;display:flex;align-items:center;gap:10px}
+.logo{display:flex;align-items:center;gap:8px;font-family:var(--f-en);font-weight:800;font-size:18px;letter-spacing:-.02em;white-space:nowrap}
+.logo svg{width:28px;height:28px}
+.top .sp{flex:1}
+.stat{display:inline-flex;align-items:center;gap:5px;font-family:var(--f-en);font-weight:700;font-size:13.5px;padding:6px 11px;border-radius:999px;background:var(--surface);box-shadow:var(--shadow);white-space:nowrap}
+.stat svg{width:15px;height:15px}
+.stat small{font-family:var(--f-ko);font-weight:600;font-size:11.5px;color:var(--muted)}
+
+/* bottom nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);
+  padding:8px max(10px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-left,0px))}
+.nav .in{max-width:680px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.nav a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;border-radius:14px;text-decoration:none;color:var(--muted);font-size:11.5px;font-weight:700}
+.nav a svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nav a[aria-current="page"]{color:var(--brand)}
+.nav a[aria-current="page"] svg{fill:var(--brand-soft)}
+
+main{padding-block:6px 24px;display:flex;flex-direction:column;gap:18px}
+.label{font-size:12.5px;font-weight:800;color:var(--muted);letter-spacing:.02em;display:flex;align-items:center;gap:8px}
+.label .count{font-family:var(--f-en);color:var(--brand)}
+.card{background:var(--surface);border-radius:22px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px;min-width:0}
+.lead{margin:0;font-size:13.5px;color:var(--muted)}
+
+/* hero */
+.hero{background:var(--brand);color:#fff;border-radius:26px;padding:20px 20px 16px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;border:26px solid rgba(255,255,255,.08)}
+.hero .row1{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
+.ring{width:66px;height:66px;flex:none;position:relative}
+.ring svg{width:66px;height:66px;transform:rotate(-90deg)}
+.ring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--f-en);font-weight:800;font-size:15px}
+.hero h2{font-family:var(--f-en);font-weight:800;font-size:30px;letter-spacing:-.03em;line-height:1.05}
+.hero .sub{font-size:13px;font-weight:600;opacity:.88}
+.hero .tp{font-size:12.5px;font-weight:700;background:rgba(255,255,255,.18);padding:3px 10px;border-radius:999px;align-self:flex-start}
+.days{display:flex;gap:7px;overflow-x:auto;scroll-snap-type:x proximity;padding:2px 2px 4px;position:relative;z-index:1;scrollbar-width:none}
+.days::-webkit-scrollbar{display:none}
+.days button{flex:none;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.16);color:#fff;font-family:var(--f-en);font-weight:800;font-size:13.5px;scroll-snap-align:center}
+.days button.done{background:#fff;color:var(--brand)}
+.days button.today{box-shadow:inset 0 0 0 2.5px #fff}
+.days button[aria-current="true"]{background:#14162E;color:#fff;box-shadow:inset 0 0 0 2.5px var(--sun)}
+
+/* intonation markup */
+.into{font-family:var(--f-en);line-height:2.15}
+.into b{font-weight:800;color:var(--brand-deep)}
+.st{position:relative}
+.st::before{content:"";position:absolute;left:50%;top:-.42em;width:.34em;height:.34em;border-radius:50%;background:var(--sun);transform:translateX(-50%)}
+.ar{position:relative;top:-.9em;font-size:.78em;font-weight:800;margin-left:.06em;line-height:0}
+.ar.up{color:var(--up)}
+.ar.dn{color:var(--down)}
+.pz{display:inline-block;width:2px;height:.85em;border-radius:2px;background:var(--line-2);vertical-align:-.08em;margin:0 .12em}
+.slot{font-family:var(--f-ko);font-size:.68em;font-weight:700;color:var(--up);background:var(--coral-soft);padding:1px 6px;border-radius:6px;white-space:nowrap;vertical-align:.12em}
+.legend{display:flex;gap:6px;flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--muted);background:var(--surface-2);padding:4px 10px;border-radius:999px}
+.legend .dot{width:8px;height:8px;border-radius:50%;background:var(--sun)}
+.legend .bar{width:2px;height:12px;background:var(--line-2);border-radius:2px}
+
+/* phrase carousel */
+.carousel{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 10px;margin:0 -2px;scrollbar-width:none}
+.carousel::-webkit-scrollbar{display:none}
+.pc{flex:0 0 86%;scroll-snap-align:start;background:var(--surface);border-radius:22px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;min-width:0}
+.pc .num{font-family:var(--f-en);font-weight:800;font-size:12.5px;color:var(--brand);background:var(--brand-soft);align-self:flex-start;padding:3px 10px;border-radius:999px}
+.pc .ph{font-size:22px;font-weight:800;letter-spacing:-.01em;line-height:1.8}
+.pc .kn{font-size:14px;font-weight:600;color:var(--muted);margin-top:-6px}
+.pc .ex{display:flex;flex-direction:column;gap:8px;border-top:1px dashed var(--line);padding-top:10px}
+.pc .ex div{font-family:var(--f-en);font-size:15px;font-weight:500;line-height:1.5;display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:baseline}
+.pc .ex i{font-style:normal;font-family:var(--f-ko);font-size:11px;font-weight:800;padding:2px 7px;border-radius:6px}
+.pc .ex .w i{background:var(--brand-soft);color:var(--brand-deep)}
+.pc .ex .d i{background:var(--mint-soft);color:var(--mint)}
+.dots{display:flex;gap:6px;justify-content:center}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--line-2)}
+.dots i.on{background:var(--brand);width:20px;border-radius:99px}
+
+/* chat lesson */
+.chat{display:flex;flex-direction:column;gap:12px}
+.msg{display:flex;gap:10px;align-items:flex-end;max-width:100%}
+.msg.eva .bub{background:var(--surface);border-radius:20px 20px 20px 6px;box-shadow:var(--shadow)}
+.msg.me{justify-content:flex-end}
+.msg.me .bub{background:var(--brand-soft);border-radius:20px 20px 6px 20px}
+.av{width:34px;height:34px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-family:var(--f-en);font-weight:800;font-size:14px}
+.av.e{background:var(--ink);color:var(--bg)}
+.bub{padding:12px 15px;min-width:0;max-width:calc(100% - 44px)}
+.msg.me .bub{max-width:100%}
+.who{font-size:11.5px;font-weight:800;color:var(--muted);margin-bottom:2px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.qtxt{font-family:var(--f-en);font-size:18.5px;font-weight:700;line-height:1.4}
+.ans{font-size:17.5px;font-weight:500;margin:0}
+.ans.short{font-size:16.5px}
+.tag{font-size:11px;font-weight:800;padding:2px 8px;border-radius:999px;background:var(--surface-2);color:var(--muted)}
+.tag.type{background:var(--brand);color:var(--brand-ink)}
+.tr-verified{background:var(--mint-soft);color:var(--mint)}
+.tr-mixed{background:var(--coral-soft);color:var(--up)}
+.flow{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.flow span{font-size:12px;font-weight:700;background:var(--surface);border:1px solid var(--line);padding:3px 9px;border-radius:999px}
+.flow em{font-style:normal;color:var(--line-2);font-weight:800}
+.note{font-size:12.5px;color:var(--muted);background:var(--surface);border-radius:14px;padding:10px 12px;margin:0;border:1px dashed var(--line-2)}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pill{border:0;border-radius:999px;padding:14px 16px;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px}
+.pill svg{width:18px;height:18px}
+.pill.rec{background:var(--coral);color:#fff}
+.pill.rec svg{fill:#fff}
+.pill.done{background:var(--mint);color:#fff}
+.pill.ghost{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.pill.brand{background:var(--brand);color:var(--brand-ink)}
+.pill:disabled{opacity:.5}
+
+/* install banner */
+.install{background:var(--surface);border-radius:20px;box-shadow:var(--shadow);padding:12px 12px 12px 14px;display:grid;grid-template-columns:1fr auto auto;gap:8px 8px;align-items:center;border:1.5px solid var(--brand-soft)}
+.install .ib{display:flex;gap:10px;align-items:center;min-width:0}
+.install .ib svg{width:34px;height:34px;flex:none;padding:6px;border-radius:10px;background:var(--brand-soft);stroke:var(--brand-deep);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.install .ib div{display:flex;flex-direction:column;min-width:0}
+.install .ib b{font-size:14.5px;font-weight:800}
+.install .ib span{font-size:12px;color:var(--muted);font-weight:600}
+.install .pill{padding:10px 14px;font-size:13.5px;text-decoration:none;white-space:nowrap}
+.install .x{border:0;background:transparent;font-size:22px;line-height:1;color:var(--muted);width:30px;height:30px;padding:0}
+.ihelp{grid-column:1 / -1;background:var(--surface-2);border-radius:14px;padding:10px 12px;font-size:13.5px}
+.ihelp ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.ihelp .sm{margin:6px 0 0;font-size:12px;color:var(--muted)}
+@media (max-width:420px){.install .ib span{display:none}}
+
+/* today's 5 phrases — one glance */
+.t5{gap:10px}
+.t5head{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.t5head .sp{flex:1}
+.tog{border:1.5px solid var(--line-2);background:transparent;border-radius:999px;padding:5px 11px;font-weight:800;font-size:12px;color:var(--muted)}
+.tog[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.p5{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.p5 li{border-top:1px solid var(--line)}
+.p5 li:first-child{border-top:0}
+.p5 summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:26px 1fr auto;gap:10px;align-items:center;padding:10px 0}
+.p5 summary::-webkit-details-marker{display:none}
+.p5 .n{width:26px;height:26px;border-radius:50%;background:var(--brand-soft);color:var(--brand-deep);font-family:var(--f-en);font-weight:800;font-size:12.5px;display:flex;align-items:center;justify-content:center}
+.p5 .pb{display:flex;flex-direction:column;min-width:0}
+.p5 .pe{font-size:17px;font-weight:800;line-height:1.85}
+.p5 .pe.hid{filter:blur(7px);user-select:none}
+.p5 details[open] .pe.hid{filter:none}
+.p5 .pk{font-size:13.5px;font-weight:600;color:var(--muted);line-height:1.4;margin-top:-2px}
+.p5 .more{display:flex;flex-direction:column;gap:9px;padding:0 0 12px 36px}
+.nu{margin:0;font-size:13.5px;line-height:1.6;background:var(--surface-2);border-radius:12px;padding:9px 11px}
+.nu b{font-weight:800;color:var(--up);margin-right:6px}
+.p5 .ex{display:flex;flex-direction:column;gap:6px}
+.p5 .ex div{font-family:var(--f-en);font-size:14.5px;font-weight:500;line-height:1.5;display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:baseline}
+.p5 .ex i{font-style:normal;font-family:var(--f-ko);font-size:11px;font-weight:800;padding:2px 7px;border-radius:6px}
+.p5 .ex .w i{background:var(--brand-soft);color:var(--brand-deep)}
+.p5 .ex .d i{background:var(--mint-soft);color:var(--mint)}
+.tone{font-size:10.5px;font-weight:800;padding:3px 8px;border-radius:999px;white-space:nowrap;align-self:start;margin-top:6px}
+.t-cas{background:var(--mint-soft);color:var(--mint)}
+.t-mid{background:var(--surface-2);color:var(--muted)}
+.t-pol{background:var(--brand-soft);color:var(--brand-deep)}
+.t-for{background:var(--ink);color:var(--bg)}
+.known.sm{grid-row:auto;width:auto;height:auto;padding:6px 12px;font-size:12px;font-weight:800;color:var(--muted);align-self:flex-start}
+.known.sm[aria-pressed="true"]{color:#fff}
+.kod{margin-top:8px;border-top:1px dashed var(--line-2);padding-top:6px}
+.kod summary{cursor:pointer;font-size:12.5px;font-weight:800;color:var(--brand-deep);list-style:none}
+.kod summary::-webkit-details-marker{display:none}
+.kod summary::before{content:"+ "}
+.kod[open] summary::before{content:"− "}
+.kod p{margin:6px 0 0;font-size:14.5px;line-height:1.75;color:var(--ink)}
+
+/* phrases library */
+.filters{display:flex;gap:6px}
+.chip{border:0;background:var(--surface);box-shadow:var(--shadow);border-radius:999px;padding:8px 14px;font-weight:700;font-size:13px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.progress{height:10px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.progress i{display:block;height:100%;background:var(--mint);border-radius:99px}
+.lib{display:flex;flex-direction:column;gap:8px}
+.lib h3{font-size:12.5px;font-weight:800;color:var(--muted);margin:10px 0 0}
+.li{background:var(--surface);border-radius:16px;padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;box-shadow:var(--shadow)}
+.li .p{font-size:16.5px;font-weight:700;line-height:1.9}
+.li .k{grid-column:1;font-size:13px;color:var(--muted)}
+.li .k em{font-style:normal;font-family:var(--f-en);color:var(--ink)}
+.known{grid-row:span 2;border:2px solid var(--line-2);background:transparent;border-radius:999px;width:40px;height:40px;display:flex;align-items:center;justify-content:center}
+.known svg{width:18px;height:18px;stroke:var(--line-2);fill:none;stroke-width:3}
+.known[aria-pressed="true"]{background:var(--mint);border-color:var(--mint)}
+.known[aria-pressed="true"] svg{stroke:#fff}
+
+/* recorder */
+.recwrap{display:flex;flex-direction:column;align-items:center;gap:14px;padding:6px 0}
+.meter{display:flex;gap:4px;align-items:center;height:56px}
+.meter i{width:5px;border-radius:5px;background:var(--line-2);height:8px;transition:height .08s}
+.meter.on i{background:var(--coral)}
+.mic{width:96px;height:96px;border-radius:50%;border:0;background:var(--coral);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 10px var(--coral-soft)}
+.mic svg{width:36px;height:36px;fill:#fff}
+.mic.on{animation:rp 1.4s ease-in-out infinite}
+@keyframes rp{50%{box-shadow:0 0 0 18px var(--coral-soft)}}
+.clock{font-family:var(--f-en);font-size:38px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}
+.clock.z-good{color:var(--mint)}
+.clock.z-over{color:var(--up)}
+.target{font-size:12.5px;font-weight:700;color:var(--muted)}
+select{width:100%;font:inherit;font-weight:700;font-size:14.5px;color:var(--ink);background:var(--surface);border:0;box-shadow:var(--shadow);border-radius:14px;padding:12px 14px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--surface-2);border-radius:14px;padding:4px;gap:4px}
+.seg button{border:0;background:transparent;border-radius:11px;padding:9px;font-weight:800;font-size:13.5px;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.take{background:var(--surface-2);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.take .tt{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;font-weight:700;color:var(--muted)}
+.take .tt b{font-family:var(--f-en);color:var(--ink);overflow-wrap:anywhere}
+audio{width:100%}
+.btn{border:0;background:var(--surface);box-shadow:var(--shadow);border-radius:12px;padding:9px 13px;font-weight:700;font-size:13px;display:inline-flex;align-items:center;gap:6px}
+.btn.brand{background:var(--brand);color:var(--brand-ink)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.alt{background:var(--coral-soft);border-radius:18px;padding:14px 16px;font-size:14px;display:flex;flex-direction:column;gap:8px}
+.alt ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.alt code{font-family:var(--f-en);font-size:12.5px;font-weight:700;background:var(--surface);padding:1px 6px;border-radius:6px;overflow-wrap:anywhere}
+
+/* SAIL tab */
+.mylevel{background:var(--ink);color:var(--bg);border-radius:26px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.mylevel h2{font-family:var(--f-en);font-weight:800;font-size:26px;letter-spacing:-.02em}
+.mylevel p{margin:0;font-size:14px;opacity:.85}
+.lvl{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.lv{border-radius:14px;padding:9px 4px;text-align:center;display:flex;flex-direction:column;gap:1px;background:rgba(127,127,160,.16);min-width:0}
+.lv b{font-family:var(--f-en);font-size:20px;font-weight:800}
+.lv span{font-family:var(--f-en);font-size:11px;font-weight:700;opacity:.85}
+.lv.pick{background:var(--sun);color:#14162E}
+.facts{display:flex;flex-direction:column}
+.fa{display:grid;grid-template-columns:92px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.fa:last-child{border-bottom:0}
+.fa b{font-size:12.5px;font-weight:800;color:var(--muted)}
+.crit{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.cr{background:var(--surface-2);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.cr b{font-family:var(--f-en);font-size:14.5px;font-weight:800}
+.cr span{font-size:13px;color:var(--muted)}
+.tips{margin:0;padding-left:20px;font-size:14px;display:flex;flex-direction:column;gap:8px}
+.tips b{color:var(--brand-deep)}
+.types{display:flex;flex-direction:column;gap:10px}
+.ty{background:var(--surface-2);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.ty h3{font-size:14.5px;font-weight:800}
+.ty .ex{font-family:var(--f-en);font-size:14.5px;font-weight:600;color:var(--brand-deep)}
+.ty .how{font-size:13px;color:var(--muted)}
+.ty .dd{display:flex;gap:4px;flex-wrap:wrap;margin-top:2px}
+.ty .dd button{border:0;background:var(--surface);border-radius:8px;font-family:var(--f-en);font-weight:800;font-size:11.5px;padding:3px 8px}
+.plan .pl{display:grid;grid-template-columns:86px 1fr;gap:10px;font-size:14px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.plan .pl:last-child{border-bottom:0}
+.plan .pl b{font-family:var(--f-en);font-weight:800;color:var(--brand)}
+.sources{font-size:12.5px;display:flex;flex-direction:column;gap:6px}
+.sources a{color:var(--brand);font-weight:700;overflow-wrap:anywhere}
+input[type=date]{font:inherit;font-weight:700;font-size:14.5px;padding:10px 12px;border:0;box-shadow:var(--shadow);border-radius:12px;background:var(--surface);color:var(--ink)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);font-size:13.5px;font-weight:700;padding:10px 16px;border-radius:14px;z-index:20;max-width:calc(100% - 32px);box-shadow:var(--shadow)}
+@media (max-width:420px){
+  .hero h2{font-size:27px}
+  .qtxt{font-size:17.5px}
+  .ans{font-size:16.5px}
+  .pc .ph{font-size:20px}
+  .crit{grid-template-columns:1fr}
+  .lv b{font-size:17px}
+  .lv span{font-size:9.5px}
+  .stat{padding:5px 9px;font-size:12.5px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="logo"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="3" width="28" height="22" rx="9" fill="var(--brand)"/><path d="M9 25l-1 5 6-5z" fill="var(--brand)"/><circle cx="11" cy="11" r="2" fill="var(--sun)"/><path d="M8 17h4M14 17h4M20 17h4" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>SAIL Lab</div>
+    <span class="sp"></span>
+    <span class="stat" id="streak"></span>
+    <span class="stat" id="dday"></span>
+  </header>
+  <main id="view" aria-live="polite"></main>
+</div>
+<nav class="nav" aria-label="메뉴"><div class="in" id="navin"></div></nav>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+/* =========================================================
+   CONTENT
+   Markup: **chunk** = 외울 표현, ^word = 강세(점), ↗/↘ = 억양, | = 끊어 읽기, [..] = 내 실제 내용으로 채우기
+   ========================================================= */
+const TRUTH={verified:"실제 경험",mixed:"실제 + 예시",hypothetical:"가상 상황"};
+
+const PHRASES=[
+["One thing that comes to ^mind is ~","바로 떠오르는 건 ~","'하나 딱 떠오르는 게 있는데요' 느낌. 경험 질문에 바로 들어가는 첫 문장. 'For example'로 시작하는 것보다 훨씬 말하는 맛이 나요.","중립","One thing that comes to mind is a workshop I ran in Oslo.","One thing that comes to mind is my diving trip to Coron."],
+["I'd ^say ~","~라고 할 수 있죠","'제 생각엔 ~인 것 같아요'를 부드럽게. I think보다 덜 단정적이고 성숙하게 들려요.","중립","I'd say communication matters more than technical skills.","I'd say I'm more of a morning person."],
+["It ^really depends on ~","~에 따라 달라요","'그때그때 달라요' 느낌. 습관·선호 질문 첫 문장으로 넣으면 바로 문단이 열려요.","중립","It really depends on the client.","It really depends on how my week went."],
+["If I had to pick ^one, ~","하나만 고르자면","'굳이 하나 꼽자면' 어감. 고민한 티를 내면서 답을 고르는 자연스러운 쿠션.","중립","If I had to pick one, I'd go with option B.","If I had to pick one, I'd say diving."],
+["Off the ^top of my head, ~","당장 떠오르는 건","'정확하진 않은데 지금 생각나는 건' 느낌. 준비 안 된 질문에 쓰면 자연스럽게 시간을 벌어요.","캐주얼","Off the top of my head, I can think of two issues.","Off the top of my head, maybe Jeju Island."],
+["That's a ^good question.↘ | Let me think about that for a ^second.↘","좋은 질문이네요, 잠깐 생각해 볼게요","'음…' 하고 침묵하는 대신 쓰는 시간 벌기. 원어민도 매일 쓰고, 정중하게 들려요.","정중","That's a good question. Let me think about that for a second.","Wow, I've never thought about that. Let me think for a second."],
+["Let me ^put it this way.↘","이렇게 말해볼게요","'쉽게 말하면 이런 거예요' 느낌. 설명이 꼬였을 때 다시 시작하는 신호.","중립","Let me put it this way: the structure gets tired, like a paperclip.","Let me put it this way: I'm not a beach person."],
+["Here's ^why.↘","이유는 이래요","'왜냐면요' 하고 짧게 끊어 주의를 끄는 느낌. because로 길게 늘이는 것보다 리듬이 좋아요.","중립","I think we should wait. Here's why.","I don't drink coffee after three. Here's why."],
+["The ^main reason is ~","주된 이유는","'제일 큰 이유는요' 느낌. 이유를 하나로 정리해서 논리적으로 들려요.","중립","The main reason is the fabrication cost.","The main reason is that I can't sleep otherwise."],
+["On ^top of that, ~","게다가","'거기다가' 느낌. Also보다 '하나 더 얹는다'는 힘이 있어요.","중립","On top of that, the schedule is really tight.","On top of that, it rained all day."],
+["^Take ~, for example.↘","~를 예로 들면","'~만 봐도 그래요' 느낌. For example로 시작하는 것보다 말이 살아 있어요.","중립","Take AI tools, for example.","Take my parents, for example."],
+["That ^said, ~","그렇긴 하지만","'그건 그렇고, 근데' 느낌. 상대 말이나 앞 내용을 인정한 뒤 부드럽게 반론. However의 구어 버전.","중립","It's cheaper. That said, it's harder to inspect.","I love diving. That said, it's not cheap."],
+["^Even so, ~","그런데도","'그래도/그럼에도' 느낌. 예상과 다르게 행동했다는 걸 강조해요.","중립","The results looked fine. Even so, I wanted to check the model.","It was freezing. Even so, we went in."],
+["On the ^flip side, ~","반면에","'동전 뒷면을 보면' 느낌. On the other hand보다 가볍고 구어적이에요.","캐주얼","On the flip side, the workday never really ends.","On the flip side, city life can be exhausting."],
+["..., | which is ^why ~","그래서 ~한 거예요","'그래서 제가 ~한 거죠' 느낌. 두 문장을 하나로 이어 문단처럼 들리게 해요.","중립","The data was missing, which is why I asked for the model.","I was exhausted, which is why I stayed home."],
+["In ^other words, ~","다시 말해","'쉽게 말하면' 느낌. 전문 용어를 쓴 직후 바로 풀어줄 때 최고.","중립","In other words, we only inspect where it matters.","In other words, I'm a homebody."],
+["The ^thing is, ~","문제는요 / 사실은요","'근데 문제는요~' 하고 진짜 하고 싶은 말을 꺼내기 직전 느낌.","캐주얼","The thing is, nobody owns that interface.","The thing is, I'm terrible at mornings."],
+["What I ^mean is ~","제 말은요","'제 말은 그게 아니라~' 느낌. 오해를 바로잡거나 다시 설명할 때.","중립","What I mean is, the number isn't wrong, but it's incomplete.","What I mean is, I'd rather stay in."],
+["At the ^end of the day, ~","결국 중요한 건","'뭐니 뭐니 해도 결국은' 느낌. 자주 쓰면 진부하니 한 답변에 한 번만.","캐주얼","At the end of the day, safety comes first.","At the end of the day, family comes first."],
+["So if I had to ^sum it up, ~","정리하자면","'한마디로 정리하면' 느낌. 답변을 깔끔하게 끝내는 착지 문장.","중립","So if I had to sum it up, it was a team effort.","So if I had to sum it up, it was the best trip I've had."],
+["Long story ^short, ~","결론만 말하면","'길게 말할 거 없이' 느낌. 이야기 중간을 건너뛰고 결과로. 친근한 톤.","캐주얼","Long story short, we made the deadline.","Long story short, I missed the flight."],
+["^Back when I ~","내가 ~하던 시절에","'제가 ~하던 때만 해도' 느낌. 과거 이야기를 여는 회상 톤.","캐주얼","Back when I started, we did everything by email.","Back when I was in college, I barely studied."],
+["At ^first, I thought ~,↗ | but it ^turned out ~","처음엔 ~인 줄 알았는데 알고 보니","'알고 보니~' 반전 구조. 경험 답변에 이야기 긴장감을 줘요.","중립","At first, I thought it was a load issue, but it turned out to be the boundary conditions.","At first, I thought it'd be boring, but it turned out to be really fun."],
+["All of a ^sudden, ~","갑자기","'갑자기 딱' 느낌. 이야기에 사건을 터뜨릴 때. Suddenly보다 말맛이 있어요.","캐주얼","All of a sudden, the client changed the scope.","All of a sudden, the power went out."],
+["I ^ended up ~ing","결국 ~하게 됐어요","'어쩌다 보니 결국' 느낌. 계획과 다르게 흘러간 결과. 원어민 최빈출 표현.","캐주얼","I ended up rewriting the whole report.","I ended up staying an extra day."],
+["Before I ^knew it, ~","정신 차려 보니","'정신 차려 보니 벌써' 느낌. 시간이 순식간에 흘렀을 때.","캐주얼","Before I knew it, it was midnight.","Before I knew it, the vacation was over."],
+["^Looking back, ~","돌아보면","'지금 돌이켜 보면' 느낌. 경험 답변에서 교훈 직전에.","중립","Looking back, I should have asked earlier.","Looking back, it was a great decision."],
+["The ^biggest takeaway was ~","가장 큰 교훈은","'거기서 얻은 제일 큰 건' 느낌. lesson보다 업무적이고 세련돼요.","중립","The biggest takeaway was to check assumptions early.","The biggest takeaway was to pack light."],
+["That's ^when I realized ~","그때 깨달았어요","'바로 그때 알았죠' 느낌. 이야기의 깨달음 포인트.","중립","That's when I realized the numbers weren't the real problem.","That's when I realized I'd left my passport at home."],
+["It ^changed the way I think about ~","~에 대한 생각이 바뀌었어요","'그 뒤로 ~를 보는 눈이 달라졌어요' 느낌. 깊이 있는 마무리.","중립","It changed the way I think about quality.","It changed the way I think about travel."],
+["What I like ^most about ~ is ~","~에서 제일 좋은 건","'~의 제일 좋은 점은요' 느낌. 묘사 질문의 핵심 문장.","중립","What I like most about my job is the variety.","What I like most about diving is the silence."],
+["It's a ^mix of A and B","A와 B가 섞여 있어요","'반은 A, 반은 B예요' 느낌. 한 줄로 그림을 그려줘요.","캐주얼","My job is a mix of analysis and meetings.","My weekends are a mix of rest and errands."],
+["It's ^not the most ~,↗ | but ~","제일 ~하진 않지만","'엄청 ~한 건 아니지만 그래도' 느낌. 겸손과 애정을 같이 표현.","캐주얼","It's not the most exciting task, but it matters.","It's not the most beautiful town, but I love it."],
+["The ^best part is ~ | The ^downside is ~","제일 좋은 점은 / 아쉬운 점은","장단점을 깔끔하게. downside는 '단점'보다 가벼운 '아쉬운 점' 느낌.","중립","The best part is the people. The downside is the deadlines.","The best part is the food. The downside is the crowds."],
+["It's the ^kind of place where ~","~한 그런 곳이에요","'뭐랄까 ~한 동네예요' 느낌. 장소 분위기 묘사의 만능 틀.","캐주얼","It's the kind of place where everyone knows everyone.","It's the kind of place where you lose track of time."],
+["It's within ^walking distance of ~","~에서 걸어갈 수 있는 거리","'걸어서 갈 만한 거리' 느낌. 집·동네 묘사 필수.","중립","The dock is within walking distance of our office.","My place is within walking distance of a park."],
+["I ^tend to ~","~하는 편이에요","'저는 좀 ~하는 편이에요' 느낌. always보다 자연스럽고 정직하게 들려요.","중립","I tend to over-prepare for meetings.","I tend to sleep in on Sundays."],
+["I make a ^point of ~ing","꼭 ~하려고 해요","'일부러라도 꼭 챙겨서' 느낌. 의지와 습관을 동시에.","중립","I make a point of replying within a day.","I make a point of calling my parents every week."],
+["^Whenever I get the chance, ~","기회 될 때마다","'짬 날 때마다' 느낌. 취미 답변 단골.","캐주얼","Whenever I get the chance, I try out new tools.","Whenever I get the chance, I go diving."],
+["I try to make the ^most of ~","~를 최대한 활용하려고 해요","'~를 알뜰하게 써요' 느낌. 시간·기회 모두에 써요.","중립","I try to make the most of my commute.","I try to make the most of every trip."],
+["It's become ^part of my routine.↘","이젠 루틴이 됐어요","'이젠 일상이 됐어요' 느낌. 습관 답변 마무리.","중립","Checking the dashboard has become part of my routine.","Studying on the subway has become part of my routine."],
+["I ^used to ~,↗ | but ^these days ~","예전엔 ~했는데 요즘은","과거↔현재 비교 공식. 시제 대비가 그대로 점수 포인트.","중립","I used to email everything, but these days we just jump on a call.","I used to stay up late, but these days I'm in bed by eleven."],
+["I'm ^really into ~ | I'm ^not really into ~","~에 푹 빠져 있어요 / 별로예요","'요즘 ~에 꽂혔어요' / '저는 ~는 별로라서요'. not really into는 싫다는 말을 부드럽게 해줘요.","캐주얼","I'm really into automation lately.","I'm not really into crowded places."],
+["I don't ^beat myself up about it.↘","자책하지 않아요","'그렇다고 스트레스 받진 않아요' 느낌. 여유 있는 성격이 보여요.","캐주얼","If I miss a day, I don't beat myself up about it.","I had dessert. I don't beat myself up about it."],
+["I ^see where you're coming from,↗ | but ~","무슨 말인지 알지만","'말씀하시는 취지는 알겠는데요' 느낌. 반론 전에 상대를 존중하는 매너 쿠션.","정중","I see where you're coming from, but the rule is clear.","I see where you're coming from, but it's too expensive."],
+["I'm ^not saying ~.↘ | I'm ^just saying ~","~라는 게 아니라 ~라는 거예요","'~하자는 게 아니라 ~하자는 거죠' 느낌. 오해 없이 핵심만 짚기.","중립","I'm not saying they're wrong. I'm just saying we need to check.","I'm not saying it's bad. I'm just saying it's overpriced."],
+["It's ^not that ~.↘ | It's ^more that ~","~해서가 아니라 ~해서예요","'싫어서가 아니라~' 느낌. 진짜 이유를 섬세하게.","중립","It's not that I don't trust them. It's more that I need to defend it.","It's not that I hate running. It's more that I get bored."],
+["It's a ^double-edged sword.↘","양날의 검이에요","한국어 '양날의 검'과 똑같은 느낌. 장단점 질문 첫 문장으로 최고.","중립","Remote work is a double-edged sword.","Social media is a double-edged sword."],
+["There's a ^trade-off between A and B.↘","A와 B 사이엔 트레이드오프가 있어요","'하나를 얻으면 하나를 잃는' 관계. 엔지니어다운 논리 표현.","중립","There's a trade-off between weight and fatigue life.","There's a trade-off between price and comfort."],
+["It's ^easier said than done.↘","말이 쉽지요","'말이야 쉽죠' 그대로. 현실적인 어려움을 인정할 때.","캐주얼","Cutting the weight is easier said than done.","Waking up early is easier said than done."],
+["I ^lean toward ~","~ 쪽으로 기울어요","'저는 ~ 쪽이 더 끌려요' 느낌. 단정하지 않으면서 입장은 분명해요.","중립","I lean toward the simpler design.","I lean toward quiet vacations."],
+["To be ^fair, ~","공정하게 말하면","'사실 그쪽 입장에서 보면' 느낌. 상대를 변호해 줘서 균형감과 매너가 보여요.","중립","To be fair, they did follow the procedure.","To be fair, the hotel was cheap."],
+["In the ^long run, ~","장기적으로","'길게 보면' 느낌. 의견 결론에 무게를 실어요.","중립","In the long run, automation saves money.","In the long run, exercise pays off."],
+["It ^comes down to ~","결국 ~의 문제예요","'결국엔 ~에 달렸어요' 느낌. 복잡한 문제를 한 줄로.","중립","It comes down to who takes responsibility.","It comes down to personal preference."],
+["It's not ^black and white.↘","흑백으로 나눌 문제가 아니에요","'딱 잘라 말할 문제는 아니에요' 느낌. 사회 이슈 질문 단골.","중립","It's not black and white. Both options have risks.","It's not black and white. It depends on the person."],
+["I'd ^rather A than B.↘","B보다는 A 하겠어요","'~할 바엔 차라리 ~' 느낌. 선호를 분명히.","중립","I'd rather be upfront than overpromise.","I'd rather stay in than go to a crowded bar."],
+["If I were in ^charge,↗ | I'd ~","내가 책임자라면 ~하겠어요","'제가 결정권자라면' 가정법. 상위 등급 신호.","중립","If I were in charge, I'd automate the reporting first.","If I were in charge, I'd make Fridays shorter."],
+["If I ^could ~,↗ | I ^would ~","~할 수 있다면 ~할 텐데","'할 수만 있다면' 아쉬움과 상상이 섞인 느낌.","중립","If I could change one thing, I'd add more design time.","If I could live anywhere, I'd live by the sea."],
+["If I had the ^chance,↗ | I'd ~","기회가 있다면","'기회만 되면' 느낌. 미래·희망 답변.","중립","If I had the chance, I'd work abroad for a year.","If I had the chance, I'd dive in Tahiti."],
+["I ^wish I could ~ | I ^wish I had ~","~할 수 있으면 좋겠어요 / ~했더라면","'~했으면 좋았을 텐데' 아쉬움. 후회를 부드럽게.","중립","I wish I had more time for design reviews.","I wish I could travel more."],
+["If it were ^up to me, ~","나한테 맡겨진다면","'제 마음대로 할 수 있다면' 느낌. 가정법 의견.","캐주얼","If it were up to me, we'd start next week.","If it were up to me, we'd go to the beach."],
+["If I'd ^known ~,↗ | I ^would've ~","~를 알았다면 ~했을 거예요","'그걸 알았더라면' 과거 가정. 5단계에서 쓰면 확실한 고급 신호.","중립","If I'd known that, I would've asked for the model earlier.","If I'd known it would rain, I would've stayed home."],
+["I'm ^calling about ~","~ 때문에 전화드렸어요","'~ 건으로 연락드렸어요' 느낌. 롤플레이 첫 문장의 정석.","정중","I'm calling about the delivery schedule.","I'm calling about my reservation."],
+["Would it be ^possible to ~?↗","~하는 게 가능할까요?","'혹시 ~해 주실 수 있을까요?' 정중 요청의 정석. Can you~?보다 훨씬 공손해요.","정중","Would it be possible to share the model?","Would it be possible to check in early?"],
+["Is there ^any way you could ~?↗","혹시 ~해 주실 방법이 있을까요?","'어떻게 좀 안 될까요?' 느낌. 어려운 부탁을 간곡하게.","정중","Is there any way you could send it by Friday?","Is there any way you could waive the fee?"],
+["I was ^wondering if ~","혹시 ~인지 해서요","'혹시 ~될까 해서요' 느낌. 과거형이라 더 조심스럽고 공손해요.","정중","I was wondering if you had time for a quick call.","I was wondering if you had any rooms left."],
+["What would ^you suggest?↘","어떻게 하면 좋을까요?","'어떻게 하는 게 좋을까요?' 상대 의견을 존중하는 질문.","정중","We're stuck on this. What would you suggest?","I'm new here. What would you suggest?"],
+["Could you ^walk me through ~?↗","~를 차근차근 설명해 주실래요?","'하나씩 짚어 주실래요?' 느낌. explain보다 협조적이고 회의에서 필수.","정중","Could you walk me through your assumptions?","Could you walk me through the menu?"],
+["Just to make ^sure I understand, ~","제가 이해한 게 맞는지 확인하면","'제가 제대로 이해했는지 확인차' 느낌. 오해 방지와 경청 매너를 동시에.","정중","Just to make sure I understand, you need it second-by-second?","Just to make sure I understand, breakfast is included?"],
+["I'd ^really appreciate it if ~","~해 주시면 정말 감사하겠어요","'~해 주시면 정말 큰 도움이 되겠어요' 느낌. 단호한 요청도 정중하게 포장해 줘요.","정중","I'd really appreciate it if you could get back to me today.","I'd really appreciate it if you could hold the table."],
+["^Alternatively, ~","아니면 대안으로","'아니면 이런 방법도 있어요' 느낌. 롤플레이에서 대안을 제시할 때.","정중","Alternatively, we could split the delivery.","Alternatively, we could just order in."],
+["Thanks for being so ^flexible.↘","융통성 있게 해 주셔서 감사해요","'배려해 주셔서 감사해요' 느낌. 롤플레이 마무리 매너.","정중","Thanks for being so flexible with the schedule.","Thanks for being so flexible about the booking."],
+["We need to get on the ^same page.↘","서로 이해를 맞춰야 해요","'서로 생각을 맞춰야 해요' 느낌. 회의 최빈출.","중립","Before we decide, we need to get on the same page.","Let's get on the same page about the budget."],
+["Let's take a ^step back.↘","한 발 물러서서 봅시다","'잠깐 큰 그림으로 돌아가 보죠' 느낌. 논의가 꼬였을 때.","중립","Let's take a step back and look at the big picture.","Okay, let's take a step back. What do we actually need?"],
+["I'll get ^back to you on that.↘","확인하고 다시 말씀드릴게요","'확인 후 회신드릴게요' 느낌. 모를 때 정직하면서도 프로답게.","정중","Good question. I'll get back to you on that.","I'm not sure yet. I'll get back to you on that."],
+["That doesn't ^really address the issue.↘","핵심 문제에 대한 답은 아니에요","'그걸로는 문제 해결이 안 되죠' 느낌. '무책임하다'를 공격 없이 말하는 법.","정중","That doesn't really address the issue we raised.","Saying sorry doesn't really address the issue."],
+["We're on the ^same team here.↘","우리 같은 편이잖아요","'우리 한 팀이잖아요' 느낌. 압박하면서도 관계는 지켜요.","캐주얼","Come on, we're on the same team here.","We're on the same team here. Let's figure it out."],
+["Let's not get ^ahead of ourselves.↘","너무 앞서가지 말죠","'김칫국 마시지 말자' 느낌. 앞서가는 논의를 웃으며 멈춰요.","캐주얼","Let's not get ahead of ourselves. It's still a pilot.","Let's not get ahead of ourselves. We haven't booked yet."],
+["I'd rather be ^upfront about it.↘","미리 솔직하게 말할게요","'미리 말씀드리는 게 나을 것 같아서요' 느낌. 나쁜 소식을 전할 때의 매너.","정중","I'd rather be upfront about it: we can't do that this year.","I'd rather be upfront about it: I can't make it on Saturday."],
+["make a ^judgment call","(정답 없는 상황에서) 판단을 내리다","'내가 판단해서 결정했다' 느낌. 리더십 경험 답변에.","중립","Sometimes you just have to make a judgment call.","I had to make a judgment call and turn back."],
+["keep ~ in the ^loop","~에게 계속 공유하다","'진행 상황 계속 알려줘' 느낌. 업무 최빈출.","중립","Please keep me in the loop on the changes.","Keep me in the loop about dinner."],
+["get to the ^bottom of ~","~의 원인을 끝까지 파헤치다","'끝까지 원인을 찾아내다' 느낌. 문제 해결 의지가 보여요.","중립","We need to get to the bottom of this crack.","I finally got to the bottom of the noise in my car."],
+["It was ^exhausting,↗ | but in a ^good way.↘","힘들었지만 기분 좋은 피곤함","'힘들었는데 뿌듯한 피곤함' 느낌. 여행·도전 답변.","캐주얼","The workshop was exhausting, but in a good way.","Three dives a day was exhausting, but in a good way."],
+["I was ^blown away by ~","~에 완전 감탄했어요","'입이 떡 벌어졌어요' 느낌. amazing만 반복하지 않게.","캐주얼","I was blown away by how fast the tool was.","I was blown away by the view."],
+["No ^worries, | I ^totally understand.↘","괜찮아요, 충분히 이해해요","'괜찮아요, 그럴 수 있죠' 느낌. 롤플레이에서 거절당했을 때의 매너.","정중","No worries, I totally understand. Let's find another slot.","No worries, I totally understand. Maybe next time."],
+["I really appreciate the ^heads-up.↘","미리 알려줘서 고마워요","'미리 귀띔해 주셔서 감사해요' 느낌. 나쁜 소식을 들었을 때도 첫마디는 감사.","정중","I really appreciate the heads-up about the delay.","Thanks for texting. I really appreciate the heads-up."],
+["I couldn't ^believe ~","~가 믿기지 않았어요","'~해서 깜짝 놀랐어요' 느낌. 이야기의 하이라이트.","캐주얼","I couldn't believe how small the margin was.","I couldn't believe how clear the water was."],
+["It was ^totally worth it.↘","완전 그럴 가치가 있었어요","'고생한 보람이 있었어요' 느낌. 경험 답변 마무리.","캐주얼","It took a month, but it was totally worth it.","The flight was long, but it was totally worth it."],
+["That makes ^sense.↘","그렇겠네요","'아, 그렇군요/이해돼요' 리액션. 상대 말을 받아줄 때.","중립","That makes sense. Let's go with that.","Oh, that makes sense."],
+["^Actually, ~","사실은요","'실은요~' 느낌. 팔로업 질문을 자연스럽게 받거나 예상 밖 답을 할 때.","캐주얼","Actually, that's a great point.","Actually, I've never been there."],
+["^Honestly, ~","솔직히","'솔직히 말하면' 느낌. 의견 앞에 붙이면 진정성이 생겨요. 너무 자주 쓰면 습관어처럼 들려요.","캐주얼","Honestly, the schedule is the bigger risk.","Honestly, I'm not a big fan of crowds."],
+["To be ^honest with you, ~","솔직히 말씀드리면","Honestly보다 한 단계 정중하고 진지. 불편한 사실을 말할 때.","정중","To be honest with you, we're behind schedule.","To be honest with you, I've never tried it."],
+["You know ^what?↗","있잖아요","반전이나 깨달음을 꺼내기 직전의 감탄 쿠션. '근데 그거 알아요?' 느낌.","캐주얼","You know what? Let's just call them.","You know what? It actually worked."],
+["I ^have to say, ~","정말이지","칭찬·감탄을 강조. '진짜 ~하더라고요' 느낌.","중립","I have to say, your team did a great job.","I have to say, the food was amazing."],
+["^Believe it or not, ~","믿기 어렵겠지만","'믿기지 않겠지만' 하고 의외의 사실을 소개할 때.","캐주얼","Believe it or not, the old design was lighter.","Believe it or not, I used to hate swimming."],
+["^Funny enough, ~","재밌게도","'웃기게도/신기하게도' 아이러니를 소개할 때.","캐주얼","Funny enough, the simplest fix worked.","Funny enough, I met my best friend at work."],
+["It turns ^out ~","알고 보니","'알고 보니 ~더라고요' 느낌. 현재형이라 지금도 사실이라는 뉘앙스.","중립","It turns out the load case was missing.","It turns out I'm allergic to cats."],
+["I'm not gonna ^lie, ~","솔직히 (아주 캐주얼)","'안 그런 척 안 할게요' 느낌. 친한 사이 말투라 시험에선 일상 주제에만.","캐주얼","I'm not gonna lie, that meeting was rough.","I'm not gonna lie, I ate the whole thing."],
+["That's a ^tough one.↘","어려운 질문이네요","'이거 어렵네요' 솔직한 리액션. 5단계 어려운 질문의 첫마디로 좋아요.","중립","That's a tough one. Both options have risks.","That's a tough one. I love them both."],
+["I've never ^really thought about it,↗ | but ~","생각해 본 적은 없지만","'딱히 생각해 본 적은 없는데요' 느낌. 돌발 질문을 받은 뒤 바로 의견으로 넘어가요.","중립","I've never really thought about it, but it makes sense.","I've never really thought about it, but probably summer."],
+["From ^my experience, ~","제 경험으로는","'제가 겪어 보니' 느낌. 의견에 근거를 붙여줘요.","중립","From my experience, early reviews save time.","From my experience, cheap hotels aren't worth it."],
+["As ^far as I know, ~","제가 알기로는","'제가 아는 선에서는' 느낌. 확실치 않은 정보를 정직하게.","중립","As far as I know, the rule changed last year.","As far as I know, the shop opens at nine."],
+["It makes a ^big difference.↘","차이가 커요","'그게 차이를 확 만들어요' 느낌. 효과를 강조할 때.","중립","A finer mesh makes a big difference.","A good night's sleep makes a big difference."],
+["It's ^not a big deal.↘","별일 아니에요","'대수롭지 않아요' 느낌. 상대 부담을 덜어주는 매너.","캐주얼","It's not a big deal. We can fix it tomorrow.","It's not a big deal. Don't worry about it."],
+["I can ^relate to that.↘","저도 공감돼요","'저도 그 마음 알아요' 공감 리액션. 면접관 리액션을 받아칠 때도.","중립","I can relate to that. Deadlines get to everyone.","I can relate to that. I hate mornings too."],
+["I couldn't ^agree more.↘","전적으로 동의해요","'완전 공감해요' 강한 동의. 공손하고 세련됐어요.","정중","I couldn't agree more. Safety comes first.","I couldn't agree more. That place is the best."],
+["I ^see your point,↗ | but ~","일리는 있지만","'말씀에 일리가 있는데요' 반론 전 쿠션. 더 짧고 업무적.","정중","I see your point, but the cost is too high.","I see your point, but it's too far."],
+["I'm not so ^sure about that.↘","그건 잘 모르겠어요","'글쎄요, 그건 좀…' 부드러운 반대. No나 Wrong 대신.","정중","I'm not so sure about that. Let's check the data.","I'm not so sure about that. It looks expensive."],
+["It's ^worth mentioning that ~","~는 짚고 넘어갈 만해요","'참고로 말씀드리면' 느낌. 중요한 단서를 추가할 때.","격식","It's worth mentioning that the rule is changing.","It's worth mentioning that parking is free."],
+["The ^bottom line is ~","핵심은 / 결론은","'요점은요' 느낌. 회의에서 결론을 정리할 때 최고.","중립","The bottom line is we need more time.","The bottom line is I loved it."],
+["It's a ^win-win.↘","서로 좋은 거죠","'누이 좋고 매부 좋고' 그 느낌.","캐주얼","Sharing the model is a win-win.","Carpooling is a win-win."],
+["^Long-term, ~","길게 보면","In the long run의 짧은 버전. 업무 회의에서 자주 써요.","중립","Long-term, this saves maintenance cost.","Long-term, it's cheaper to buy."],
+["It ^pays off.↘","결국 보답이 와요","'결국 효과가 나요/본전 뽑아요' 느낌. 노력의 결과.","중립","Careful planning always pays off.","All that practice finally paid off."],
+["^Step by step, ~","하나씩 차근차근","'천천히 단계별로' 느낌. 과정을 설명할 때.","중립","We solved it step by step.","I learned to cook step by step."],
+["It's still ^up in the air.↘","아직 미정이에요","'아직 붕 떠 있어요/정해진 게 없어요' 느낌.","캐주얼","The schedule is still up in the air.","Our vacation plans are still up in the air."],
+["I'm ^swamped.↘","정신없이 바빠요","'일에 파묻혔어요' 느낌. busy보다 생생해요.","캐주얼","I'm swamped this week with reviews.","I'm swamped with errands today."],
+["I'm running a ^bit behind.↘","좀 늦어지고 있어요","'조금 밀렸어요' 하고 정중하게 지연을 알리는 표현.","정중","Sorry, I'm running a bit behind on the report.","I'm running a bit behind. See you in ten."],
+["Let me get ^back to you by ~","~까지 회신드릴게요","'확인해서 ~까지 알려드릴게요'에 기한까지. 책임감 있는 프로 느낌.","정중","Let me get back to you by Friday.","Let me get back to you by tonight."],
+["Sorry to ^interrupt, | but ~","말씀 중에 죄송한데요","끼어들 때 필수 매너 쿠션.","정중","Sorry to interrupt, but we have five minutes left.","Sorry to interrupt, but your phone is ringing."],
+["Would you ^mind if ~?↗","~해도 괜찮을까요?","'혹시 ~해도 될까요?' 허락을 구하는 가장 정중한 표현.","정중","Would you mind if I shared my screen?","Would you mind if I opened the window?"],
+["I hope that makes ^sense.↘","이해가 되셨으면 좋겠네요","설명 끝 매너 마무리. '제 설명 괜찮았나요?' 느낌.","정중","That's the basic idea. I hope that makes sense.","I hope that makes sense. It's a bit complicated."],
+["Does that make ^sense?↗","이해되시죠?","상대 이해를 확인. 가르치는 느낌 안 나게 부드럽게.","중립","We split it into two phases. Does that make sense?","Turn left at the bank. Does that make sense?"],
+["Thanks for ^asking.↘","물어봐 줘서 고마워요","질문에 대한 감사로 시작. 면접관 질문을 받을 때 매너.","정중","Thanks for asking. It's going well.","Oh, thanks for asking. I'm much better."],
+["That's a ^great point.↘","좋은 지적이에요","상대 의견을 존중하는 리액션. 반론 전에도 써요.","정중","That's a great point. We should check that.","That's a great point. I didn't think of that."],
+["I'm ^glad you asked.↘","마침 잘 물어보셨어요","'그 얘기 하고 싶었는데' 반가움. 자신 있는 주제를 받았을 때.","중립","I'm glad you asked. That's my favorite part.","I'm glad you asked. I just got back from there."],
+["I can't ^wait to ~","빨리 ~하고 싶어요","'너무 기대돼요' 설렘. looking forward보다 생동감 있어요.","캐주얼","I can't wait to see the first results.","I can't wait to go diving again."],
+["I'm ^looking forward to ~","~를 기대하고 있어요","차분하고 정중한 기대. 업무 대화·메일 모두.","정중","I'm looking forward to working with you.","I'm looking forward to the weekend."],
+["It totally ^slipped my mind.↘","완전 깜빡했어요","'깜빡 잊었어요' 그대로. forgot보다 덜 무책임하게 들려요.","캐주얼","Sorry, it totally slipped my mind.","Your birthday totally slipped my mind."],
+["I'm ^all for it.↘","전 대찬성이에요","'완전 좋아요, 찬성' 적극 지지.","캐주얼","A pilot test? I'm all for it.","A road trip? I'm all for it."],
+["I'm on the ^fence.↘","아직 고민 중이에요","'반반이라 못 정했어요' 느낌. 의견 질문에서 균형을 잡을 때.","캐주얼","I'm on the fence about the new tool.","I'm on the fence about moving."],
+["It's ^hit or miss.↘","복불복이에요","'될 때도 있고 안 될 때도 있어요' 느낌.","캐주얼","AI translations are hit or miss.","That restaurant is hit or miss."],
+["That ship has ^sailed.↘","이미 늦었어요","'버스 지나갔어요' 그 느낌. 조선소 엔지니어가 쓰면 센스 있는 농담.","캐주얼","We can't change the hull now. That ship has sailed.","That ship has sailed. Let's move on."],
+["It's on my ^bucket list.↘","꼭 해보고 싶은 거예요","'죽기 전에 꼭 해보고 싶은 것' 그대로.","캐주얼","Visiting a shipyard abroad is on my bucket list.","Swimming with whales is on my bucket list."],
+["I can't ^complain.↘","그럭저럭 좋아요","How are you?에 '뭐 나쁘지 않아요' 하는 여유 있는 답.","캐주얼","Work's busy, but I can't complain.","Pretty good. I can't complain."],
+["It took some ^getting used to.↘","적응하는 데 좀 걸렸어요","'익숙해지는 데 시간 좀 걸렸죠' 느낌. 새 경험 답변.","중립","The new software took some getting used to.","Driving on the left took some getting used to."],
+["I'm still getting the ^hang of it.↘","아직 감 잡는 중이에요","'아직 손에 익히는 중' 겸손한 학습 표현.","캐주얼","I'm still getting the hang of Python.","I'm still getting the hang of golf."],
+["It caught me off ^guard.↘","허를 찔렸어요","'예상 못 해서 당황했어요' 느낌. 경험 답변의 반전.","중립","The client's question caught me off guard.","The rain caught me off guard."],
+["I had a ^blast.↘","정말 재밌었어요","'완전 신났어요' fun의 업그레이드.","캐주얼","I had a blast at the team workshop.","We had a blast in Coron."],
+["It was a ^long day.↘","긴 하루였어요","'피곤한 하루였어요'의 자연스러운 표현. tired 대신.","캐주얼","It was a long day of reviews.","It was a long day. I just want to sleep."],
+["It brings back ^memories.↘","추억이 떠올라요","'옛 생각나네요' 감성 표현.","캐주얼","This old drawing brings back memories.","This song brings back memories."],
+["^Speaking of ~,","~ 얘기가 나와서 말인데","화제 전환을 자연스럽게. 팔로업을 연결할 때 좋아요.","캐주얼","Speaking of schedules, when's the next review?","Speaking of food, are you hungry?"],
+["^Anyway, ~","아무튼","곁가지에서 본론으로 복귀. anyhow보다 자연스러워요.","캐주얼","Anyway, back to the main issue.","Anyway, it was a great trip."],
+["By the ^way, ~","그나저나","덧붙이거나 화제를 바꿀 때. 가벼운 톤.","캐주얼","By the way, the client called earlier.","By the way, I love your jacket."],
+["^Either way, ~","어느 쪽이든","'이러나저러나' 결론이 같을 때. '어쨌든'의 정확한 영어.","중립","Either way, we need a decision by Friday.","Either way, I'll be there."],
+["^Regardless, ~","그와 상관없이","'어쨌든 그거랑 별개로' 격식 있게 결론.","격식","Regardless, we'll update the design.","Regardless, we had fun."],
+["Not to ^mention ~","~는 말할 것도 없고","'게다가 ~까지' 강조 추가.","중립","It's cheaper, not to mention easier to build.","It's beautiful, not to mention quiet."],
+["Let ^alone ~","~는커녕","'~는 고사하고' 부정문 강조. 고급 구문이라 5단계에 좋아요.","중립","We can't finish the draft, let alone the final report.","I can't cook pasta, let alone a full meal."],
+["As ^long as ~","~하기만 하면","조건을 강조하는 '~라면 괜찮아요' 느낌.","중립","As long as the data is right, I'm fine with it.","As long as it's warm, I'm happy."],
+["^Whether or not ~","~든 아니든","'하든 안 하든' 조건과 무관하게. 의견 답변 고급 표현.","중립","Whether or not it passes, we learn something.","Whether or not it rains, we're going."],
+["That's pretty much ^it.↘","대충 그 정도예요","답변을 끝내는 자연스러운 마무리. 시험에서 깔끔하게 착지할 때.","캐주얼","That's pretty much it for today.","So yeah, that's pretty much it."]
+];
+
+const DAYS=[
+{type:"자기소개",truth:"verified",q:"Let's start the interview. Tell me a little bit about yourself.",
+ st:["직무","지금 하는 일","요즘 관심","취미","마무리 한 줄"],
+ a:`Sure, | ^happy to.↘ I'm a ^structural engineer | with about ^eleven years in ship and offshore structures.↘ These days, | I ^lead structural design on international projects,↗ | so a ^big part of my job | is **getting everyone on the same page**,↘ | owners, | ^class societies, | ^contractors, | you name it.↘ ^Honestly, | **what I enjoy most** | is taking something ^really technical | and explaining it in ^plain English.↘ **Lately, I've been really into** ^AI.↘ I'm running a ^digital twin project,↗ | and I've been building little ^apps | to automate the boring parts of my job.↘ Outside of work, | I'm a ^scuba diver,↗ | a Rescue Diver, | ^actually,↘ | so **whenever I get the chance**, | I try to get in the ^water.↘ And I'm studying for a professional engineering ^exam, | so my evenings are ^pretty full.↘ But I ^like it that way.↘`,
+ fq:"You mentioned a digital twin. How would you explain that to someone outside engineering?",
+ fa:`Oh, | ^sure.↘ **Think of it as** a ^virtual copy of the structure | that keeps ^updating with real data.↘ So instead of ^guessing | when something might wear out,↗ | you can actually ^see it coming.↘`,
+ note:"직무·프로젝트·자격·시험 준비 모두 실제(E01·E05·E07·E08·E10). 연차는 실제에 맞게."},
+{type:"묘사 · 루틴",truth:"mixed",q:"Tell me about your typical weekday. What does your routine look like?",
+ st:["한 줄 요약","업무","출퇴근","바뀐 생각","교훈"],
+ a:`^Honestly, | my weekdays are ^pretty packed.↘ Most of my day is ^design reviews | and ^calls with overseas clients,↗ | so **it's a mix of** technical work | and a ^lot of talking.↘ Because of that, | I don't really get ^big blocks of free time.↘ So **I try to make the most of** the ^small ones.↘ On my ^commute, | I go through a few short study cards,↗ | ^English, | ^exam prep, | and a bit of ^AI news.↘ I ^used to think | I needed two or three ^hours to study properly,↗ | but **let's be honest**, | that's just not ^realistic with a full-time job.↘ So now I keep it ^short [시간은 실제로].↘ And you know what?↗ | It ^actually works better.↘ **The biggest thing I've learned** | is that ^consistency beats ^intensity.↘`,
+ fq:"Do you think people today are busier than they were in the past? Why?",
+ fa:`In a ^way, | yes.↘ We're not ^necessarily working longer,↗ | but we're ^always reachable.↘ **That's the real difference.**↘ The workday just doesn't ^end anymore.↘`,
+ note:"출퇴근 카드 학습·업무 내용은 실제(E10)."},
+{type:"과거 경험 · 취미",truth:"verified",q:"Tell me about a hobby you really enjoy. Why do you like it?",
+ st:["취미 한 줄","얼마나 진심인지","기억나는 여행","좋은 이유","일과 연결"],
+ a:`Oh, | **that's an easy one for me.**↘ It's ^scuba diving.↘ I actually went all the way to ^Rescue Diver,↗ | so **it's more than just a vacation thing** for me.↘ **One trip that really stands out** is ^Coron, | in the Philippines.↘ We did ^three dives a day,↗ | which was **exhausting, but in a good way**.↘ What I ^love about diving | is that it's a ^completely different world down there.↘ You can't check your ^phone,↗ | you can't think about ^work.↘ It's just ^you, | your ^breathing, | and your ^buddy.↘ It's pretty much the ^only time I fully **switch off**.↘ And the rescue training ^stuck with me, | too.↘ It taught me to stay ^calm under pressure,↗ | which, | **funny enough**, | comes in ^handy at work as well.↘`,
+ fq:"Some people think risky sports aren't worth it. What's your take on that?",
+ fa:`**I can see why people feel that way.**↘ But ^most of the risk | comes from ^skipping the basics.↘ With proper ^training | and **respecting your limits**,↗ | it's a ^lot safer than people think.↘`,
+ note:"Rescue Diver·Coron 하루 3회 다이빙은 실제(E08)."},
+{type:"의견 · 사회",truth:"verified",q:"Some people say AI will replace a lot of jobs. What do you think?",
+ st:["결론","이유","내 예시","단서","정리"],
+ a:`**That's a big question.**↘ ^Honestly, | I don't think AI is going to ^replace engineers,↗ | but it's ^definitely going to change **what we spend our time on**.↘ A lot of what we do is ^repetitive,↗ | updating ^reports, | checking ^numbers, | tracking ^status.↘ **That's exactly where AI shines.**↘ ^Actually, | I've been building a small ^web app with AI tools | to handle project tracking,↗ | because, | ^frankly, | I got ^tired of doing it by hand.↘ It saves me a ^ton of time,↗ | but it doesn't make ^decisions for me.↘ What AI ^can't do, | **at least not yet**, | is take ^responsibility.↘ When a design goes to ^class for approval,↗ | ^somebody has to **stand behind the numbers**.↘ So **if I had to put it simply**, | people who ^use AI | will replace the ones who ^don't.↘`,
+ fq:"If AI takes over routine work, how should companies support the people affected?",
+ fa:`**I think the key is** ^retraining, | not ^replacing.↘ Give people ^time to learn the tools,↗ | and move them toward work that needs ^judgment.↘ That's ^good for the company, | too.↘`,
+ note:"AI 웹앱 자동화 시도는 실제(E07). 학원 자료에 SAIL 예시 질문으로 언급됨."},
+{type:"과거 경험 · 갈등",truth:"verified",q:"Tell me about a time you disagreed with someone at work. How did you handle it?",
+ st:["상황","상대 입장","내가 한 말","배운 점"],
+ a:`**One that comes to mind** | is a discussion I had with a ^technical supplier.↘ They'd run a ^thermal analysis,↗ | and the results were pushing us toward a ^higher steel grade,↗ | which **had a real impact on** fabrication.↘ When I asked them to look into it ^again,↗ | their answer was basically, | "Well, | we ^followed the procedure."↘ And to be ^fair, | that was ^true.↘ But it didn't really address the ^issue.↘ So instead of arguing about who was ^right,↗ | I said, | "**Look, | I'm not asking you to bend the rules.** | I'd just really ^appreciate it | if you could **take another look** at the ^actual operating conditions."↘ And then I added, | "We're supposed to be working as ^partners here, | ^right?"↗ **What I took away from it** | was that you can be ^firm | without being ^rude,↗ | **as long as you keep the focus on the problem**, | not the ^person.↘`,
+ fq:"In general, is it better to avoid conflict at work or to face it directly?",
+ fa:`**I'd say face it, | but respectfully.**↘ ^Avoiding it | usually just makes it ^bigger later.↘ If you keep it about the ^facts,↗ | most people are pretty ^reasonable.↘`,
+ note:"공급사 협의는 실제(E03). 상대가 받아들였는지 등 결과는 지어내지 말 것."},
+{type:"습관 · 주말",truth:"mixed",q:"How do you usually spend your weekends?",
+ st:["상황에 따라","쉬는 방식","요즘 하는 것","계획","한 줄 마무리"],
+ a:`**It really depends on how my week went.**↘ If it was a ^crazy week,↗ | I mostly **take it easy** | and catch up on ^sleep [실제로].↘ But **lately I've been trying to** spend more time with my ^parents.↘ ^Actually, | I've been ^planning a short trip to ^Gyeongju with them this fall.↘ **The foliage there is supposed to be amazing** this time of year,↗ | and I've already looked up a few ^local restaurants,↗ | because, | **let's be real**, | with my parents, | ^food is half the trip.↘ I also try to **squeeze in** a little ^studying,↗ | but if I skip it, | **I don't beat myself up about it**.↘ Weekends are for ^recharging.↘ Otherwise, | the next week just ^falls apart.↘`,
+ fq:"How has the way people in Korea spend their weekends changed over the years?",
+ fa:`I'd say people care a lot more about ^balance now.↘ It ^used to be all about ^resting,↗ | but **these days**, | people actually ^plan their weekends,↗ | ^hobbies, | ^short trips, | that kind of thing.↘`,
+ note:"경주는 계획 단계(실제) → 'I've been planning'. 'is supposed to be' = 안 가본 곳을 정직하게. 'food is half the trip'은 농담 — 맞지 않으면 빼기."},
+{type:"롤플레이 · 문제 해결",truth:"hypothetical",q:"Role-play: You booked a hotel for a business trip, but your flight was cancelled. Call the hotel, explain the situation, and suggest two or three options.",
+ st:["인사·용건","상황 설명","양해 구하기","대안 ①②③","확인·감사"],
+ a:`Hi, | good ^morning.↘ **I'm calling about** a reservation under my ^name.↘ I'm supposed to check in ^tomorrow night,↗ | but ^unfortunately, | my flight just got ^cancelled,↗ | and the earliest one I could get | lands the day ^after.↘ **I totally understand it's last minute**, | so I really ^appreciate your help.↘ **I was wondering if** it would be ^possible | to push my reservation back by ^one day?↗ If that doesn't ^work,↗ | could you maybe cancel just the ^first night | without a ^charge?↗ I'd be happy to keep the ^rest of the booking.↘ Or **alternatively**, | if there ^is a fee,↗ | could you let me know ^how much | before we change anything?↗ And **just to make sure we're on the same page**, | could you send me a ^confirmation email once it's updated?↗ Thank you ^so much.↘`,
+ fq:"I'm afraid we can't change the date. What would you like to do?",
+ fa:`Oh, | **no worries, | I totally understand.**↘ In that case, | could you cancel the ^first night | and keep the ^rest?↗ And if there's ^any way to waive the fee,↗ | I'd **really appreciate it**.↘`,
+ note:"롤플레이는 상황 자체가 가상. 양해 → 대안 2~3개 → 확인 → 감사 구조가 핵심."},
+{type:"묘사 · 직장",truth:"mixed",q:"Describe your workplace. What is it like, and what do you usually do there?",
+ st:["한 줄 그림","공간","좋은 점","하루 업무","장단점"],
+ a:`^Sure.↘ I work at a ^large shipyard,↗ | so it's kind of **a mix of** ^office work | and a ^very industrial environment.↘ My team sits in an ^office building,↗ | but right ^outside, | there are these ^huge vessels under construction | and ^cranes everywhere.↘ **What I like most about it** | is that what we design on ^screen | actually gets ^built right in front of us.↘ It's **not the most glamorous place**,↗ | but the first time you see it, | it's ^pretty impressive.↘ On a typical day, | I'm in design ^reviews, | on calls with overseas ^clients, | or going over analysis ^results with my team.↘ **The best part is** the ^people.↘ Everyone's ^busy,↗ | but when something goes ^wrong, | we really **pull together** [실제 느낌으로].↘ The ^downside?↗ | It gets pretty ^hectic before deadlines.↘`,
+ fq:"Some people say a good work environment matters more than salary. Do you agree?",
+ fa:`**For the most part, | yes.**↘ Money ^matters, | don't get me wrong.↘ But if you ^dread going to work every day,↗ | no salary really ^makes up for that.↘`,
+ note:"조선소 근무·업무는 실제. 분위기 묘사는 본인 느낌으로 조정."},
+{type:"미래 · 희망",truth:"verified",q:"Tell me about a place you'd really like to visit someday, and why.",
+ st:["장소","하고 싶은 것","아는 정보","끌리는 이유","계획"],
+ a:`Oh, | **there's one place that's been on my bucket list for a while**,↗ | ^Tahiti.↘ ^Specifically, | I'd love to **swim with humpback whales** there.↘ I've done a ^fair amount of diving,↗ | so I'm ^comfortable in the water,↗ | but this would be **on a whole different level**.↘ **From what I've read**, | there's a ^season when the whales come close to the islands,↗ | and you can actually get in the water with them, | with a ^guide, | of course.↘ I guess **I'm drawn to places where** ^nature is the main event, | not the ^shopping.↘ I haven't been ^yet,↗ | and honestly, | it's not a ^cheap trip,↗ | so I'd want to plan it ^properly.↘ But **if I ever get the chance**, | I'm ^definitely not passing it up.↘`,
+ fq:"Tourism can damage places like that. How can we balance tourism and protecting nature?",
+ fa:`**That's a fair point.**↘ I think ^limits help a lot,↗ | like ^small groups | and strict ^rules around the animals.↘ If it's done ^right, | tourism can actually help ^fund conservation.↘`,
+ note:"타히티는 관심·조사만 사실(E09) → 'I haven't been yet', 'From what I've read'."},
+{type:"과거 경험 · 고객",truth:"verified",q:"Tell me about a time you had to manage a client's expectations.",
+ st:["상황","요청","범위 확인 질문","두 묶음","이유"],
+ a:`**This actually comes up quite a bit for me.**↘ ^Recently, | we were presenting a structural ^digital twin to a client,↗ | and they got really ^excited, | which was ^great.↘ But then they started asking for things like a topside ^interface | and ^real-time monitoring | at a really high ^frequency.↘ So ^first, | I wanted to understand what they ^actually meant.↘ I asked, | "Just so I'm on the same page, | when you say ^real-time, | are we talking ^second-by-second?"↗ Then I split it into ^two buckets:↗ | what we can deliver ^this year,↗ | and what would need a ^separate workstream.↘ **I'd rather be upfront about it** | than ^overpromise | and end up ^disappointing them later.↘ It's not the most ^exciting thing to say in a meeting,↗ | but **in the long run**, | it ^builds trust.↘`,
+ fq:"Why do you think projects so often go over budget or behind schedule?",
+ fa:`**In my experience**, | it's usually not ^bad engineering.↘ It's ^unclear scope.↘ If everyone isn't on the ^same page early on,↗ | the changes just keep ^piling up.↘`,
+ note:"범위 구분은 실제(E06). 고객 반응·계약 여부는 미확인."},
+{type:"의견 · 리더십",truth:"verified",q:"What's more important for a team leader: technical skills or communication skills?",
+ st:["결론 + 단서","이유","내 경험","반대 측면","정리"],
+ a:`**If I had to pick one**, | I'd say ^communication,↗ | but with a ^big asterisk.↘ **Here's why.**↘ In my experience leading structural design on ^offshore projects,↗ | the analysis is ^rarely the hardest part.↘ **The tricky part is** getting the ^owner, | the ^class society, | and the ^contractor | **on the same page**,↗ | because they all have ^different priorities.↘ **That said**, | you can't communicate well | about something you don't ^understand.↘ If I can't explain the ^trade-offs clearly,↗ | people won't ^trust the recommendation.↘ So **I'd put it this way**:↗ | technical skills **earn you a seat at the table**,↗ | but communication is what ^actually moves the project ^forward.↘`,
+ fq:"Do you think great leaders are born or made?",
+ fa:`**I'd say mostly made.**↘ Some people are ^naturally confident, | sure.↘ But things like ^listening | and making ^tough calls | really come from ^experience.↘`,
+ note:"Owner·Class·EPC 조정 경험은 실제(E01)."},
+{type:"습관 · 스트레스",truth:"mixed",q:"What do you usually do when you're stressed out?",
+ st:["종류에 따라","업무 스트레스","번아웃","평소","한 줄"],
+ a:`Hmm, | **it really depends on what kind of stress it is.**↘ If it's ^work stress, | like a tight ^deadline,↗ | **the worst thing I can do** | is just ^stare at the whole thing.↘ So I **break it down** into smaller ^tasks | and **knock out** the ^easy ones first.↘ **That alone takes a lot of the pressure off.**↘ But when it's more of a ^burnout kind of stress,↗ | I need to ^physically get away from it.↘ And for me, | the best ^reset is ^diving.↘ **Once I'm underwater**, | there's ^literally no way to check emails.↘ ^Obviously, | I can't go diving every ^weekend,↗ | so in a normal week, | I just try to get some ^fresh air [실제로].↘ It ^sounds simple,↗ | but it ^works.↘`,
+ fq:"Why do you think stress levels are so high among office workers these days?",
+ fa:`**I think it's a mix of things.**↘ Long ^hours, | ^competition, | and always being ^online.↘ **The good news is**, | people are talking about it a lot ^more now.↘`,
+ note:"다이빙은 실제. 평소 대처법은 실제 습관으로 교체."},
+{type:"롤플레이 · 질문하기",truth:"hypothetical",q:"Role-play: A colleague has started using a new AI tool. Ask them three or four questions about it.",
+ st:["양해 구하기","질문 ① 기간","② 용도","③ 정확도","④ 배울 가치","이유·마무리"],
+ a:`Hey, | **do you have a minute?**↗ I heard you started using that new ^AI tool for reports,↗ | and **I've been meaning to ask you about it.**↘ ^First, | how long have you been ^using it?↘ And what do you ^mostly use it for?↘ Is it just for ^drafting,↗ | or does it help with checking ^numbers, | too?↗ **I'm also curious about** ^accuracy.↘ Have you ever caught it making ^mistakes, | like getting a technical term ^wrong?↗ And **one last thing**:↗ | is it ^worth the time it takes to learn?↗ I'm thinking about trying it for our ^meeting minutes,↗ | so **any tips would be great.**↘ No ^rush, | though.↘`,
+ fq:"Honestly, I use it for almost everything now. Do you think the whole team should use it?",
+ fa:`**Maybe not all at once.**↘ I'd start with a ^small pilot, | ^see what works, | and ^then roll it out.↘ That way, | we're not ^forcing it on anyone.↘`,
+ note:"질문 형태를 다양하게: How long / What / Have you ever / Is it worth. 'No rush, though.'로 매너 있게 마무리."},
+{type:"과거 경험 · 발표",truth:"mixed",q:"Tell me about a time you had to speak in front of a group. How did it go?",
+ st:["언제·어디","역할","진짜 어려움","내 방법","Q&A 대처"],
+ a:`**A good example is** a workshop I did in ^Oslo,↗ | with people from several different ^organizations.↘ My role was to **walk them through** the hull structure side of things | and handle the ^Q&A.↘ Now, | **the challenge wasn't the content itself.**↘ I know the material ^well.↘ It was that everyone in the room had a ^different background | and ^different priorities.↘ Some people were ^deep into the technical details,↗ | and others just wanted **the big picture**.↘ So I tried to break things down | into a ^simple storyline:↗ | what the ^problem is, | what our ^options are, | and what we ^recommend.↘ And during the Q&A, | when I got a ^tough question,↗ | I'd say something like, | "**That's a great point. | Let me make sure I understand the question,**"↘ | which bought me a ^second to think.↘`,
+ fq:"In your opinion, what makes a presentation really effective?",
+ fa:`**Honestly, | knowing your audience.**↘ The same ^content can land completely ^differently | depending on ^who's in the room.↘ So I always ask myself, | what do ^they need to walk away with?↘`,
+ note:"오슬로 워크숍·Q&A 역할은 실제(E02). 청중 반응은 미확인 — 추가하지 말 것."},
+{type:"과거 경험 · 문제 발견",truth:"verified",q:"Tell me about a time you noticed a problem that others might have missed.",
+ st:["상황","겉보기엔 OK","내가 던진 질문","목적","품질에 대한 생각"],
+ a:`**One example is** when a partner company sent us a ^weld evaluation.↘ They'd used a ^2D shell model,↗ | and **on paper**, | the numbers looked ^fine.↘ But I've learned **not to stop at the final numbers.**↘ If I can't explain ^how a result was produced,↗ | I can't really ^defend it | in front of the client or the class society.↘ So I asked them a few ^basic questions, | ^politely.↘ What ^element type did you use?↘ What were the ^boundary conditions and load cases?↘ And ^where exactly did you read the stress?↘ I also asked if they could share the ^model itself.↘ **It wasn't about assuming they were wrong.**↘ It was about making the analysis ^traceable.↘ For me, | quality isn't just a ^passing number.↘ It's being able to **stand behind** ^how you got there.↘`,
+ fq:"Do you think people rely too much on numbers and data these days?",
+ fa:`**Sometimes, | yes.**↘ Numbers ^look objective,↗ | but they're only as good as the ^assumptions behind them.↘ So I'd say | trust the data,↗ | but ^always ask where it came from.↘`,
+ note:"질문 항목은 실제(E04). 상대 방법이 틀렸다는 결론은 미확인."},
+{type:"의견 · 배움",truth:"verified",q:"Is it better to learn new skills on your own or through formal training?",
+ st:["조건부 결론","이유","내 예시","단점 인정","이상적 방법"],
+ a:`**I think it depends on the stage you're at**,↗ | but these days, | **I lean toward** learning on my ^own,↗ | with some ^structure.↘ **Here's my thinking.**↘ Formal training is ^great for the fundamentals,↗ | because it gives you a ^framework.↘ But **once you have the basics**,↗ | the fastest way to learn | is to **build something real**.↘ **Take AI tools, for example.**↘ No course can keep up with how ^fast they're changing.↘ So I've been learning by ^doing, | building small apps to automate parts of my ^work.↘ There's a ^steep learning curve,↗ | and I get ^stuck a lot,↗ | but every time I get ^unstuck, | it really ^sticks.↘ **The one downside is** | that you can pick up ^bad habits without feedback.↘ So ideally, | I'd do ^both.↘`,
+ fq:"Should schools focus more on practical skills than academic knowledge?",
+ fa:`**I'd say they need both, | but the balance is a bit off.**↘ Students learn a ^lot of theory,↗ | but not enough about ^applying it.↘ ^More hands-on projects | would make a ^huge difference.↘`,
+ note:"AI 도구로 앱을 만들며 배우는 중인 것은 실제(E07)."},
+{type:"비교 · 과거와 현재",truth:"mixed",q:"How has the way people work changed compared to ten years ago?",
+ st:["가장 큰 변화","예전 (과거시제)","요즘","장점 / 단점","다음 변화"],
+ a:`**The biggest change, | I'd say,** | is that ^distance doesn't matter as much ^anymore.↘ Ten years ^ago, | if we had a design issue with an overseas client,↗ | it ^usually meant a long email chain | or a ^business trip.↘ **These days**, | we just **jump on a video call**, | share the model on ^screen,↗ | and **sort it out** in an ^hour.↘ **On the plus side**, | decisions happen ^much faster.↘ **On the flip side**, | the workday never ^really ends,↗ | because ^someone's always online in a different time zone.↘ And now with ^AI, | I think the next big change | is how much ^routine work just disappears.↘ **The challenge** will be making sure people still understand | what's going on ^under the hood.↘`,
+ fq:"Do you think these changes have made people happier at work?",
+ fa:`**That's a tough one.**↘ More ^flexible, | ^definitely.↘ ^Happier? | I'm not so ^sure.↘ It really depends on whether people can set ^boundaries.↘`,
+ note:"과거↔현재 시제 대비가 이 유형의 채점 포인트."},
+{type:"의견 · 환경",truth:"mixed",q:"What do you think about stricter environmental regulations in the shipping industry?",
+ st:["입장","이유","장점 (혁신)","단서 (현실)","조건부 정리"],
+ a:`**Honestly, | I think they're necessary**, | even though they're ^tough on the industry.↘ Shipping moves ^most of the world's goods,↗ | so the emissions really ^add up.↘ **Without regulations**, | there's not much ^incentive to change,↗ | because cleaner technology costs more ^upfront.↘ **On the plus side**, | the rules are pushing real ^innovation.↘ Ships that run on ^LNG are becoming pretty common,↗ | and people are working on ^ammonia and ^methanol, | too.↘ **That said**, | the timelines can be really ^aggressive.↘ Shipowners have to make ^huge investment decisions | without knowing which fuel will ^win in the long run.↘ So I'd say | the ^direction is right,↗ | but the rules need to be ^clear and ^predictable,↗ | so the industry can actually ^plan for them.↘`,
+ fq:"Who should pay for going green: companies, governments, or consumers?",
+ fa:`**Realistically, | all three.**↘ ^Governments can help with ^incentives,↗ | companies have to ^invest,↗ | and ^consumers will probably see slightly higher prices.↘ **It's not black and white.**↘`,
+ note:"업계 일반론으로만 답하기(회사 정보 X). SAIL은 사회·환경 의견 비중이 높다는 후기."},
+{type:"과거 경험 · 도전",truth:"mixed",q:"Tell me about a skill that was difficult for you to learn.",
+ st:["기술","전과 후","무엇을 했나","진짜 어려움","교훈"],
+ a:`**One skill that really pushed me** was ^rescue diver training.↘ Before that, | diving was mostly about enjoying the ^view.↘ But rescue training is **a whole different story**.↘ You practice things like bringing an ^unresponsive diver to the surface,↗ | or dealing with a ^panicked diver,↗ | and you have to think ^clearly | while your heart is ^racing.↘ **What made it hard** wasn't just the ^physical part.↘ It was learning to slow ^down | when every instinct tells you to ^rush.↘ **The biggest takeaway** for me | was that staying calm is a ^skill,↗ | not a ^personality trait.↘ You can actually ^train it.↘ And honestly, | **that's come in handy** in tense ^meetings, | too.↘`,
+ fq:"Do difficult experiences make people stronger, or can they hold people back?",
+ fa:`**I think it depends on the support you have.**↘ With the right ^people around you,↗ | tough experiences make you ^stronger.↘ Without it, | they can ^definitely hold you back.↘`,
+ note:"Rescue Diver 자격은 실제. 훈련 장면은 PADI 표준 과정 — 본인이 기억하는 장면으로 바꾸면 더 강함."},
+{type:"과거 경험 · 프로젝트",truth:"verified",q:"Tell me about a project you're excited about right now.",
+ st:["프로젝트","쉬운 설명","목표","정직한 현황","왜 설레나"],
+ a:`Oh, | **the one I'm most excited about** | is a structural ^digital twin | for an offshore floating unit,↗ | where I'm the project ^manager.↘ **The basic idea is pretty simple.**↘ Right now, | inspections are mostly done on a ^fixed schedule,↗ | whether the structure ^needs it or not.↘ We're trying to **connect the dots** between ^motion data, | ^structural stress, | ^fatigue, | and ^inspection planning.↘ **In other words**, | we want to turn operating data into ^decisions,↗ | ^where to inspect, | and ^when.↘ It's ^still in development,↗ | so **I don't want to oversell it**.↘ But **what really excites me** | is that it could move us from ^reactive | to ^proactive.↘`,
+ fq:"What could go wrong when companies rely too much on systems like that?",
+ fa:`**The biggest risk is blind trust.**↘ If the ^input data is bad,↗ | the decisions will be ^bad too.↘ **That's why** you still need ^engineers checking the results.↘`,
+ note:"DT PM 역할은 실제(E05). 승인·비용 절감 '달성'은 말하지 않기."},
+{type:"묘사 · 동네",truth:"hypothetical",q:"Describe the area where you live. What do you like or dislike about it?",
+ st:["한 줄 그림","분위기","좋은 점","단점","가정"],
+ a:`I live in a fairly ^quiet residential area [실제 동네로].↘ **It's the kind of place where** | you see the ^same faces at the coffee shop every morning.↘ **What I like most about it** | is that ^everything I need is **within walking distance**,↗ | a grocery store, | a few good ^restaurants, | and a small ^park [실제로].↘ It's **not the most exciting neighborhood**,↗ | but after a ^long day, | that's ^exactly what I want.↘ The ^only downside is the ^traffic during rush hour.↘ It can take ^forever just to get out of the area.↘ **If I could change one thing**, | I'd add more ^walking trails,↗ | because I've been trying to get more ^exercise lately.↘`,
+ fq:"What do you think makes a neighborhood a good place to raise a family?",
+ fa:`**I'd say safety first, | then community.**↘ Good ^schools matter, | of course.↘ But knowing your ^neighbors | makes a ^huge difference.↘`,
+ note:"동네 정보가 없어 틀만 제공. [ ] 부분을 실제로 채워서 외우세요."},
+{type:"돌발 · 기술",truth:"mixed",q:"What kind of technology do you use every day, and how has it changed your life?",
+ st:["대표 기술","업무 활용","생활 활용","바뀐 생각","단점","정리"],
+ a:`**The obvious answer is** my ^smartphone,↗ | but honestly, | the ^bigger change for me has been ^AI tools.↘ I use them pretty much ^every day now.↘ At work, | I use them to ^summarize long documents | and ^draft emails,↗ | and I've even built a couple of small ^apps with AI's help.↘ **It's saved me a ton of time.**↘ On my commute, | I use my phone to ^study.↘ I used to think I needed ^long blocks of time,↗ | but **it turns out** | small pockets of time really ^add up.↘ **The downside is** | it's hard to ^switch off.↘ If I'm not ^careful, | I end up checking work stuff late at ^night.↘ So I'd say | technology's made me more ^productive,↗ | but I have to set my ^own limits.↘`,
+ fq:"Should there be stricter rules on how much time children spend on smartphones?",
+ fa:`**I'd lean toward yes, | at least for younger kids.**↘ But ^rules alone won't work.↘ Parents have to set a good ^example, | too,↗ | **which is easier said than done**.↘`,
+ note:"AI 도구·출퇴근 학습은 실제(E07·E10)."},
+{type:"롤플레이 · 업무 문제",truth:"hypothetical",q:"Role-play: A supplier just told you their delivery will be two weeks late. Call them, find out why, and propose some solutions.",
+ st:["감사","영향 설명","원인 질문","대안 ①②","기한 요청"],
+ a:`Hi, | **thanks for letting us know** about the delay.↘ **I really appreciate the heads-up.**↘ **I'll be honest with you**, | though.↘ Two weeks is a ^big problem for our schedule,↗ | so I'd like to understand what's going ^on.↘ **Could you walk me through** what caused it?↗ Is it a ^material issue,↗ | or a ^production issue?↘ **The reason I ask** is that it changes what we can ^do.↘ What would it ^take to bring it forward?↘ For example, | could you split the delivery | and send the most ^critical parts first?↗ Or **alternatively**, | could you add an extra ^shift to catch up?↗ **We're on the same team here**,↗ | so **I'd really appreciate it if** | you could send me a recovery plan by ^tomorrow.↘`,
+ fq:"We can only send half on time. Would that work for you?",
+ fa:`**That would definitely help, | thank you.**↘ Let's just make sure the ^critical items are in that first half.↘ Could you send me the ^list today?↗`,
+ note:"상황은 가상, 말투는 실제 협력사 협의(E03)에서 가져옴. 감사 → 단호 → 협력의 순서가 매너."},
+{type:"과거 경험 · 결정",truth:"mixed",q:"Tell me about a difficult decision you had to make at work.",
+ st:["상황","겉보기 정답","현실 문제","설득","결과","교훈"],
+ a:`**One that comes to mind** | is choosing between two structural design ^options on an offshore project [실제 사례로].↘ **On paper**, | option A looked ^better.↘ It was ^lighter,↗ | and the analysis results were ^clean.↘ **But the thing is**, | it would've been ^really hard to fabricate,↗ | and inspectors would've had trouble getting ^in there later.↘ Option B was a bit ^heavier,↗ | but much more ^practical in the real world.↘ It ^wasn't an easy call,↗ | because some people were only looking at the ^numbers.↘ So I **walked them through the trade-offs**:↗ | weight versus ^fabrication, | ^inspection, | and ^maintenance.↘ **In the end**, | we went with the ^practical option [실제 결과로].↘ **Looking back**, | it taught me that the best ^technical answer | isn't always the best answer for the ^project.↘`,
+ fq:"If you could go back, would you do anything differently?",
+ fa:`Maybe I'd bring in the ^fabrication team earlier.↘ If they'd been in the room from ^day one,↗ | we could've ^saved a few rounds of discussion.↘`,
+ note:"제작성·검사 접근성을 함께 보는 판단은 실제(E11). 구체 사례·결과는 실제 것으로."},
+{type:"가정",truth:"hypothetical",q:"If you were the CEO of your company for a day, what would you focus on first?",
+ st:["If I were ~, I'd ~","이유","구체 실행","현실 인정","기대 효과"],
+ a:`Oh, | **that's a fun one.**↘ **If I were the CEO for a day**, | I'd focus on how our engineers ^spend their time.↘ **Here's why.**↘ A lot of really ^skilled people | spend hours on ^repetitive work,↗ | like updating ^reports | and tracking status ^by hand.↘ **If it were up to me**, | I'd set up a small team to ^automate that,↗ | and I'd let the ^engineers suggest what to automate,↗ | because ^they know where the pain points are.↘ I'd also make sure people get ^real time to learn these tools,↗ | not just a ^one-day training.↘ Of course, | one day isn't enough to change ^much.↘ But if I could get the ball ^rolling,↗ | I think it would ^really pay off in the long run.↘`,
+ fq:"What do you think is the most important quality for a CEO?",
+ fa:`**I'd say the ability to listen.**↘ CEOs are ^far from the actual work,↗ | so they need people who'll tell them the ^truth,↗ | and they have to ^want to hear it.↘`,
+ note:"가정법(If I were… I'd…)을 끝까지 유지하는 것이 상위 등급 신호."},
+{type:"의견 · 장단점",truth:"mixed",q:"What are the pros and cons of working from home?",
+ st:["한 줄 평가","장점 ①②","단점","내 분야 예시","절충안"],
+ a:`**I'd say it's a double-edged sword.**↘ **On the plus side**, | you save a ^lot of time on commuting,↗ | and it's easier to ^focus when you're doing deep work, | like checking analysis results.↘ **On top of that**, | video calls are so ^normal now | that distance doesn't really ^matter as much.↘ **On the flip side**, | you lose the ^small conversations.↘ In my field, | a lot of problems get solved | when you just walk over to someone's ^desk | and look at a drawing ^together.↘ **That's easier said than done** over a screen.↘ So personally, | I think a ^hybrid model makes the most sense.↘ Work from home when you need to ^focus,↗ | and come in when you need to ^collaborate.↘`,
+ fq:"Do you think remote work will become the norm in the future?",
+ fa:`**For some jobs, | definitely.**↘ But for work like ^mine, | where you're dealing with ^physical things,↗ | I think the office is here to ^stay.↘`,
+ note:"의견 답변. 실제 근무 형태에 맞게 선호를 조정."},
+{type:"과거 경험 · 유머",truth:"hypothetical",q:"Tell me about a funny or memorable conversation you had recently.",
+ st:["예고","상황","반전","내 한마디","느낀 점"],
+ a:`**This is a small thing, | but it made me laugh.**↘ A friend of mine was ^complaining | that I check my phone ^too much at dinner [실제 일화로].↘ And, | **fair enough**.↘ But ^literally five minutes later,↗ | ^they were scrolling through ^their phone.↘ So I said, | "Oh, | **come on**, | **you've got a bit of a double standard going on there**."↘ And we both just ^cracked up.↘ **What I like about moments like that** | is that you can ^call someone out | without it turning into an ^argument.↘ **A little humor goes a long way.**↘`,
+ fq:"Do you think humor is important in the workplace? Why?",
+ fa:`**Definitely, | as long as it's not at someone's expense.**↘ A ^light comment can take the ^tension out of a tough meeting.↘ It reminds everyone we're on the ^same team.↘`,
+ note:"상황 전체가 가상 — 실제 가족·친구 일화로 바꿔 외우세요."},
+{type:"의견 · 커리어",truth:"mixed",q:"Some people stay at one company for a long time, while others change jobs often. What's your view?",
+ st:["정답 없음","한 회사의 장점","이직의 장점","위험","내 기준"],
+ a:`**I don't think there's one right answer.**↘ **It really comes down to** | what you want to ^build.↘ ^Staying at one company | lets you go ^deep.↘ You understand how things ^really work,↗ | people ^trust you,↗ | and you get to take on ^bigger responsibilities.↘ **On the other hand**, | changing jobs exposes you to ^different ways of doing things,↗ | and it can ^speed up your growth, | especially early in your ^career.↘ **The risk is** | that you never stay long enough | to see the ^results of your own decisions.↘ So I'd say | it's not about how ^long you stay.↘ It's about whether you're still ^learning.↘`,
+ fq:"How do younger generations view job security compared to older ones?",
+ fa:`**I think they see it very differently.**↘ For my ^parents' generation, | one company for ^life was the goal.↘ Younger people care more about ^growth | and ^flexibility.↘ **And honestly, | I get it.**↘`,
+ note:"의견 답변. 본인 생각에 맞게 조정."},
+{type:"의견 · AI와 책임",truth:"verified",q:"Should AI be used to make important decisions? Why or why not?",
+ st:["입장","핵심 이유","인정 (AI 강점)","내 프로젝트 예시","정리"],
+ a:`**I think AI should support important decisions**,↗ | but not ^make them on its own.↘ **The main reason is** ^accountability.↘ In engineering, | when a design gets ^approved, | a ^person has to stand behind it.↘ If something goes ^wrong,↗ | "the AI said so" | just isn't an acceptable ^answer.↘ **That said**, | AI is ^incredibly good at handling huge amounts of data,↗ | and it can spot ^patterns that people miss.↘ For example, | in my digital twin project, | the goal is to use data to decide ^where and ^when to inspect a structure.↘ But the ^final call | still needs to come from an engineer | who understands the ^context.↘ So **I'd put it this way**:↗ | let AI do the ^heavy lifting,↗ | but keep a ^human in the loop.↘`,
+ fq:"If an AI system makes a serious mistake, who should be responsible?",
+ fa:`**That's the million-dollar question.**↘ I'd say the ^company that deploys it,↗ | not the ^user.↘ If you put it into ^service, | you ^own the outcome.↘`,
+ note:"DT 목표는 실제(E05)."},
+{type:"미래 · 목표",truth:"mixed",q:"Where do you see yourself in five years?",
+ st:["되고 싶은 모습","지금 하는 일","키우고 싶은 것","개인 목표","마무리"],
+ a:`**In five years**, | I'd ^love to be the person | who connects traditional structural engineering | with ^digital technology.↘ Right now, | I'm working on a ^digital twin project,↗ | and I can ^already see how much value there is | in using ^real operating data.↘ **I'd like to take that further** | and help turn it into a ^real service, | not just a ^pilot [목표는 본인 생각으로].↘ On a ^personal level, | I want to pass my professional engineering ^exam,↗ | and I'd love to get comfortable enough in ^English | to lead international meetings | without thinking ^twice.↘ **If I can pull that off**, | I think I'll be in a ^really good place.↘ And hopefully, | I'll still have time for a few ^diving trips.↘`,
+ fq:"What advice would you give someone just starting a career in engineering?",
+ fa:`**Ask a lot of questions, | even the basic ones.**↘ Nobody expects you to know ^everything.↘ But they ^do expect you to understand ^why you're doing something.↘`,
+ note:"현재 하는 일·시험 준비는 실제. 5년 목표는 본인 생각으로 다듬기."}
+];
+
+/* 모범 답안 / 팔로업 답의 한국어 어감 (의역). [본 답안, 팔로업 답] — Day 순서 */
+const KO=[
+["네, 그럼요. 저는 선박·해양 구조 분야에서 11년쯤 일한 구조 엔지니어예요. 요즘은 국제 프로젝트의 구조 설계를 이끌고 있어서, 선주든 선급이든 시공사든 다 같은 생각을 하게 맞추는 게 제 일의 큰 부분이에요. 솔직히 제일 즐거운 건 정말 기술적인 내용을 쉬운 말로 풀어주는 거예요. 요즘은 AI에 푹 빠져 있어요. 디지털 트윈 프로젝트를 맡고 있고, 일 중에 지루한 부분을 자동화하는 작은 앱들도 만들고 있어요. 일 밖에서는 스쿠버 다이버예요. 사실 레스큐 다이버 자격도 있어서 기회만 되면 물에 들어가요. 그리고 기술사 시험 공부도 하고 있어서 저녁이 꽤 꽉 차 있어요. 그래도 그렇게 사는 게 좋아요.","아, 그럼요. 실제 데이터로 계속 업데이트되는 구조물의 '가상 쌍둥이'라고 생각하시면 돼요. 그래서 언제 닳을지 짐작하는 대신, 미리 눈으로 보이는 거죠."],
+["솔직히 평일은 꽤 빡빡해요. 하루 대부분이 설계 검토랑 해외 고객 통화라서, 기술 업무 반, 말하는 일 반이에요. 그래서 길게 비는 시간이 거의 없어요. 대신 자투리 시간을 최대한 써요. 출퇴근길엔 짧은 학습 카드를 몇 장 봐요. 영어, 시험 공부, AI 뉴스 조금이요. 예전엔 제대로 공부하려면 두세 시간은 있어야 한다고 생각했는데, 솔직히 직장 다니면서 그건 현실적이지 않잖아요. 그래서 지금은 짧게 해요. 근데 있잖아요, 그게 오히려 더 잘 되더라고요. 제일 크게 배운 건 몰아치기보다 꾸준함이 이긴다는 거예요.","어떻게 보면 그래요. 꼭 더 오래 일하는 건 아닌데, 항상 연락이 닿는 상태잖아요. 그게 진짜 차이 같아요. 일하는 시간이 끝나질 않는 거죠."],
+["아, 그건 쉬운 질문이네요. 스쿠버 다이빙이에요. 레스큐 다이버까지 땄으니까 저한테는 그냥 휴가 때 하는 취미 이상이에요. 특히 기억에 남는 건 필리핀 코론 여행이에요. 하루에 세 번씩 들어갔는데, 힘들었지만 기분 좋은 피곤함이었어요. 다이빙이 좋은 건 물속이 완전히 다른 세상이라는 거예요. 휴대폰도 못 보고 일 생각도 못 해요. 나, 내 호흡, 내 버디뿐이죠. 제가 완전히 스위치를 끌 수 있는 거의 유일한 시간이에요. 레스큐 훈련도 계속 남아 있어요. 압박 속에서 침착하라는 걸 배웠는데, 웃기게도 그게 회사에서도 꽤 쓸모 있더라고요.","왜 그렇게들 생각하는지는 이해돼요. 그런데 위험의 대부분은 기본을 건너뛰는 데서 와요. 제대로 훈련받고 자기 한계를 지키면 생각보다 훨씬 안전해요."],
+["큰 질문이네요. 솔직히 AI가 엔지니어를 대체할 거라고는 생각 안 해요. 그런데 우리가 시간을 어디에 쓰는지는 확실히 바꿀 거예요. 우리 일의 상당 부분이 반복 작업이거든요. 보고서 업데이트, 숫자 확인, 진행 상황 관리 같은 거요. 바로 거기가 AI가 빛나는 영역이에요. 실제로 저도 AI 도구로 프로젝트 관리용 작은 웹앱을 만들고 있어요. 솔직히 손으로 하는 게 지겨워서요. 시간은 엄청 아껴주지만 결정까지 해주진 않아요. AI가 못 하는 건, 적어도 아직은, 책임지는 거예요. 설계가 선급 승인을 받으러 가면 누군가는 그 숫자를 책임져야 하잖아요. 그래서 간단히 말하면, AI를 쓰는 사람이 안 쓰는 사람을 대체할 거예요.","핵심은 대체가 아니라 재교육이라고 봐요. 도구를 배울 시간을 주고, 판단이 필요한 일 쪽으로 옮겨주는 거죠. 그게 회사에도 좋아요."],
+["떠오르는 건 한 기술 협력사와의 논의예요. 그쪽에서 온도 해석을 했는데, 결과가 더 높은 강재 등급 쪽으로 가고 있었고 그게 제작에 실제로 큰 영향을 줬어요. 다시 봐 달라고 했더니 대답이 사실상 '저희는 절차대로 했는데요'였어요. 공정하게 말하면 맞는 말이긴 했죠. 그런데 문제 해결은 안 됐어요. 그래서 누가 맞냐로 다투는 대신 이렇게 말했어요. '규정을 어기라는 게 아니에요. 실제 운전 조건을 한 번만 다시 봐 주시면 정말 감사하겠어요.' 그리고 덧붙였죠. '우리 파트너로 일하는 거잖아요, 그렇죠?' 거기서 배운 건, 사람이 아니라 문제에 집중하면 무례하지 않으면서도 단호할 수 있다는 거예요.","정면으로 다루되 정중하게 하는 게 낫다고 봐요. 피하면 보통 나중에 더 커지거든요. 사실에 집중하면 대부분 사람들은 꽤 합리적이에요."],
+["그 주가 어땠느냐에 따라 정말 달라요. 정신없는 주였으면 대부분 쉬면서 잠을 보충해요. 그런데 요즘은 부모님이랑 시간을 더 보내려고 해요. 사실 이번 가을에 부모님 모시고 경주에 짧게 다녀오려고 계획 중이에요. 이맘때 단풍이 그렇게 예쁘다더라고요. 현지 맛집도 몇 군데 찾아 놨어요. 솔직히 부모님이랑 가면 음식이 여행의 반이거든요. 주말에도 공부를 조금 끼워 넣으려고 하는데, 못 해도 자책은 안 해요. 주말은 충전하는 시간이니까요. 안 그러면 다음 주가 그냥 무너져요.","요즘은 사람들이 균형을 훨씬 중요하게 여기는 것 같아요. 예전엔 그냥 쉬는 게 전부였는데, 요즘은 주말을 계획하잖아요. 취미, 짧은 여행, 그런 거요."],
+["안녕하세요, 좋은 아침입니다. 제 이름으로 된 예약 건 때문에 전화드렸어요. 내일 밤 체크인 예정인데, 안타깝게도 방금 비행기가 취소됐고 제일 빨리 잡을 수 있는 편이 그다음 날 도착해요. 급하게 연락드리는 거 충분히 알고 있어서, 도와주시면 정말 감사하겠어요. 혹시 예약을 하루 미룰 수 있을까요? 그게 안 되면 첫날 밤만 수수료 없이 취소해 주실 수 있을까요? 나머지 예약은 그대로 유지하고 싶어요. 아니면 수수료가 있다면, 바꾸기 전에 얼마인지 먼저 알려주실 수 있을까요? 그리고 확인차 여쭤보는데, 변경되면 확인 메일 보내주실 수 있을까요? 정말 감사합니다.","아, 괜찮아요, 충분히 이해해요. 그럼 첫날 밤만 취소하고 나머지는 유지해 주시겠어요? 그리고 혹시 수수료를 면제해 주실 방법이 있다면 정말 감사하겠습니다."],
+["네. 저는 큰 조선소에서 일해서, 사무실 업무랑 아주 산업적인 환경이 섞여 있어요. 저희 팀은 사무동에 있는데, 바로 밖에는 건조 중인 거대한 배들이랑 크레인이 사방에 있어요. 제일 좋은 건 우리가 화면에서 설계한 게 눈앞에서 실제로 만들어진다는 거예요. 화려한 곳은 아니지만 처음 보면 꽤 압도돼요. 보통 하루는 설계 검토, 해외 고객 통화, 아니면 팀이랑 해석 결과를 같이 보는 거예요. 제일 좋은 건 사람들이에요. 다들 바쁘지만 문제가 생기면 정말 똘똘 뭉쳐요. 아쉬운 점이요? 마감 직전엔 꽤 정신없어요.","대체로 동의해요. 돈도 중요하죠, 오해는 마세요. 그런데 매일 출근하는 게 끔찍하다면, 어떤 월급으로도 그건 메워지지 않아요."],
+["아, 오랫동안 버킷리스트에 있던 곳이 하나 있어요. 타히티요. 정확히는 거기서 혹등고래랑 같이 수영해 보고 싶어요. 다이빙을 꽤 해서 물은 편한데, 이건 차원이 다른 경험일 것 같아요. 찾아보니까 고래가 섬 가까이 오는 시즌이 있어서, 가이드랑 같이 실제로 물에 들어갈 수 있대요. 저는 쇼핑보다 자연이 주인공인 곳에 끌리는 것 같아요. 아직 가 보진 못했고, 솔직히 싼 여행이 아니라서 제대로 계획하고 싶어요. 그래도 기회만 되면 절대 안 놓칠 거예요.","좋은 지적이에요. 제한을 두는 게 많이 도움 된다고 봐요. 소규모 그룹이나 동물 주변 엄격한 규칙 같은 거요. 제대로만 하면 관광이 오히려 보호 활동 자금이 될 수도 있어요."],
+["저한테는 꽤 자주 있는 일이에요. 최근에 고객한테 구조 디지털 트윈을 발표했는데, 고객이 정말 흥미로워했어요. 좋은 일이었죠. 그런데 탑사이드 인터페이스나 아주 높은 주파수의 실시간 모니터링 같은 걸 요청하기 시작했어요. 그래서 먼저 실제로 무슨 뜻인지 이해하고 싶었어요. '확인차 여쭤보는데, 실시간이라고 하시면 초 단위를 말씀하시는 건가요?' 하고 물었죠. 그다음엔 두 묶음으로 나눴어요. 올해 원래 범위 안에서 해드릴 수 있는 것, 그리고 별도 과제가 필요한 것. 과하게 약속했다가 나중에 실망시키느니 미리 솔직하게 말하는 게 낫다고 봐요. 회의에서 제일 신나는 말은 아니지만, 길게 보면 신뢰가 쌓여요.","제 경험으로는 보통 엔지니어링을 못해서가 아니에요. 범위가 불분명해서죠. 초반에 다 같이 같은 이해를 갖지 않으면 변경이 계속 쌓여요."],
+["하나만 고르라면 소통이라고 하겠지만, 큰 단서가 붙어요. 왜냐면요, 해양 프로젝트 구조 설계를 이끌어 보니 해석은 제일 어려운 부분이 거의 아니에요. 까다로운 건 선주, 선급, 시공사의 생각을 맞추는 거예요. 다들 우선순위가 다르니까요. 그렇긴 하지만 이해 못 한 걸 제대로 설명할 수는 없잖아요. 제가 트레이드오프를 명확하게 설명 못 하면 아무도 그 제안을 안 믿어요. 그래서 이렇게 말하고 싶어요. 기술력은 테이블에 앉을 자격을 주고, 소통은 프로젝트를 실제로 앞으로 움직인다고요.","대부분 만들어진다고 봐요. 원래 자신감 있는 사람도 있긴 하죠. 하지만 경청하는 거나 어려운 결정을 내리는 건 경험에서 나와요."],
+["음, 어떤 스트레스냐에 따라 정말 달라요. 마감 같은 업무 스트레스라면, 최악은 그냥 전체를 멍하니 쳐다보는 거예요. 그래서 작은 일로 쪼개서 쉬운 것부터 해치워요. 그것만으로도 부담이 확 줄어요. 그런데 번아웃 같은 스트레스면 몸을 아예 그 상황에서 떼어놔야 해요. 저한테 최고의 리셋은 다이빙이에요. 물속에 들어가면 말 그대로 이메일을 볼 방법이 없거든요. 물론 매주 갈 순 없으니, 평소엔 그냥 바람 좀 쐬려고 해요. 단순해 보여도 효과가 있어요.","여러 가지가 섞여 있다고 봐요. 긴 근무 시간, 경쟁, 그리고 항상 온라인 상태라는 거요. 다행인 건 요즘 사람들이 그 얘기를 훨씬 많이 한다는 거예요."],
+["저기, 잠깐 시간 괜찮아요? 보고서 쓸 때 그 새 AI 도구 쓰기 시작했다고 들었는데, 안 그래도 물어보고 싶었어요. 우선, 쓴 지 얼마나 됐어요? 주로 뭐에 써요? 초안 쓰는 데만 쓰는 건지, 숫자 확인할 때도 도움이 되는지 궁금해요. 정확도도 궁금해요. 혹시 기술 용어를 틀리는 것 같은 실수를 잡은 적 있어요? 그리고 마지막으로, 배우는 데 시간 들일 가치가 있어요? 회의록에 한번 써 볼까 해서요. 팁 있으면 알려주면 좋겠어요. 급한 건 아니에요.","한꺼번에 다 하진 않는 게 좋을 것 같아요. 작게 시범으로 써 보고, 뭐가 효과 있는지 본 다음에 넓히는 거죠. 그래야 누구한테도 억지로 강요하는 게 아니니까요."],
+["좋은 예가 오슬로에서 했던 워크숍이에요. 여러 기관에서 온 사람들이 있었어요. 제 역할은 선체 구조 부분을 차근차근 설명하고 질의응답을 맡는 거였어요. 그런데 어려웠던 건 내용 자체가 아니었어요. 그건 제가 잘 알거든요. 방에 있는 사람들 배경도 우선순위도 다 달랐다는 게 문제였죠. 어떤 분들은 기술 디테일에 깊이 들어가 있었고, 어떤 분들은 큰 그림만 원했어요. 그래서 단순한 흐름으로 정리하려고 했어요. 문제가 뭔지, 선택지가 뭔지, 우리가 뭘 추천하는지요. 질의응답 때 어려운 질문이 오면 '좋은 지적이네요. 질문을 제대로 이해했는지 확인해 볼게요' 같은 말을 했는데, 그게 생각할 시간을 벌어줬어요.","솔직히 청중을 아는 거요. 같은 내용도 방에 누가 있느냐에 따라 완전히 다르게 받아들여져요. 그래서 저는 늘 '이분들이 뭘 가지고 돌아가야 하지?' 하고 스스로 물어요."],
+["한 예로 협력사가 용접 평가를 보내온 적이 있어요. 2D 쉘 모델을 썼는데, 서류상으로는 숫자가 괜찮아 보였어요. 그런데 저는 최종 숫자에서 멈추지 않는 법을 배웠어요. 결과가 어떻게 나왔는지 설명 못 하면 고객이나 선급 앞에서 방어할 수가 없거든요. 그래서 정중하게 기본적인 질문 몇 개를 했어요. 요소 타입은 뭘 썼는지, 경계조건이랑 하중 조건은 어떻게 했는지, 응력은 정확히 어디서 읽었는지요. 모델 자체를 공유해 줄 수 있는지도 물었고요. 그쪽이 틀렸다고 가정한 게 아니었어요. 해석을 추적 가능하게 만들려는 거였죠. 저한테 품질은 그냥 통과하는 숫자가 아니에요. 그 결과에 어떻게 도달했는지까지 책임질 수 있는 거예요.","가끔은 그래요. 숫자는 객관적으로 보이지만, 그 뒤에 있는 가정만큼만 믿을 수 있어요. 그래서 데이터는 믿되 항상 어디서 나왔는지 물어봐야 한다고 봐요."],
+["어느 단계에 있느냐에 따라 다르다고 보는데, 요즘 저는 어느 정도 틀을 잡고 혼자 배우는 쪽으로 기울어요. 제 생각은 이래요. 정규 교육은 기본기에는 좋아요. 틀을 잡아주니까요. 그런데 기본을 갖추고 나면, 제일 빨리 배우는 건 실제로 뭔가를 만들어 보는 거예요. AI 도구만 봐도 그래요. 어떤 강의도 그 변화 속도를 못 따라가요. 그래서 저는 해 보면서 배우고 있어요. 업무 일부를 자동화하는 작은 앱들을 만들면서요. 처음엔 가파르고 자주 막히는데, 막힌 데서 빠져나올 때마다 확실히 몸에 남아요. 단점 하나는 피드백 없이 나쁜 습관이 들 수 있다는 거예요. 그래서 이상적으로는 둘 다 하는 거죠.","둘 다 필요한데 균형이 좀 안 맞는 것 같아요. 학생들이 이론은 많이 배우는데 적용하는 건 충분히 안 배워요. 실습 프로젝트가 늘면 큰 차이가 날 거예요."],
+["제일 큰 변화는 거리가 예전만큼 중요하지 않다는 거라고 봐요. 10년 전엔 해외 고객이랑 설계 문제가 생기면 보통 긴 이메일 왕복이나 출장이었어요. 요즘은 그냥 바로 화상회의 잡고, 화면에 모델 띄워서 한 시간이면 정리해요. 좋은 점은 결정이 훨씬 빨라졌다는 거고요. 반면에 일하는 시간이 진짜로 끝나질 않아요. 다른 시간대에 누군가는 항상 온라인이니까요. 그리고 이제 AI까지 나왔으니, 다음 큰 변화는 반복 업무가 얼마나 사라지느냐일 것 같아요. 과제는 사람들이 여전히 그 안에서 무슨 일이 일어나는지 이해하게 하는 거겠죠.","어려운 질문이네요. 더 유연해진 건 확실해요. 더 행복해졌냐고요? 잘 모르겠어요. 사람들이 선을 그을 수 있느냐에 정말 달린 것 같아요."],
+["솔직히 업계엔 힘들어도 필요하다고 생각해요. 해운이 전 세계 물건 대부분을 실어 나르니까 배출량이 정말 쌓여요. 규제가 없으면 바꿀 동기가 별로 없어요. 친환경 기술은 초기 비용이 더 드니까요. 좋은 점은 규제가 실제 혁신을 끌어내고 있다는 거예요. LNG 추진선이 꽤 흔해졌고, 암모니아나 메탄올도 연구 중이에요. 그렇긴 하지만 일정이 정말 공격적일 수 있어요. 선주들은 길게 봐서 어떤 연료가 이길지 모르는 채로 엄청난 투자 결정을 해야 하거든요. 그래서 방향은 맞지만, 업계가 실제로 대비할 수 있게 규제가 명확하고 예측 가능해야 한다고 봐요.","현실적으로는 셋 다요. 정부는 인센티브로 돕고, 기업은 투자해야 하고, 소비자는 아마 가격이 조금 오르는 걸 겪게 될 거예요. 딱 잘라 말할 문제는 아니에요."],
+["저를 정말 한계까지 몰아붙인 건 레스큐 다이버 훈련이었어요. 그전에는 다이빙이 주로 경치를 즐기는 거였어요. 그런데 레스큐 훈련은 완전히 다른 얘기였어요. 의식 없는 다이버를 수면으로 끌어올리거나 패닉에 빠진 다이버를 다루는 걸 연습하는데, 심장이 쿵쾅거리는 와중에 머리는 맑게 생각해야 해요. 어려웠던 건 몸이 힘든 것만이 아니었어요. 본능은 서두르라고 하는데 천천히 하는 법을 배우는 거였죠. 제일 큰 교훈은 침착함이 성격이 아니라 기술이라는 거예요. 진짜로 훈련할 수 있어요. 솔직히 긴장되는 회의에서도 그게 꽤 쓸모 있었어요.","주변에 어떤 지지가 있느냐에 달린 것 같아요. 좋은 사람들이 곁에 있으면 힘든 경험이 사람을 더 강하게 만들어요. 그게 없으면 분명히 발목을 잡을 수도 있고요."],
+["아, 제일 기대되는 건 해양 부유식 설비의 구조 디지털 트윈이에요. 제가 PM을 맡고 있어요. 기본 아이디어는 꽤 단순해요. 지금은 검사를 대부분 정해진 일정대로 해요. 구조물이 필요하든 아니든요. 저희는 운동 데이터, 구조 응력, 피로, 검사 계획을 하나로 잇고 있어요. 다시 말해 운영 데이터를 의사결정으로 바꾸고 싶은 거예요. 어디를, 언제 검사할지요. 아직 개발 중이라 과장하고 싶진 않아요. 그래도 정말 설레는 건, 사후 대응에서 선제 대응으로 바뀔 수 있다는 점이에요.","가장 큰 위험은 맹목적으로 믿는 거예요. 입력 데이터가 나쁘면 결정도 나빠져요. 그래서 여전히 엔지니어가 결과를 확인해야 해요."],
+["저는 꽤 조용한 주거 지역에 살아요. 매일 아침 커피숍에서 같은 얼굴들을 보는 그런 동네예요. 제일 좋은 건 필요한 게 다 걸어갈 수 있는 거리에 있다는 거예요. 마트, 괜찮은 식당 몇 곳, 작은 공원까지요. 엄청 재밌는 동네는 아니지만, 긴 하루를 마치고 나면 딱 그게 제가 원하는 거예요. 유일하게 아쉬운 건 출퇴근 시간 교통이에요. 동네 빠져나가는 데만 한참 걸려요. 하나 바꿀 수 있다면 산책로를 더 만들고 싶어요. 요즘 운동을 더 하려고 하거든요.","첫째는 안전, 그다음이 공동체라고 봐요. 물론 좋은 학교도 중요하죠. 그래도 이웃을 아는 게 정말 큰 차이를 만들어요."],
+["뻔한 답은 스마트폰이지만, 솔직히 저한테 더 큰 변화는 AI 도구예요. 요즘은 거의 매일 써요. 회사에서는 긴 문서 요약이나 이메일 초안에 쓰고, AI 도움으로 작은 앱도 몇 개 만들었어요. 시간을 엄청 아껴줬어요. 출퇴근길엔 폰으로 공부해요. 예전엔 긴 시간이 필요하다고 생각했는데, 알고 보니 자투리 시간이 정말 쌓이더라고요. 단점은 스위치를 끄기 어렵다는 거예요. 조심 안 하면 밤늦게 업무를 보고 있어요. 그래서 기술 덕분에 더 생산적이 됐지만, 한계는 스스로 정해야 한다고 생각해요.","적어도 어린아이들한테는 그래야 한다는 쪽으로 기울어요. 그런데 규칙만으로는 안 돼요. 부모도 좋은 본보기가 돼야 하는데, 그게 말처럼 쉽진 않죠."],
+["안녕하세요, 지연 소식 알려주셔서 감사해요. 미리 알려주셔서 정말 고맙습니다. 그런데 솔직히 말씀드리면, 2주는 저희 일정에 큰 문제예요. 그래서 무슨 일인지 이해하고 싶어요. 원인이 뭔지 차근차근 설명해 주시겠어요? 자재 문제인가요, 생산 문제인가요? 여쭤보는 이유는, 그에 따라 저희가 할 수 있는 게 달라지거든요. 앞당기려면 뭐가 필요할까요? 예를 들어 납품을 나눠서 제일 중요한 부품부터 먼저 보내주실 수 있을까요? 아니면 추가 근무조를 넣어서 따라잡는 건요? 우리 한 팀이잖아요. 내일까지 만회 계획을 보내주시면 정말 감사하겠습니다.","그것만으로도 정말 도움이 돼요, 감사합니다. 다만 그 절반에 중요한 품목이 꼭 들어가게 해 주세요. 목록을 오늘 보내주실 수 있을까요?"],
+["떠오르는 건 해양 프로젝트에서 두 가지 구조 설계안 중 하나를 골라야 했던 일이에요. 서류상으로는 A안이 더 나아 보였어요. 더 가볍고 해석 결과도 깔끔했죠. 그런데 문제는, 제작이 정말 어려웠을 거고 나중에 검사원이 들어가기도 힘들었을 거예요. B안은 조금 더 무거웠지만 현실에서는 훨씬 실용적이었어요. 쉬운 결정은 아니었어요. 숫자만 보는 사람들도 있었으니까요. 그래서 트레이드오프를 하나씩 짚어 설명했어요. 무게 대 제작, 검사, 유지보수요. 결국 실용적인 안으로 갔어요. 돌아보면, 기술적으로 가장 좋은 답이 프로젝트에 가장 좋은 답은 아니라는 걸 배웠어요.","아마 제작팀을 더 일찍 불렀을 것 같아요. 첫날부터 그분들이 같이 있었으면 논의를 몇 번은 줄일 수 있었을 거예요."],
+["아, 재밌는 질문이네요. 하루 CEO가 된다면 우리 엔지니어들이 시간을 어디에 쓰는지에 집중하겠어요. 왜냐면요, 정말 실력 있는 사람들이 보고서 업데이트나 손으로 하는 진행 관리 같은 반복 업무에 몇 시간씩 써요. 제가 정할 수 있다면 그걸 자동화하는 작은 팀을 만들고, 뭘 자동화할지는 엔지니어들이 제안하게 하겠어요. 어디가 가려운지는 그 사람들이 제일 잘 아니까요. 그리고 하루짜리 교육 말고, 이런 도구를 배울 진짜 시간을 주겠어요. 물론 하루로는 많이 못 바꾸죠. 그래도 시작만 해 놓으면 길게 봐서 정말 효과가 있을 거예요.","듣는 능력이라고 봐요. CEO는 실제 현장과 멀리 떨어져 있어서 진실을 말해 줄 사람이 필요하고, 본인도 그걸 듣고 싶어 해야 해요."],
+["양날의 검이라고 할 수 있죠. 좋은 점은 출퇴근 시간을 많이 아끼고, 해석 결과 확인 같은 집중 업무를 할 때 더 집중이 잘 된다는 거예요. 게다가 이제 화상회의가 너무 당연해져서 거리가 별로 중요하지 않아요. 반면에 소소한 대화를 잃어요. 제 분야에선 누군가 자리에 걸어가서 도면을 같이 보면 풀리는 문제가 많거든요. 화면으로는 그게 말처럼 쉽지 않아요. 그래서 개인적으로는 하이브리드가 제일 합리적이라고 봐요. 집중할 땐 재택, 협업할 땐 출근이요.","어떤 직업엔 분명히 그럴 거예요. 하지만 저처럼 물리적인 걸 다루는 일에서는 사무실이 계속 남을 거라고 봐요."],
+["사소한 건데 웃겼던 일이에요. 친구가 제가 밥 먹을 때 폰을 너무 많이 본다고 투덜댔어요. 뭐, 그건 인정이죠. 그런데 말 그대로 5분 뒤에 그 친구가 자기 폰을 스크롤하고 있는 거예요. 그래서 '에이, 그거 좀 내로남불 아니야?' 했더니 둘 다 빵 터졌어요. 이런 순간이 좋은 건, 말다툼으로 번지지 않고도 상대한테 한마디 할 수 있다는 거예요. 약간의 유머가 큰 힘이 되죠.","당연하죠, 누군가를 깎아내리는 게 아니라면요. 가벼운 한마디가 어려운 회의의 긴장을 풀어줘요. 우리가 같은 팀이라는 걸 떠올리게 해 주죠."],
+["정답이 하나 있다고는 생각 안 해요. 결국 뭘 쌓고 싶으냐의 문제예요. 한 회사에 오래 있으면 깊이 들어갈 수 있어요. 일이 실제로 어떻게 돌아가는지 알고, 사람들이 믿어주고, 더 큰 책임을 맡게 되죠. 반면에 이직하면 다양한 일하는 방식을 접하고, 특히 커리어 초반엔 성장을 앞당길 수 있어요. 위험은 자기 결정의 결과를 볼 만큼 오래 머물지 못한다는 거예요. 그래서 얼마나 오래 있느냐가 아니라, 아직 배우고 있느냐가 중요하다고 봐요.","아주 다르게 본다고 생각해요. 부모님 세대에겐 평생직장이 목표였죠. 젊은 세대는 성장과 유연성을 더 중시해요. 솔직히 저도 이해가 돼요."],
+["AI는 중요한 결정을 도와야 하지만 혼자 결정해선 안 된다고 생각해요. 가장 큰 이유는 책임이에요. 엔지니어링에서는 설계가 승인되면 사람이 그걸 책임져야 해요. 뭔가 잘못됐을 때 'AI가 그렇게 말했어요'는 통하는 답이 아니잖아요. 그렇긴 하지만 AI는 엄청난 양의 데이터를 다루는 데 정말 뛰어나고, 사람이 놓치는 패턴을 잡아낼 수 있어요. 예를 들어 제 디지털 트윈 프로젝트는 데이터로 구조물을 어디를, 언제 검사할지 정하는 게 목표예요. 그래도 최종 판단은 맥락을 이해하는 엔지니어가 내려야 해요. 그래서 이렇게 말하고 싶어요. 힘든 일은 AI한테 맡기되, 결정 과정에는 꼭 사람을 남겨두자고요.","그게 바로 핵심 질문이죠. 저는 사용자가 아니라 그걸 도입한 회사라고 봐요. 서비스에 넣었으면 결과도 책임져야죠."],
+["5년 뒤엔 전통적인 구조 엔지니어링과 디지털 기술을 잇는 사람이 되고 싶어요. 지금 디지털 트윈 프로젝트를 하고 있는데, 실제 운영 데이터를 쓰는 게 얼마나 가치 있는지 벌써 보여요. 그걸 더 키워서 시범 사업이 아니라 실제 서비스로 만드는 데 기여하고 싶어요. 개인적으로는 기술사 시험에 합격하고, 국제 회의를 망설임 없이 이끌 만큼 영어가 편해졌으면 해요. 그걸 해내면 정말 좋은 위치에 있을 것 같아요. 그리고 바라건대, 다이빙 여행 갈 시간도 좀 남아 있으면 좋겠네요.","질문을 많이 하세요, 기초적인 것까지도요. 아무도 다 알기를 기대하지 않아요. 하지만 왜 그 일을 하는지는 이해하고 있기를 기대하죠."]
+];
+
+/* =========================================================
+   STATE
+   ========================================================= */
+const pad=n=>String(n).padStart(2,"0");
+const dstr=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const today=()=>dstr(new Date());
+const addDays=(s,n)=>{const d=new Date(s+"T00:00:00");d.setDate(d.getDate()+n);return dstr(d)};
+const diffDays=(a,b)=>Math.round((new Date(b+"T00:00:00")-new Date(a+"T00:00:00"))/864e5);
+const LS={get(k){try{return JSON.parse(localStorage.getItem("sailLab2."+k)||"null")}catch(e){return null}},set(k,v){try{localStorage.setItem("sailLab2."+k,JSON.stringify(v))}catch(e){}}};
+const DEF=()=>({updatedAt:0,start:today(),exam:"2027-01-15",done:{},known:{}});
+let S=Object.assign(DEF(),LS.get("state")||{});
+let DB=null,UID=null,DL=null,saveT=null,writing=Promise.resolve();
+function save(){S.updatedAt=Date.now();LS.set("state",S);clearTimeout(saveT);saveT=setTimeout(()=>{if(!DB)return;writing=writing.then(()=>DB.collection("data/users/"+UID).doc("v2").set(JSON.parse(JSON.stringify(S))).catch(()=>{}))},1200)}
+async function initCloud(){
+  try{const c=window.claude;if(!c||!c.use)return;
+    const [db,user,dl]=await Promise.all([c.use("db"),c.use("user"),c.use("downloads")]);DL=dl||null;
+    if(!db||!user)return;const id=await user.id();if(!id)return;DB=db;UID=id;
+    const sn=await db.collection("data/users/"+id).doc("v2").get().catch(()=>null);
+    const r=sn&&sn.exists?sn.data():null;
+    if(r&&(r.updatedAt||0)>(S.updatedAt||0)){S=Object.assign(DEF(),JSON.parse(JSON.stringify(r)));LS.set("state",S);render()}else if(S.updatedAt)save();
+  }catch(e){}
+}
+const dayNum=()=>Math.max(1,diffDays(S.start,today())+1);
+const contentIdx=n=>((n-1)%30)+1;
+const roundOf=n=>Math.floor((n-1)/30)+1;
+function streak(){const ds=new Set(Object.values(S.done));let n=0,d=today();if(!ds.has(d))d=addDays(d,-1);while(ds.has(d)){n++;d=addDays(d,-1)}return n}
+let VIEW=null;
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+function into(s){
+  let h=esc(s);
+  h=h.replace(/\[([^\]]+)\]/g,'<span class="slot">$1</span>');
+  h=h.replace(/\*\*(.+?)\*\*/g,"<b>$1</b>");
+  h=h.replace(/\^([A-Za-z0-9'’-]+(?:&amp;[A-Za-z]+)?)/g,'<span class="st">$1</span>');
+  h=h.replace(/\s*\|\s*/g,' <span class="pz" aria-hidden="true"></span> ');
+  h=h.replace(/↗/g,'<span class="ar up" aria-hidden="true">↗</span>').replace(/↘/g,'<span class="ar dn" aria-hidden="true">↘</span>');
+  return h;
+}
+const plain=s=>String(s).replace(/\*\*|\^|[↗↘|]/g,"").replace(/\[[^\]]*\]/g,"").replace(/\s+/g," ").trim();
+function toast(m){const t=$("#toast");t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>t.hidden=true,2600)}
+function copy(text){try{navigator.clipboard.writeText(text).then(()=>toast("복사했어요"),()=>toast("복사가 막혀 있어요. 길게 눌러 직접 선택해 주세요."))}catch(e){toast("복사가 막혀 있어요.")}}
+let VOICES=[];
+function loadVoices(){try{VOICES=speechSynthesis.getVoices().filter(v=>/^en[-_]/i.test(v.lang))}catch(e){}}
+if("speechSynthesis" in window){loadVoices();try{speechSynthesis.onvoiceschanged=loadVoices}catch(e){}}
+function speakQ(t){
+  if(!("speechSynthesis" in window)){toast("이 브라우저는 음성 재생을 지원하지 않아요");return}
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(plain(t));const us=VOICES.filter(v=>/en[-_]US/i.test(v.lang));const pool=us.length?us:VOICES;
+    const v=pool.find(v=>/natural|neural|online/i.test(v.name))||pool.find(v=>/Google US English|Samantha|Aria|Jenny|Ava/i.test(v.name))||pool[0];
+    if(v)u.voice=v;u.lang=(v&&v.lang)||"en-US";u.rate=.95;speechSynthesis.speak(u)}catch(e){}
+}
+const LEGEND=`<div class="legend" aria-label="억양 표시 읽는 법"><span><i class="dot"></i>강세</span><span><b style="color:var(--up)">↗</b>올림</span><span><b style="color:var(--down)">↘</b>내림</span><span><i class="bar"></i>끊어 읽기</span><span><b style="color:var(--brand-deep)">굵게</b>외울 표현</span></div>`;
+const ICON={
+ flame:'<svg viewBox="0 0 24 24"><path d="M12 2c1 4 5 5.5 5 11a5 5 0 0 1-10 0c0-2.5 1.2-4 2.5-5 .2 2 1.2 3 2 3-1-3 .5-6 .5-9z" fill="var(--up)"/></svg>',
+ flag:'<svg viewBox="0 0 24 24"><path d="M5 21V4h11l-2 4 2 4H7" fill="none" stroke="var(--brand)" stroke-width="2.4" stroke-linejoin="round"/></svg>',
+ mic:'<svg viewBox="0 0 24 24"><rect x="8.5" y="2.5" width="7" height="12" rx="3.5"/><path d="M5 11a7 7 0 0 0 14 0" fill="none" stroke="#fff" stroke-width="2.2"/><rect x="11" y="18" width="2" height="4" rx="1"/></svg>',
+ check:'<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ stop:'<svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2.5"/></svg>'
+};
+
+/* =========================================================
+   VIEWS
+   ========================================================= */
+const TABS=[
+ {id:"today",lb:"오늘",ic:'<path d="M4 11.5 12 4l8 7.5V20a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z"/>'},
+ {id:"phrases",lb:"표현",ic:'<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 9h8M8 13h5"/>'},
+ {id:"record",lb:"녹음",ic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>'},
+ {id:"sail",lb:"SAIL",ic:'<path d="M12 3v15M12 3l7 12h-7M5 18h14l-2 3H7z"/>'}
+];
+const curTab=()=>{const h=location.hash.replace("#","");return TABS.some(t=>t.id===h)?h:"today"};
+function render(){
+  const c=curTab();
+  $("#navin").innerHTML=TABS.map(t=>`<a href="#${t.id}" ${t.id===c?'aria-current="page"':""}><svg viewBox="0 0 24 24" aria-hidden="true">${t.ic}</svg>${t.lb}</a>`).join("");
+  $("#streak").innerHTML=ICON.flame+streak()+"<small>일</small>";
+  const dd=diffDays(today(),S.exam||"2027-01-15");$("#dday").innerHTML=ICON.flag+(dd>0?"D-"+dd:dd===0?"D-DAY":"D+"+(-dd));
+  $("#view").innerHTML=({today:vToday,phrases:vPhrases,record:vRecord,sail:vSail})[c]();
+  if(c==="today"){const s=$(".days"),cur=s&&s.querySelector('[aria-current="true"]');if(s&&cur)s.scrollLeft=cur.offsetLeft-s.clientWidth/2+cur.offsetWidth/2}
+}
+
+/* ---------- 오늘 ---------- */
+/* ---------- 홈 화면 설치 (PWA) ---------- */
+const APP_URL="https://joon7777.github.io/sail-speaking-lab/";
+const IN_CLAUDE=!!(window.claude&&window.claude.use);
+const IS_STANDALONE=()=>{try{return matchMedia("(display-mode: standalone)").matches||navigator.standalone===true}catch(e){return false}};
+const IS_IOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+let DEFER=null,INSTALL_HELP=false,INSTALL_HIDE=LS.get("installHide")===true;
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();DEFER=e;if(curTab()==="today")render()});
+window.addEventListener("appinstalled",()=>{DEFER=null;toast("홈 화면에 설치됐어요!");render()});
+function installBanner(){
+  if(IS_STANDALONE()||INSTALL_HIDE)return"";
+  const help=IS_IOS?`<ol><li>Safari 아래쪽 <b>공유 버튼</b>(네모에 위 화살표)을 누르세요.</li><li><b>홈 화면에 추가</b>를 고르고 <b>추가</b>를 누르면 끝.</li></ol><p class="sm">카카오톡·네이버 앱 안에서 열었다면 먼저 'Safari로 열기'를 해 주세요.</p>`
+    :`<ol><li>Chrome 오른쪽 위 <b>⋮ 메뉴</b>를 누르세요.</li><li><b>앱 설치</b> 또는 <b>홈 화면에 추가</b>를 고르세요.</li></ol><p class="sm">삼성 인터넷은 아래쪽 메뉴 → '현재 페이지 추가' → '홈 화면'.</p>`;
+  if(IN_CLAUDE)return `<section class="install"><div class="ib"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 7v7m-3-3 3 3 3-3"/></svg><div><b>폰에 앱으로 설치하기</b><span>앱 버전에선 녹음도 바로 돼요</span></div></div>
+    <a class="pill brand" href="${APP_URL}" target="_blank" rel="noopener">앱 주소 열기</a><button class="x" data-act="install-hide" aria-label="닫기">×</button></section>`;
+  return `<section class="install"><div class="ib"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 7v7m-3-3 3 3 3-3"/></svg><div><b>홈 화면에 설치</b><span>앱처럼 바로 열리고, 오프라인에서도 공부돼요</span></div></div>
+    <button class="pill brand" data-act="install">설치하기</button><button class="x" data-act="install-hide" aria-label="닫기">×</button>
+    ${INSTALL_HELP||(!DEFER&&IS_IOS)?`<div class="ihelp">${help}</div>`:""}</section>`;
+}
+const CAN_SHARE=(()=>{if(IN_CLAUDE)return false;try{return !!(navigator.canShare&&navigator.canShare({files:[new File(["x"],"t.wav",{type:"audio/wav"})]}))}catch(e){return false}})();
+const localExt=t=>t.ext==="mp4"?"m4a":t.ext;
+function shareTake(i){
+  const t=REC.takes[i];if(!t)return;
+  copy(gptPrompt(t.q,t.secs));
+  const file=t.wav?new File([t.wav],t.name+".wav",{type:"audio/wav"}):new File([t.blob],t.name+"."+localExt(t),{type:t.blob.type||"audio/mp4"});
+  navigator.share({files:[file],title:t.name,text:"SAIL 연습 답변 — 요청문은 클립보드에 복사돼 있어요."}).catch(e=>{if(e&&e.name!=="AbortError")toast("공유하지 못했어요. 'WAV로 저장'을 써 주세요.")});
+}
+async function doInstall(){
+  if(DEFER){DEFER.prompt();try{const r=await DEFER.userChoice;if(r&&r.outcome==="accepted")toast("설치 중이에요")}catch(e){}DEFER=null;render();return}
+  INSTALL_HELP=true;render();
+}
+
+function vToday(){
+  const n=dayNum(),ci=contentIdx(n);if(!VIEW)VIEW=ci;
+  const d=DAYS[VIEW-1],ko=KO[VIEW-1]||["",""],ph=PHRASES.slice((VIEW-1)*5,VIEW*5);const done=!!S.done[VIEW];
+  const doneCount=Object.keys(S.done).length,C=2*Math.PI*27;
+  const round=roundOf(n),sub=VIEW===ci?(round===1?"1회독 · 새로 배우기":round===2?"2회독 · 녹음하며 복습":"3회독 · 시험 직전 점검"):"오늘은 Day "+ci;
+  return `${installBanner()}
+  <section class="hero" aria-label="오늘의 레슨">
+   <div class="row1">
+    <div class="ring" aria-label="30일 중 ${doneCount}일 완료"><svg viewBox="0 0 66 66"><circle cx="33" cy="33" r="27" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="7"/><circle cx="33" cy="33" r="27" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-Math.min(30,doneCount)/30)}"/></svg><b>${doneCount}/30</b></div>
+    <div style="min-width:0"><h2>Day ${VIEW}</h2><div class="sub">${sub}</div></div>
+   </div>
+   <span class="tp">${esc(d.type)}</span>
+   <div class="days" role="group" aria-label="30일 진도">${DAYS.map((_,i)=>`<button data-act="day" data-d="${i+1}" class="${S.done[i+1]?"done":""} ${i+1===ci?"today":""}" ${i+1===VIEW?'aria-current="true"':""} aria-label="Day ${i+1}">${i+1}</button>`).join("")}</div>
+  </section>
+
+  <section class="card t5">
+   <div class="t5head"><div class="label">오늘의 표현 <span class="count">5</span></div><span class="sp"></span>
+    <button class="tog" data-act="hide-en" aria-pressed="${HIDE}">영어 가리기</button><button class="tog" data-act="open-all" aria-pressed="${OPENALL}">모두 펼치기</button></div>
+   <p class="lead">${HIDE?"한국어만 보고 영어로 먼저 말해본 뒤, 줄을 눌러 확인하세요.":"줄을 누르면 한국어 어감과 예문이 펼쳐져요."}</p>
+   <ol class="p5">${ph.map((p,i)=>{const n=(VIEW-1)*5+i;return `<li><details data-k="${n}" ${OPENALL||OPEN5.has(String(n))?"open":""}><summary><span class="n">${n+1}</span><span class="pb"><span class="pe into ${HIDE?"hid":""}">${into(p[0])}</span><span class="pk">${esc(p[1])}</span></span><span class="tone t-${TONEK[p[3]]||"mid"}">${esc(p[3])}</span></summary>
+    <div class="more"><p class="nu"><b>어감</b>${esc(p[2])}</p><div class="ex"><div class="w"><i>업무</i><span>${esc(p[4])}</span></div><div class="d"><i>일상</i><span>${esc(p[5])}</span></div></div>
+    <button class="known sm" data-act="known" data-i="${n}" aria-pressed="${!!S.known[n]}">${S.known[n]?"외웠어요 ✓":"외웠으면 체크"}</button></div></details></li>`}).join("")}</ol>
+  </section>
+
+  <section class="chat" aria-label="오늘의 질문과 모범 답안">
+   <div class="t5head"><div class="label">오늘의 질문 · 모범 답안</div><span class="sp"></span><button class="tog" data-act="ko-all" aria-pressed="${KOOPEN}">한국어 어감 항상 보기</button></div>
+   ${LEGEND}
+   <div class="msg eva"><div class="av e" aria-hidden="true">E</div><div class="bub"><div class="who">Eva · AI 면접관 <span class="tag type">${esc(d.type)}</span></div><div class="qtxt">${esc(d.q)}</div></div></div>
+   <div class="flow" aria-label="답변 구조">${d.st.map(s=>`<span>${esc(s)}</span>`).join("<em>›</em>")}</div>
+   <div class="msg me"><div class="bub"><div class="who">나의 모범 답안 <span class="tag tr-${d.truth}">${TRUTH[d.truth]}</span></div><p class="ans into">${into(d.a)}</p><details class="kod" ${KOOPEN?"open":""}><summary>한국어 어감 보기</summary><p>${esc(ko[0])}</p></details></div></div>
+   <div class="msg eva"><div class="av e" aria-hidden="true">E</div><div class="bub"><div class="who">Eva · 팔로업 (5단계 난이도)</div><div class="qtxt">${esc(d.fq)}</div></div></div>
+   <div class="msg me"><div class="bub"><div class="who">짧게 받아치기</div><p class="ans short into">${into(d.fa)}</p><details class="kod" ${KOOPEN?"open":""}><summary>한국어 어감 보기</summary><p>${esc(ko[1])}</p></details></div></div>
+   <p class="note">${esc(d.note)} [ ] 부분은 실제 내용으로 바꿔서 외우세요.</p>
+   <div class="actions"><button class="pill rec" data-act="rec-day" data-d="${VIEW}">${ICON.mic}녹음하기</button><button class="pill ${done?"ghost":"done"}" data-act="done" data-d="${VIEW}">${done?"완료 취소":ICON.check+"오늘 완료"}</button></div>
+  </section>`;
+}
+let HIDE=false,OPENALL=false,KOOPEN=false;const OPEN5=new Set();
+document.addEventListener("toggle",e=>{const d=e.target;if(d&&d.matches&&d.matches(".p5 details")){if(d.open)OPEN5.add(d.dataset.k);else OPEN5.delete(d.dataset.k)}},true);
+const TONEK={"캐주얼":"cas","중립":"mid","정중":"pol","격식":"for"};
+
+/* ---------- 표현 ---------- */
+let PF="all";
+function vPhrases(){
+  const known=Object.keys(S.known).length;
+  const list=PHRASES.map((p,i)=>({p,i})).filter(x=>PF==="all"||(PF==="todo"?!S.known[x.i]:!!S.known[x.i]));
+  let html="",last=0;
+  list.forEach(({p,i})=>{const d=Math.floor(i/5)+1;if(d!==last){html+=`<h3>Day ${d}</h3>`;last=d}
+    html+=`<div class="li"><span class="p into">${into(p[0])}</span><button class="known" data-act="known" data-i="${i}" aria-pressed="${!!S.known[i]}" aria-label="${S.known[i]?"외움 취소":"외움으로 표시"}">${'<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'}</button><span class="k"><span class="tone t-${TONEK[p[3]]||"mid"}">${esc(p[3])}</span> <b>${esc(p[1])}</b> · ${esc(p[2])}</span></div>`});
+  return `<div class="card"><div class="label">핵심 표현 ${PHRASES.length} · 외운 것 <span class="count">${known}</span></div>
+   <div class="progress" aria-hidden="true"><i style="width:${Math.round(known/PHRASES.length*100)}%"></i></div>
+   <p class="lead">답변이 막힐 때 꺼내 쓰는 문장 틀이에요. 톤 표시(캐주얼·중립·정중·격식)를 보고 상황에 맞게 골라 쓰세요.</p></div>
+   <div class="filters">${[["all","전체"],["todo","아직"],["known","외운 것"]].map(([k,l])=>`<button class="chip" data-act="pf" data-f="${k}" aria-pressed="${PF===k}">${l}</button>`).join("")}</div>
+   <div class="lib">${html||'<p class="lead">해당하는 표현이 없어요.</p>'}</div>`;
+}
+
+/* ---------- 녹음 ---------- */
+const REC={day:null,which:"main",mr:null,stream:null,chunks:[],t0:0,iv:null,raf:0,an:null,ac:null,takes:[],err:null,busy:false};
+function recQuestion(){const d=DAYS[(REC.day||contentIdx(dayNum()))-1];return REC.which==="follow"?d.fq:d.q}
+const fmtClock=s=>Math.floor(s/60)+":"+pad(Math.floor(s%60));
+const zone=()=>REC.which==="follow"?[20,40]:[60,90];
+function vRecord(){
+  if(!REC.day)REC.day=VIEW||contentIdx(dayNum());
+  const q=recQuestion(),on=!!REC.mr,secs=on?(Date.now()-REC.t0)/1000:0,[z1,z2]=zone();
+  const inClaude=!!(window.claude&&window.claude.use);
+  return `<select id="rec-day" aria-label="질문 고르기">${DAYS.map((x,i)=>`<option value="${i+1}" ${i+1===REC.day?"selected":""}>Day ${i+1} · ${esc(x.type)}</option>`).join("")}</select>
+  <div class="seg" role="group">${[["main","본 질문"],["follow","팔로업 질문"]].map(([k,l])=>`<button data-act="rec-which" data-w="${k}" aria-pressed="${REC.which===k}">${l}</button>`).join("")}</div>
+  <div class="msg eva"><div class="av e" aria-hidden="true">E</div><div class="bub"><div class="who">Eva · AI 면접관 <button class="btn" data-act="sayq" style="padding:3px 9px;font-size:11.5px;box-shadow:none;background:var(--surface-2)">질문 듣기</button></div><div class="qtxt">${esc(q)}</div></div></div>
+  <div class="card recwrap">
+   <div class="meter ${on?"on":""}" id="meter" aria-hidden="true">${Array.from({length:22},()=>"<i></i>").join("")}</div>
+   <button class="mic ${on?"on":""}" data-act="rec-toggle" aria-label="${on?"녹음 정지":"녹음 시작"}" ${REC.busy?"disabled":""}>${on?ICON.stop.replace("<svg",'<svg style="fill:#fff"'):ICON.mic}</button>
+   <div class="clock" id="rec-clock">${fmtClock(secs)}</div>
+   <div class="target">${on?"녹음 중":"눌러서 녹음 시작"} · 목표 ${z1}–${z2}초 (5단계 기준)</div>
+   ${REC.err?recAlt():""}
+  </div>
+  ${REC.takes.length?`<div class="card"><div class="label">녹음한 파일</div><p class="lead">저장한 파일을 ChatGPT에 올리고 '요청문 복사'를 붙여넣으세요. 이 목록은 페이지를 닫으면 사라져요.</p>
+   ${REC.takes.map((t,i)=>`<div class="take"><div class="tt"><b>${esc(t.name)}</b><span>${fmtClock(t.secs)}</span></div><audio controls src="${t.url}"></audio>
+    <div class="row">${CAN_SHARE?`<button class="btn brand" data-act="take-share" data-i="${i}">ChatGPT로 보내기</button>`:""}${inClaude?`<button class="btn ${CAN_SHARE?"":"brand"}" data-act="take-save" data-i="${i}">파일로 저장</button>`:`<button class="btn ${CAN_SHARE?"":"brand"}" data-act="take-wav" data-i="${i}">WAV로 저장</button><button class="btn" data-act="take-raw" data-i="${i}">원본 .${t.ext}</button>`}<button class="btn" data-act="take-prompt" data-i="${i}">요청문 복사</button></div></div>`).join("")}
+   ${CAN_SHARE?`<p class="lead">'ChatGPT로 보내기'를 누르면 요청문이 복사되고 공유 창이 떠요. ChatGPT를 고른 뒤 입력창에 붙여넣기만 하면 돼요.</p>`:""}</div>`:""}
+  <button class="pill ghost" data-act="prompt-now">이 질문으로 ChatGPT 요청문 복사</button>`;
+}
+function recAlt(){
+  const inClaude=!!(window.claude&&window.claude.use);
+  const fname=`SAIL_Day${pad(REC.day)}_${today()}`;
+  return `<div class="alt"><b>${inClaude?"claude.ai 화면 안에서는 보안상 마이크를 쓸 수 없어요.":"마이크를 쓸 수 없어요. 주소창의 마이크 권한을 허용해 주세요."}</b>
+   ${inClaude?`<ol><li><b>휴대폰:</b> 기본 '음성 녹음' 앱을 켜 두고, 이 화면에서 질문을 보며 답하세요. 파일 이름 예: <code>${fname}</code></li>
+   <li><b>앱 버전:</b> <a href="${APP_URL}" target="_blank" rel="noopener">${APP_URL}</a> 을 폰에서 열어 홈 화면에 설치하면 여기서 바로 녹음하고 ChatGPT로 보낼 수 있어요.</li>
+   <li>녹음 파일을 ChatGPT에 올리고 요청문을 붙여넣으세요.</li></ol>`:""}
+   <div class="row"><button class="btn" data-act="copy-name">파일 이름 복사</button><button class="btn" data-act="prompt-now">요청문 복사</button></div></div>`;
+}
+function gptPrompt(q,secs){
+  return `첨부한 음성은 삼성 사내 AI 채점 영어 말하기 시험 SAIL 연습 답변이야. 시험은 난이도 5단계(AL~S 범위)로 볼 거고, 목표 등급은 AH야. 나는 OPIc AL을 가진 11년차 선박·해양 구조 엔지니어야.
+
+질문: "${q}"
+${secs?`답변 길이: 약 ${Math.round(secs)}초\n`:""}
+다음 순서로 확인해 줘. 설명은 한국어, 영어 예시는 자연스럽고 예의 바른 미국식 구어체로.
+1) 내 답변을 들리는 그대로 받아 적어 줘 (틀린 문법·멈춤·반복도 그대로).
+2) 평가 4기준(Functions & Tasks, Accuracy, Context & Content, Text Type)으로 잘한 점 2개, 점수에 영향 큰 개선점 3개.
+3) 발음·단어 강세·억양·끊어 읽기에서 AI 음성 인식에 불리했을 부분 (구체적인 단어로).
+4) 내 내용과 말투를 살린 60–90초 모범 답안. 원어민이 실제로 쓰는 표현으로, 재사용할 표현은 굵게.
+5) 5단계에서 AL 아래로 떨어지지 않고 AH에 가까워지려면 가장 중요한 한 가지.
+6) AI 면접관이 이어서 물어볼 만한 더 어려운 팔로업 질문 1개.
+내가 말하지 않은 사실이나 수치는 지어내지 마.`;
+}
+async function getDL(){if(DL)return DL;try{if(window.claude&&window.claude.use){DL=await window.claude.use("downloads")}}catch(e){}return DL}
+async function recStart(){
+  REC.err=null;
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.MediaRecorder){REC.err="nomic";render();return}
+  REC.busy=true;render();
+  try{
+    const stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}});
+    const mime=["audio/webm;codecs=opus","audio/webm","audio/mp4","audio/ogg;codecs=opus"].find(m=>{try{return MediaRecorder.isTypeSupported(m)}catch(e){return false}})||"";
+    const mr=new MediaRecorder(stream,mime?{mimeType:mime}:undefined);REC.chunks=[];
+    mr.ondataavailable=e=>{if(e.data&&e.data.size)REC.chunks.push(e.data)};
+    mr.onstop=()=>{
+      const type=mr.mimeType||mime||"audio/webm";const blob=new Blob(REC.chunks,{type});const secs=(Date.now()-REC.t0)/1000;
+      stream.getTracks().forEach(t=>t.stop());clearInterval(REC.iv);cancelAnimationFrame(REC.raf);try{REC.ac&&REC.ac.close()}catch(e){}
+      const ext=/mp4/.test(type)?"mp4":/ogg/.test(type)?"ogg":"webm";
+      const name=`SAIL_Day${pad(REC.day)}${REC.which==="follow"?"_followup":""}_${today()}_take${REC.takes.length+1}`;
+      const take={blob,url:URL.createObjectURL(blob),secs,ext,name,q:recQuestion(),wav:null};
+      REC.takes.unshift(take);REC.mr=null;REC.stream=null;render();
+      toWav(blob).then(w=>{take.wav=w}).catch(()=>{});
+    };
+    mr.start(500);REC.mr=mr;REC.stream=stream;REC.t0=Date.now();REC.busy=false;render();
+    try{const AC=window.AudioContext||window.webkitAudioContext;REC.ac=new AC();const src=REC.ac.createMediaStreamSource(stream);REC.an=REC.ac.createAnalyser();REC.an.fftSize=64;src.connect(REC.an);
+      const buf=new Uint8Array(REC.an.frequencyBinCount);const loop=()=>{const m=$("#meter");if(m&&REC.an){REC.an.getByteFrequencyData(buf);[...m.children].forEach((b,i)=>{const v=buf[(i+1)%buf.length]/255;b.style.height=(8+v*48)+"px"})}REC.raf=requestAnimationFrame(loop)};loop()}catch(e){}
+    const [z1,z2]=zone();
+    REC.iv=setInterval(()=>{const el=$("#rec-clock");if(!el)return;const s=(Date.now()-REC.t0)/1000;el.textContent=fmtClock(s);el.classList.toggle("z-good",s>=z1&&s<=z2);el.classList.toggle("z-over",s>z2)},250);
+  }catch(e){REC.busy=false;REC.err="nomic";render()}
+}
+function recStop(){if(REC.mr&&REC.mr.state!=="inactive")REC.mr.stop()}
+async function toWav(blob){
+  const AC=window.AudioContext||window.webkitAudioContext;const ac=new AC();const buf=await ac.decodeAudioData(await blob.arrayBuffer());try{ac.close()}catch(e){}
+  const sr=16000,len=Math.max(1,Math.ceil(buf.duration*sr));const off=new OfflineAudioContext(1,len,sr);const src=off.createBufferSource();src.buffer=buf;src.connect(off.destination);src.start();
+  const data=(await off.startRendering()).getChannelData(0);const dv=new DataView(new ArrayBuffer(44+data.length*2));
+  const w=(o,s)=>{for(let i=0;i<s.length;i++)dv.setUint8(o+i,s.charCodeAt(i))};
+  w(0,"RIFF");dv.setUint32(4,36+data.length*2,true);w(8,"WAVE");w(12,"fmt ");dv.setUint32(16,16,true);dv.setUint16(20,1,true);dv.setUint16(22,1,true);dv.setUint32(24,sr,true);dv.setUint32(28,sr*2,true);dv.setUint16(32,2,true);dv.setUint16(34,16,true);w(36,"data");dv.setUint32(40,data.length*2,true);
+  for(let i=0;i<data.length;i++){const s=Math.max(-1,Math.min(1,data[i]));dv.setInt16(44+i*2,s<0?s*0x8000:s*0x7fff,true)}
+  return new Blob([dv],{type:"audio/wav"});
+}
+function localDownload(blob,name){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500)}
+async function saveTake(i){
+  const t=REC.takes[i];const dl=await getDL();
+  if(!dl){localDownload(t.blob,t.name+"."+t.ext);return}
+  try{await dl.save({filename:t.name+"."+(t.ext==="ogg"?"webm":t.ext),data:t.blob});toast("저장했어요")}
+  catch(e){toast(e&&e.code==="declined"?"저장을 취소했어요":"이 화면에서는 저장할 수 없어요")}
+}
+
+/* ---------- SAIL ---------- */
+function vSail(){
+  const facts=[
+   ["정체","삼성 인사팀이 직접 개발한 사내 AI 영어 말하기 평가. OPIc 대신 사내 등급을 받을 수 있음"],
+   ["진행","컴퓨터 응시 · 오리엔테이션 약 20분 + 본시험 약 40분"],
+   ["문항 수","12–17문항이었다는 후기 (OPIc은 12–15)"],
+   ["난이도","시작할 때 5단계 중 선택, 중간 변경 없음"],
+   ["AI 면접관","Eva가 답을 듣고 짧게 리액션한 뒤 다음 질문. 앞 답변에 이어지는 팔로업 가능"],
+   ["채점","AI 채점. 음성을 텍스트로 바꿔(STT) 문법·표현을 보는 방식으로 추정"],
+   ["서베이","OPIc보다 선택지가 많다는 후기"],
+   ["성적표","총평 · 영역별 분석 · 에러 분석 (OPIc 진단과 비슷한 문구)"],
+   ["결과","응시 후 최대 24시간 이내"],
+   ["등급","NL ~ S. 사내 등급: AL 1등급, AM A+, AH A++, S"],
+   ["응시료","44,000원 (한시 지원 언급) · 3년 인정"],
+   ["모의고사","사내 SAIL 모의고사를 매일 무료로 볼 수 있다는 안내"]
+  ];
+  const lv=[["1","NL–IL"],["2","NL–IH"],["3","NL–AL"],["4","IH–AH"],["5","AL–S"]];
+  const types=[
+   ["자기소개","Tell me a little bit about yourself.","직무 → 지금 하는 일 → 요즘 관심 → 취미. 40초 안쪽, 이력서 낭독 금지.",[1]],
+   ["묘사","Describe your workplace / the area where you live.","한 줄 그림 → 특징 → 장단점. 5단계에선 바로 '사회적 의견' 팔로업으로 이어지기 쉬움.",[2,8,21]],
+   ["습관·루틴","How do you usually spend your weekends?","It depends on ~ → 보통 → 요즘 → 이유.",[6,12]],
+   ["과거 경험","Tell me about a time you … / a memorable …","바로 답 → 상황 → 전환점 → 내가 한 일 → 교훈. 과거시제 끝까지 유지.",[3,5,10,14,15,19,20,24,27]],
+   ["비교","How has … changed compared to ten years ago?","Back then / used to → These days → 장단점 → 앞으로.",[17]],
+   ["롤플레이 · 질문하기","Ask three or four questions about …","양해 → 질문 3–4개(형태를 다르게) → 이유 → 감사.",[13]],
+   ["롤플레이 · 문제 해결","Explain the problem and suggest two or three options.","용건 → 상황 → 양해 → 대안 ①②③ → 확인 → 감사. 5단계의 핵심 유형.",[7,23]],
+   ["의견·사회 이슈","AI and jobs / environment / careers / remote work","입장 → 이유 → 예시 → 단서(That said) → 정리. 5단계에서 비중이 가장 큼.",[4,11,16,18,22,26,28,29]],
+   ["가정","If you were the CEO for a day, …","If I were ~, I'd ~ 를 끝까지 유지.",[25,30]],
+   ["팔로업","(앞 답변을 듣고) Who should pay for …? / Why do you think …?","Actually / Honestly / That's a tough one 으로 받고 2–4문장. 매일 카드의 '팔로업'이 5단계 수준으로 만든 연습용.",[]]
+  ];
+  return `<section class="mylevel">
+   <div class="label" style="color:inherit;opacity:.7">내 선택</div>
+   <h2>Level 5 · AL – S</h2>
+   <div class="lvl">${lv.map(([n,r])=>`<div class="lv ${n==="5"?"pick":""}"><b>${n}</b><span>${r}</span></div>`).join("")}</div>
+   <p>5단계는 AH와 S까지 열려 있지만, 후기에 따르면 하한인 AL에 못 미치면 등급 대신 NR(평가 불가)이 나와요. 이미 AL이 있으니 해볼 만한 선택이고, 핵심은 <b>모든 답을 AL 이상으로 꾸준히 유지하는 것</b>입니다.</p>
+  </section>
+  <div class="card"><div class="label">5단계로 AH 받는 전략</div><ul class="tips">
+   <li><b>어려운 질문이 기본이라고 생각하기.</b> 사회 이슈, 비교, 가정, 문제 해결 롤플레이 비중이 높을 가능성이 커요. 묘사 질문도 곧바로 의견 팔로업으로 이어질 수 있어요.</li>
+   <li><b>짧은 답은 금물.</b> 본 질문은 60–90초, 팔로업은 20–40초. 문장 몇 개로 끝나면 하한(AL)에 걸릴 위험이 생겨요.</li>
+   <li><b>문단으로 말하기.</b> 결론 → 이유 → 예시 → 단서(That said) → 정리. 이게 AL과 AH를 가르는 Text Type이에요.</li>
+   <li><b>의견엔 양쪽 다 보여주기.</b> 'I can see both sides', 'It's not black and white'처럼 반대 측면을 인정한 뒤 내 결론으로 돌아오기.</li>
+   <li><b>가정법·과거 가정 한 번씩.</b> If I were…, I'd… / If I'd known…, I would've… 는 상위 등급 신호.</li>
+   <li><b>모르는 주제도 멈추지 않기.</b> 'That's a good question. Let me think about that for a second.'로 시간을 벌고, 내 분야 예시로 끌고 오세요.</li>
+   <li><b>매너 있게, 하지만 분명하게.</b> 롤플레이는 양해 → 요청 → 대안 → 감사. 'I totally understand', 'I'd really appreciate it' 같은 표현이 자연스러움 점수에 도움돼요.</li>
+  </ul></div>
+  <div class="card"><div class="label">SAIL 한눈에 보기</div>
+   <p class="lead">삼성이 세부 형식을 공식 공개하지 않아 어학원 분석과 응시 후기를 정리했어요. 사내 공지와 다를 수 있으니 시험 안내문으로 꼭 확인하세요.</p>
+   <div class="facts">${facts.map(([a,b])=>`<div class="fa"><b>${a}</b><span>${b}</span></div>`).join("")}</div></div>
+  <div class="card"><div class="label">평가 기준 4가지</div><div class="crit">
+   <div class="cr"><b>Functions &amp; Tasks</b><span>묘사, 경험 이야기, 비교, 문제 해결, 의견·가정을 해낼 수 있나</span></div>
+   <div class="cr"><b>Accuracy</b><span>시제, 관사, 단·복수, 동사 형태. AI가 텍스트로 그대로 잡아냄</span></div>
+   <div class="cr"><b>Context &amp; Content</b><span>일상·여행에서 업무·사회·환경까지 다룰 수 있나</span></div>
+   <div class="cr"><b>Text Type</b><span>문장 나열이 아니라 연결어로 이어진 문단인가</span></div></div></div>
+  <div class="card"><div class="label">출제 유형과 답변 틀</div><p class="lead">숫자를 누르면 그 Day로 이동해요.</p>
+   <div class="types">${types.map(([t,ex,how,days])=>`<div class="ty"><h3>${t}</h3><span class="ex">${esc(ex)}</span><span class="how">${esc(how)}</span>${days.length?`<div class="dd">${days.map(d=>`<button data-act="goto" data-d="${d}">Day ${d}</button>`).join("")}</div>`:""}</div>`).join("")}</div></div>
+  <div class="card"><div class="label">AI 채점에 맞춘 말하기</div><ul class="tips">
+   <li><b>첫 문장에서 바로 답하기.</b> 'One thing that comes to mind is ~'</li>
+   <li><b>의미 덩어리로 이어 말하기.</b> 단어를 하나씩 끊으면 음성 인식이 오히려 흔들려요. 오늘 탭의 끊어 읽기 표시(세로선)대로 묶어서 말하세요.</li>
+   <li><b>강세 단어만 또렷하게.</b> 노란 점이 찍힌 단어만 크고 길게, 나머지는 가볍게. 이게 원어민 리듬이에요.</li>
+   <li><b>기본 실수 줄이기.</b> 과거 이야기는 과거시제, a/the, 3인칭 -s. 텍스트로 바뀌면 그대로 보여요.</li>
+   <li><b>같은 표현·같은 에피소드 반복 피하기.</b> 12–17문항 동안 표현집 90개를 돌려 쓰세요.</li></ul></div>
+  <div class="card plan"><div class="label">시험까지 계획</div>
+   <div class="pl"><b>Day 1–30</b><span>1회독. 표현 3개 + 모범 답안을 억양 표시대로 소리 내어 읽고 외우기. 주말엔 한 번 녹음해서 ChatGPT로 확인.</span></div>
+   <div class="pl"><b>Day 31–60</b><span>2회독. 답안을 보지 않고 먼저 녹음 → ChatGPT 피드백 → 모범 답안과 비교. 팔로업까지 녹음.</span></div>
+   <div class="pl"><b>마지막 2주</b><span>사내 무료 모의고사를 5단계로 매일 보고(안내된 경우), 약한 유형의 Day만 다시 녹음.</span></div>
+   <label class="lead" for="exam">시험일 (정해지면 바꾸세요 · 기본값 1월 15일은 가정)</label>
+   <input type="date" id="exam" value="${esc(S.exam)}"></div>
+  <div class="card"><div class="label">출처</div><div class="sources">
+   <a href="https://www.youtube.com/watch?v=FEopK35pcbs" target="_blank" rel="noopener">오피아어학원 · 삼성 SAIL 시험 총정리 (영상)</a>
+   <a href="https://612.co.kr/612-story/blog500" target="_blank" rel="noopener">612어학원 · 삼성 SAIL 시험 기초 가이드라인</a>
+   <a href="https://www.gukjenews.com/news/articleView.html?idxno=3697270" target="_blank" rel="noopener">국제뉴스 · 612어학원 강사의 SAIL 준비 전략</a></div></div>`;
+}
+
+/* =========================================================
+   EVENTS
+   ========================================================= */
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-act]");if(!b)return;const a=b.dataset.act;
+  switch(a){
+   case "day":VIEW=+b.dataset.d;render();break;
+   case "goto":VIEW=+b.dataset.d;location.hash="#today";window.scrollTo(0,0);break;
+   case "done":{const d=+b.dataset.d;if(S.done[d])delete S.done[d];else{S.done[d]=today();toast("Day "+d+" 완료! 잘했어요")}save();render();break}
+   case "rec-day":REC.day=+b.dataset.d;REC.which="main";location.hash="#record";window.scrollTo(0,0);break;
+   case "pf":PF=b.dataset.f;render();break;
+   case "hide-en":HIDE=!HIDE;if(HIDE)OPENALL=false;render();break;
+   case "open-all":OPENALL=!OPENALL;if(OPENALL)HIDE=false;render();break;
+   case "ko-all":KOOPEN=!KOOPEN;render();break;
+   case "known":{const i=+b.dataset.i;if(S.known[i])delete S.known[i];else S.known[i]=today();save();render();break}
+   case "rec-which":if(!REC.mr){REC.which=b.dataset.w;render()}break;
+   case "sayq":speakQ(recQuestion());break;
+   case "rec-toggle":if(REC.mr)recStop();else recStart();break;
+   case "take-save":saveTake(+b.dataset.i);break;
+   case "take-raw":{const t=REC.takes[+b.dataset.i];localDownload(t.blob,t.name+"."+localExt(t));break}
+   case "take-share":shareTake(+b.dataset.i);break;
+   case "install":doInstall();break;
+   case "install-hide":INSTALL_HIDE=true;LS.set("installHide",true);render();break;
+   case "take-wav":{const t=REC.takes[+b.dataset.i];if(t.wav){localDownload(t.wav,t.name+".wav");break}b.disabled=true;b.textContent="변환 중…";toWav(t.blob).then(w=>{localDownload(w,t.name+".wav");b.disabled=false;b.textContent="WAV로 저장"}).catch(()=>{toast("WAV 변환에 실패했어요. 원본으로 저장하세요.");b.disabled=false;b.textContent="WAV로 저장"});break}
+   case "take-prompt":{const t=REC.takes[+b.dataset.i];copy(gptPrompt(t.q,t.secs));break}
+   case "prompt-now":copy(gptPrompt(recQuestion(),0));break;
+   case "copy-name":copy(`SAIL_Day${pad(REC.day)}_${today()}`);break;
+  }
+});
+document.addEventListener("change",e=>{
+  const t=e.target;
+  if(t.id==="rec-day"&&!REC.mr){REC.day=+t.value;render()}
+  if(t.id==="exam"&&t.value){S.exam=t.value;save();render()}
+});
+window.addEventListener("hashchange",()=>{if(REC.mr&&curTab()!=="record")recStop();render()});
+render();initCloud();
+if("serviceWorker" in navigator&&!IN_CLAUDE&&/^https?:$/.test(location.protocol)){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{})})}
+</script>
+</body>
+</html>
